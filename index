@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inpatient Antibiotic Guide</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    height: 100vh;
+  }
+  #sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  #sidebar h2 {
+    font-size: 1.2em;
+    margin-top: 0;
+  }
+  #sidebar ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  #sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  #sidebar li:hover {
+    background-color: #34495e;
+  }
+  #content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  h1 {
+    margin-top: 0;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  table, th, td {
+    border: 1px solid #bdc3c7;
+  }
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+  th {
+    background-color: #ecf0f1;
+  }
+  .expandable {
+    cursor: pointer;
+    color: #2980b9;
+  }
+  .hidden {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <h2>Infections</h2>
+  <ul>
+    <li onclick="showContent('cap')">Community-Acquired Pneumonia</li>
+    <li onclick="showContent('hap')">Hospital-Acquired Pneumonia</li>
+    <li onclick="showContent('uti')">Urinary Tract Infection</li>
+    <li onclick="showContent('ssi')">Skin & Soft Tissue Infection</li>
+  </ul>
+</div>
+
+<div id="content">
+  <h1>Welcome to the Inpatient Antibiotic Guide</h1>
+  <p>Select an infection from the sidebar to view empiric and targeted therapy recommendations, dosing, and references.</p>
+</div>
+
+<script>
+  const contentData = {
+    cap: `
+      <h1>Community-Acquired Pneumonia (CAP)</h1>
+      <h3>Empiric Therapy</h3>
+      <table>
+        <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
+        <tr><td>Amoxicillin</td><td>1 g PO TID</td><td>First-line for non-severe CAP</td><td>IDSA 2019, NEJM 2021</td></tr>
+        <tr><td>Doxycycline</td><td>100 mg PO BID</td><td>Alternative for allergy</td><td>IDSA 2019</td></tr>
+        <tr><td>Azithromycin</td><td>500 mg PO Day 1, then 250 mg daily x 4 days</td><td>Macrolide monotherapy for healthy outpatient</td><td>IDSA 2019</td></tr>
+      </table>
+      <div class="expandable" onclick="toggleVisibility('capTargeted')">Show Targeted Therapy</div>
+      <div id="capTargeted" class="hidden">
+        <h3>Targeted Therapy</h3>
+        <p>Adjust therapy based on culture results and susceptibility.</p>
+        <ul>
+          <li>Streptococcus pneumoniae → Penicillin or Ceftriaxone</li>
+          <li>MRSA → Vancomycin or Linezolid</li>
+          <li>Pseudomonas → Piperacillin-tazobactam or Cefepime</li>
+        </ul>
+      </div>
+    `,
+    hap: `
+      <h1>Hospital-Acquired Pneumonia (HAP)</h1>
+      <p>Empiric coverage typically includes MRSA and Pseudomonas until cultures return.</p>
+      <ul>
+        <li>Vancomycin IV</li>
+        <li>Piperacillin-tazobactam IV</li>
+      </ul>
+    `,
+    uti: `
+      <h1>Urinary Tract Infection (UTI)</h1>
+      <p>Empiric therapy for uncomplicated inpatient UTI:</p>
+      <ul>
+        <li>Ceftriaxone IV 1 g daily</li>
+        <li>For allergy: Ciprofloxacin IV 400 mg BID</li>
+      </ul>
+    `,
+    ssi: `
+      <h1>Skin & Soft Tissue Infection (SSI)</h1>
+      <p>Empiric coverage based on severity and MRSA risk:</p>
+      <ul>
+        <li>Mild: Cephalexin PO 500 mg QID</li>
+        <li>Severe or MRSA risk: Vancomycin IV</li>
+      </ul>
+    `
+  };
+
+  function showContent(infection) {
+    document.getElementById('content').innerHTML = contentData[infection];
+  }
+
+  function toggleVisibility(id) {
+    const elem = document.getElementById(id);
+    elem.classList.toggle('hidden');
+  }
+</script>
+
+</body>
+</html>
