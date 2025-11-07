@@ -146,6 +146,7 @@ function toggleVisibility(id){
 <!-- Fungal Infections -->
 <div id="fungi" style="display:none">
 <h2>Fungal Infections</h2>
+
 <div class="expandable" onclick="toggleVisibility('Candida')">Candida spp.</div>
 <div id="Candida" class="hidden">
 <table>
@@ -167,6 +168,7 @@ function toggleVisibility(id){
 <!-- Viral Infections -->
 <div id="viruses" style="display:none">
 <h2>Viral Infections</h2>
+
 <div class="expandable" onclick="toggleVisibility('HSV')">HSV / VZV</div>
 <div id="HSV" class="hidden">
 <table>
@@ -197,14 +199,42 @@ function toggleVisibility(id){
 <tr><td>Gram-Negative Rods</td><td>Cefepime / Meropenem / Piperacillin-Tazo</td><td>Culture-specific</td></tr>
 <tr><td>Anaerobes</td><td>Metronidazole ± Beta-lactam</td><td>Culture-specific</td></tr>
 <tr><td>Intracellular</td><td>Doxycycline / Azithromycin / Levofloxacin</td><td>Culture-specific</td></tr>
+<tr><td>Fungi</td><td>Fluconazole / Voriconazole / Echinocandin</td><td>Culture-specific</td></tr>
+<tr><td>Viruses</td><td>Acyclovir / Oseltamivir</td><td>Guideline-specific</td></tr>
 </table>
 </div>
 
 <!-- Pathogen Overview -->
 <div id="overview" style="display:none">
 <h2>Pathogen Overview</h2>
-<p>Fully collapsible pathogen details for bacteria, fungi, viruses. Includes prevalence, risk factors, vectors, resistance, pathophysiology, clinical notes.</p>
-<!-- For brevity, insert the full detailed organism blocks here -->
+
+<!-- Example for bacterial pathogens -->
+<div class="expandable" onclick="toggleVisibility('OverviewStrep')">Streptococcus spp.</div>
+<div id="OverviewStrep" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Worldwide; common cause of pharyngitis, pneumonia, endocarditis</li>
+<li><b>Risk Factors:</b> Elderly, immunocompromised, chronic illness</li>
+<li><b>Vectors:</b> Person-to-person via droplets</li>
+<li><b>Resistance:</b> Penicillin generally effective; macrolide resistance increasing</li>
+<li><b>Pathophysiology:</b> Capsule prevents phagocytosis; hemolysins damage tissue</li>
+<li><b>Clinical Notes:</b> Site-specific therapy recommended</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewStaph')">Staphylococcus aureus</div>
+<div id="OverviewStaph" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Skin, soft tissue infections; MRSA increasing worldwide</li>
+<li><b>Risk Factors:</b> Hospitalization, IV catheters, diabetes</li>
+<li><b>Vectors:</b> Person-to-person, fomites</li>
+<li><b>Resistance:</b> MRSA resistant to beta-lactams</li>
+<li><b>Pathophysiology:</b> Toxins, biofilm formation</li>
+<li><b>Clinical Notes:</b> Culture-directed therapy essential</li>
+</ul>
+</div>
+
+<!-- Additional pathogens can be added in the same format for Mycobacterium, Nocardia, Corynebacterium, Clostridium, Actinomyces, Burkholderia, Bacteroides, Prevotella, intracellular bacteria, fungi, viruses -->
+
 </div>
 
 <!-- Antibiotic Classes / Escalation -->
@@ -227,13 +257,13 @@ function toggleVisibility(id){
 <div id="references" style="display:none">
 <h2>References</h2>
 <ul>
-<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy/">IDSA Antimicrobial Therapy Guidelines</a></li>
-<li><a href="https://www.nejm.org/">NEJM Review Articles</a></li>
-<li><a href="https://jamanetwork.com/">JAMA Clinical Reviews</a></li>
-<li><a href="https://accessmedicine.mhmedical.com/book.aspx?bookid=2129">Harrison's Principles of Internal Medicine</a></li>
-<li><a href="https://www.cdc.gov/antibiotic-use/index.html">CDC Antibiotic Stewardship</a></li>
-<li><a href="https://www.cdc.gov/fungal/index.html">CDC Fungal Infections</a></li>
-<li><a href="https://www.cdc.gov/flu/index.htm">CDC Influenza Guidelines</a></li>
+<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy/" target="_blank">IDSA Antimicrobial Therapy Guidelines</a></li>
+<li><a href="https://www.nejm.org/" target="_blank">NEJM Review Articles</a></li>
+<li><a href="https://jamanetwork.com/" target="_blank">JAMA Clinical Reviews</a></li>
+<li><a href="https://accessmedicine.mhmedical.com/book.aspx?bookid=2129" target="_blank">Harrison's Principles of Internal Medicine</a></li>
+<li><a href="https://www.cdc.gov/antibiotic-use/index.html" target="_blank">CDC Antibiotic Stewardship</a></li>
+<li><a href="https://www.cdc.gov/fungal/index.html" target="_blank">CDC Fungal Infections</a></li>
+<li><a href="https://www.cdc.gov/flu/index.htm" target="_blank">CDC Influenza Guidelines</a></li>
 </ul>
 </div>
 
