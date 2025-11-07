@@ -136,16 +136,66 @@ const contentData = {
   endocarditis: `<h2>Endocarditis</h2><p>Empiric therapy: Vancomycin ± Gentamicin until blood cultures return. Adjust therapy per pathogen and susceptibility.</p>`,
 
   pathogen: `
-    <h2>Pathogen-Based Guidance</h2>
-    <table>
-      <tr><th>Pathogen Type</th><th>Empiric Coverage</th><th>Alternative / Escalation</th><th>Notes</th><th>References</th></tr>
-      <tr class="firstline"><td>Gram-positive cocci (clusters)</td><td>Vancomycin IV</td><td>Linezolid PO/IV</td><td>MRSA coverage; renal adjustment</td><td>IDSA 2016</td></tr>
-      <tr class="firstline"><td>Gram-positive cocci (chains, Enterococcus)</td><td>Ampicillin IV</td><td>Vancomycin IV if resistant</td><td>Adjust for renal function</td><td>IDSA 2016</td></tr>
-      <tr class="firstline"><td>Gram-negative rods (Enterobacteriaceae)</td><td>Cefepime IV</td><td>Piperacillin-Tazobactam IV</td><td>Check local resistance</td><td>IDSA 2016</td></tr>
-      <tr class="firstline"><td>Gram-negative rods (Pseudomonas)</td><td>Cefepime IV</td><td>Meropenem IV if resistant</td><td>Check susceptibilities</td><td>IDSA 2016</td></tr>
-      <tr class="firstline"><td>Anaerobes</td><td>Metronidazole IV</td><td>Piperacillin-Tazobactam IV</td><td>Combine with Gram-negative coverage</td><td>IDSA 2016</td></tr>
-      <tr class="firstline"><td>Intracellular bacteria</td><td>Doxycycline IV/PO</td><td>Azithromycin IV/PO</td><td>Legionella, Mycoplasma, Chlamydia coverage</td><td>IDSA 2019</td></tr>
-    </table>
+<h2>Pathogen-Based Guidance</h2>
+<table>
+  <tr>
+    <th>Pathogen Type</th>
+    <th>Empiric Coverage</th>
+    <th>Typical Dosing</th>
+    <th>Alternative / Escalation</th>
+    <th>Notes</th>
+    <th>References</th>
+  </tr>
+  <tr class="firstline">
+    <td>Gram-positive cocci (clusters, MRSA)</td>
+    <td>Vancomycin IV</td>
+    <td>15 mg/kg IV q12h (adjust renal)</td>
+    <td>Linezolid IV/PO 600 mg q12h</td>
+    <td>Check renal function, troughs if prolonged therapy</td>
+    <td>IDSA 2016</td>
+  </tr>
+  <tr class="firstline">
+    <td>Gram-positive cocci (chains, Enterococcus)</td>
+    <td>Ampicillin IV</td>
+    <td>2 g IV q4h</td>
+    <td>Vancomycin IV 15 mg/kg q12h if resistant</td>
+    <td>Adjust dosing for renal impairment</td>
+    <td>IDSA 2016</td>
+  </tr>
+  <tr class="firstline">
+    <td>Gram-negative rods (Enterobacteriaceae)</td>
+    <td>Cefepime IV</td>
+    <td>2 g IV q8h</td>
+    <td>Piperacillin-Tazobactam IV 4.5 g q6h</td>
+    <td>Adjust for renal function; check local antibiogram</td>
+    <td>IDSA 2016</td>
+  </tr>
+  <tr class="firstline">
+    <td>Gram-negative rods (Pseudomonas)</td>
+    <td>Cefepime IV</td>
+    <td>2 g IV q8h</td>
+    <td>Meropenem IV 1 g q8h if resistant</td>
+    <td>Consider combination therapy if critically ill</td>
+    <td>IDSA 2016</td>
+  </tr>
+  <tr class="firstline">
+    <td>Anaerobes (Bacteroides, Clostridium)</td>
+    <td>Metronidazole IV/PO</td>
+    <td>500 mg IV q8h or 500 mg PO q8h</td>
+    <td>Piperacillin-Tazobactam IV 4.5 g q6h</td>
+    <td>Often combined with Gram-negative coverage</td>
+    <td>IDSA 2016</td>
+  </tr>
+  <tr class="firstline">
+    <td>Intracellular bacteria (Legionella, Mycoplasma, Chlamydia)</td>
+    <td>Doxycycline IV/PO</td>
+    <td>100 mg IV/PO q12h</td>
+    <td>Azithromycin IV/PO 500 mg day 1 then 250 mg daily x4d</td>
+    <td>Consider duration based on site/severity</td>
+    <td>IDSA 2019</td>
+  </tr>
+</table>
+
   `
 };
 
