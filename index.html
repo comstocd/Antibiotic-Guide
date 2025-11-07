@@ -20,6 +20,7 @@ a { color:#007BFF; text-decoration:none; }
 a:hover { text-decoration:underline; }
 
 /* Color-coded sections */
+#homepage { background-color:#ffffff; }
 #bacteria { background-color:#e0f0ff; }
 #fungi { background-color:#e0ffe0; }
 #viruses { background-color:#fff0d0; }
@@ -27,7 +28,6 @@ a:hover { text-decoration:underline; }
 #overview { background-color:#e0ffff; }
 #classes { background-color:#f0f0f0; }
 #references { background-color:#ffffff; }
-
 </style>
 <script>
 function showContent(id){
@@ -72,7 +72,6 @@ function toggleVisibility(id){
 <div id="bacteria" style="display:none">
 <h2>Bacterial Infections</h2>
 
-<!-- Gram-Positive Cocci -->
 <div class="expandable" onclick="toggleVisibility('GramPositiveCocci')">Gram-Positive Cocci</div>
 <div id="GramPositiveCocci" class="hidden">
 <table>
@@ -84,105 +83,110 @@ function toggleVisibility(id){
 </table>
 </div>
 
-<!-- Gram-Positive Rods -->
 <div class="expandable" onclick="toggleVisibility('GramPositiveRods')">Gram-Positive Rods</div>
 <div id="GramPositiveRods" class="hidden">
 <table>
 <tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Mycobacterium tuberculosis</td><td>RIPE therapy</td><td>Same</td><td>Per guidelines</td><td>6 months</td><td>DOT recommended</td></tr>
-<tr><td>Corynebacterium spp.</td><td>Vancomycin / Penicillin</td><td>Same</td><td>Vancomycin 15 mg/kg IV q12h</td><td>10–14 days</td><td>Depends on species/site</td></tr>
-<tr><td>Nocardia spp.</td><td>TMP-SMX</td><td>Same</td><td>15 mg/kg/day TMP IV/PO</td><td>6–12 months</td><td>CNS involvement requires higher dose</td></tr>
-<tr><td>Clostridium spp.</td><td>Metronidazole</td><td>Same</td><td>500 mg IV q8h</td><td>10–14 days</td><td>Include surgery for necrotizing infections</td></tr>
-<tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>Same</td><td>18–24 MU/day IV</td><td>6–12 months</td><td>Chronic infections require prolonged therapy</td></tr>
+<tr><td>Clostridium spp.</td><td>Metronidazole / Vancomycin (oral for C. difficile)</td><td>Same</td><td>500 mg IV q8h / Vancomycin 125 mg PO q6h</td><td>10–14 days</td><td>Adjust for severity</td></tr>
+<tr><td>Corynebacterium spp.</td><td>Penicillin G</td><td>Same</td><td>2–4 MU IV q4–6h</td><td>7–14 days</td><td>Monitor for immunocompromised</td></tr>
+<tr><td>Mycobacterium spp.</td><td>RIPE therapy (for TB)</td><td>Per sensitivity</td><td>Rifampin 10 mg/kg/day, Isoniazid 5 mg/kg/day, Pyrazinamide 25 mg/kg/day, Ethambutol 15 mg/kg/day</td><td>6 months or more</td><td>Monitor LFTs</td></tr>
+<tr><td>Nocardia spp.</td><td>TMP-SMX</td><td>Per susceptibility</td><td>15 mg/kg/day IV divided q6–8h</td><td>6–12 weeks</td><td>Adjust for renal</td></tr>
 </table>
 </div>
 
-<!-- Gram-Negative Cocci -->
 <div class="expandable" onclick="toggleVisibility('GramNegativeCocci')">Gram-Negative Cocci</div>
 <div id="GramNegativeCocci" class="hidden">
 <table>
 <tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Neisseria meningitidis</td><td>Ceftriaxone</td><td>Same</td><td>2 g IV q12h</td><td>7 days</td><td>Close contacts require prophylaxis</td></tr>
-<tr><td>Neisseria gonorrhoeae</td><td>Ceftriaxone + Azithromycin</td><td>Same</td><td>500 mg IM ×1 + 1 g PO ×1</td><td>Single dose</td><td>Adjust if weight >150 kg</td></tr>
-<tr><td>Moraxella catarrhalis</td><td>Amoxicillin-clavulanate</td><td>Same</td><td>875/125 mg PO BID</td><td>5–7 days</td><td>Respiratory pathogen</td></tr>
+<tr><td>Neisseria meningitidis</td><td>Ceftriaxone</td><td>Same</td><td>2 g IV q12h</td><td>7 days</td><td>Monitor for allergic reaction</td></tr>
+<tr><td>Neisseria gonorrhoeae</td><td>Ceftriaxone ± Azithromycin</td><td>Same</td><td>500 mg IM single dose</td><td>Single dose</td><td>Check local resistance patterns</td></tr>
 </table>
 </div>
 
-<!-- Gram-Negative Rods -->
 <div class="expandable" onclick="toggleVisibility('GramNegativeRods')">Gram-Negative Rods</div>
 <div id="GramNegativeRods" class="hidden">
 <table>
 <tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Enterobacteriaceae</td><td>Cefepime / Meropenem</td><td>Per susceptibility</td><td>2 g IV q8h / 1 g IV q8h</td><td>7–10 days</td><td>Adjust per renal function</td></tr>
-<tr><td>Burkholderia cepacia</td><td>Meropenem + TMP-SMX</td><td>Same</td><td>Meropenem 1 g IV q8h; TMP-SMX 15 mg/kg/day</td><td>10–14 days</td><td>CF patients often affected</td></tr>
-<tr><td>Bacteroides spp.</td><td>Metronidazole ± Beta-lactam</td><td>Same</td><td>500 mg IV q8h</td><td>7–10 days</td><td>Intra-abdominal source control essential</td></tr>
-<tr><td>Prevotella spp.</td><td>Metronidazole</td><td>Same</td><td>500 mg IV q8h</td><td>7–10 days</td><td>Oral anaerobes</td></tr>
+<tr><td>Escherichia coli</td><td>Ceftriaxone / Piperacillin-Tazobactam</td><td>Per susceptibility</td><td>Ceftriaxone 2 g IV q24h</td><td>7–14 days</td><td>Adjust for renal</td></tr>
+<tr><td>Burkholderia spp.</td><td>Meropenem</td><td>Per susceptibility</td><td>1 g IV q8h</td><td>10–14 days</td><td>Resistant strains common</td></tr>
 </table>
 </div>
 
-<!-- Aerobes / Anaerobes -->
-<div class="expandable" onclick="toggleVisibility('AerobesAnaerobes')">Aerobes & Anaerobes</div>
-<div id="AerobesAnaerobes" class="hidden">
+<div class="expandable" onclick="toggleVisibility('Anaerobes')">Anaerobes</div>
+<div id="Anaerobes" class="hidden">
 <table>
-<tr><th>Type</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Aerobes (Pseudomonas, Acinetobacter)</td><td>Cefepime / Piperacillin-Tazobactam</td><td>Same</td><td>2 g IV q8h / 4.5 g IV q6–8h</td><td>7–10 days</td><td>Adjust per renal and cultures</td></tr>
-<tr><td>Anaerobes</td><td>Metronidazole ± Beta-lactam</td><td>Same</td><td>500 mg IV q8h</td><td>7–14 days</td><td>Intra-abdominal, dental, soft tissue</td></tr>
+<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>Bacteroides spp.</td><td>Metronidazole / Beta-lactam-beta-lactamase inhibitor</td><td>Per susceptibility</td><td>500 mg IV q8h</td><td>7–14 days</td><td>Adjust for site of infection</td></tr>
+<tr><td>Prevotella spp.</td><td>Metronidazole / Beta-lactam-beta-lactamase inhibitor</td><td>Same</td><td>500 mg IV q8h</td><td>7–14 days</td><td>Often oral flora</td></tr>
+<tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>Same</td><td>18–24 MU/day IV</td><td>6–12 months</td><td>Chronic infections common</td></tr>
 </table>
 </div>
 
-<!-- Intracellular Pathogens -->
 <div class="expandable" onclick="toggleVisibility('Intracellular')">Intracellular Pathogens</div>
 <div id="Intracellular" class="hidden">
 <table>
 <tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Chlamydia spp.</td><td>Doxycycline</td><td>Same</td><td>100 mg PO BID</td><td>7–14 days</td><td>Alternative: Azithromycin</td></tr>
-<tr><td>Legionella spp.</td><td>Levofloxacin</td><td>Same</td><td>750 mg IV/PO q24h</td><td>10–14 days</td><td>Adjust renal</td></tr>
-<tr><td>Rickettsia spp.</td><td>Doxycycline</td><td>Same</td><td>100 mg PO BID</td><td>7–14 days</td><td>Start early</td></tr>
-<tr><td>Mycoplasma pneumoniae</td><td>Azithromycin</td><td>Same</td><td>500 mg PO day1 → 250 mg PO ×4 days</td><td>5 days</td><td>Alternative: Doxycycline</td></tr>
-<tr><td>Coxiella burnetii</td><td>Doxycycline</td><td>Same</td><td>100 mg PO BID</td><td>14 days acute, 18 months chronic</td><td>Chronic: add hydroxychloroquine</td></tr>
+<tr><td>Chlamydia spp.</td><td>Doxycycline</td><td>Same</td><td>100 mg PO q12h</td><td>7 days</td><td>Monitor adherence</td></tr>
+<tr><td>Rickettsia spp.</td><td>Doxycycline</td><td>Same</td><td>100 mg PO/IV q12h</td><td>7–14 days</td><td>Pregnancy caution</td></tr>
+<tr><td>Legionella spp.</td><td>Azithromycin / Levofloxacin</td><td>Same</td><td>Azithromycin 500 mg IV/PO daily</td><td>10–14 days</td><td>Monitor QTc</td></tr>
 </table>
+</div>
+
 </div>
 
 <!-- Fungal Infections -->
 <div id="fungi" style="display:none">
 <h2>Fungal Infections</h2>
-
 <div class="expandable" onclick="toggleVisibility('Candida')">Candida spp.</div>
 <div id="Candida" class="hidden">
 <table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Candida albicans</td><td>Fluconazole</td><td>Same</td><td>400 mg IV/PO daily</td><td>14 days</td></tr>
-<tr><td>Non-albicans Candida</td><td>Echinocandin</td><td>Adjust per susceptibility</td><td>Caspofungin 70 mg IV day1 → 50 mg IV daily</td><td>14–21 days</td></tr>
+<tr><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Echinocandin (Caspofungin)</td><td>Fluconazole if susceptible</td><td>Caspofungin 70 mg IV load, 50 mg IV daily</td><td>14 days</td></tr>
 </table>
 </div>
 
 <div class="expandable" onclick="toggleVisibility('Aspergillus')">Aspergillus spp.</div>
 <div id="Aspergillus" class="hidden">
 <table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Aspergillus spp.</td><td>Voriconazole</td><td>Same</td><td>6 mg/kg IV q12h ×2 then 4 mg/kg IV q12h</td><td>6–12 weeks</td></tr>
+<tr><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Voriconazole</td><td>Same</td><td>6 mg/kg IV q12h ×2, then 4 mg/kg IV q12h</td><td>6–12 weeks</td></tr>
 </table>
 </div>
+
+<div class="expandable" onclick="toggleVisibility('Cryptococcus')">Cryptococcus spp.</div>
+<div id="Cryptococcus" class="hidden">
+<table>
+<tr><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Amphotericin B + Flucytosine</td><td>Fluconazole step-down</td><td>Ampho 0.7–1 mg/kg IV daily, Flucytosine 25 mg/kg PO q6h</td><td>2 weeks induction + 8–10 weeks consolidation</td></tr>
+</table>
+</div>
+
 </div>
 
 <!-- Viral Infections -->
 <div id="viruses" style="display:none">
 <h2>Viral Infections</h2>
-
-<div class="expandable" onclick="toggleVisibility('HSV')">HSV / VZV</div>
+<div class="expandable" onclick="toggleVisibility('HSV')">Herpes Simplex Virus</div>
 <div id="HSV" class="hidden">
 <table>
-<tr><th>Virus</th><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>HSV-1/2</td><td>Acyclovir</td><td>5–10 mg/kg IV q8h</td><td>7–14 days</td></tr>
-<tr><td>VZV</td><td>Acyclovir</td><td>10 mg/kg IV q8h</td><td>7–10 days</td></tr>
+<tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Acyclovir IV</td><td>5–10 mg/kg IV q8h</td><td>7–14 days</td></tr>
 </table>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('Influenza')">Influenza A/B</div>
+<div class="expandable" onclick="toggleVisibility('Influenza')">Influenza</div>
 <div id="Influenza" class="hidden">
 <table>
-<tr><th>Virus</th><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Influenza A/B</td><td>Oseltamivir</td><td>75 mg PO BID</td><td>5 days</td></tr>
+<tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Oseltamivir</td><td>75 mg PO q12h</td><td>5 days</td></tr>
+</table>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('CMV')">Cytomegalovirus</div>
+<div id="CMV" class="hidden">
+<table>
+<tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Ganciclovir IV</td><td>5 mg/kg IV q12h</td><td>14–21 days</td></tr>
 </table>
 </div>
 </div>
@@ -190,208 +194,122 @@ function toggleVisibility(id){
 <!-- Pathogen-Based Guidance -->
 <div id="pathogen" style="display:none">
 <h2>Pathogen-Based Guidance</h2>
-<p>Use Gram-stain and culture results to select targeted therapy. De-escalate to narrowest spectrum once susceptibilities are known. Adjust dosing/duration per organ function and infection severity.</p>
 <table>
-<tr><th>Gram-Stain / Category</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th></tr>
-<tr><td>Gram-Positive Cocci</td><td>Vancomycin / Beta-lactam</td><td>Tailored per culture</td></tr>
-<tr><td>Gram-Positive Rods</td><td>Penicillin / TMP-SMX / RIPE</td><td>Culture-specific</td></tr>
-<tr><td>Gram-Negative Cocci</td><td>Ceftriaxone / Amoxicillin-clavulanate</td><td>Culture-specific</td></tr>
-<tr><td>Gram-Negative Rods</td><td>Cefepime / Meropenem / Piperacillin-Tazo</td><td>Culture-specific</td></tr>
-<tr><td>Anaerobes</td><td>Metronidazole ± Beta-lactam</td><td>Culture-specific</td></tr>
-<tr><td>Intracellular</td><td>Doxycycline / Azithromycin / Levofloxacin</td><td>Culture-specific</td></tr>
-<tr><td>Fungi</td><td>Fluconazole / Voriconazole / Echinocandin</td><td>Culture-specific</td></tr>
-<tr><td>Viruses</td><td>Acyclovir / Oseltamivir</td><td>Guideline-specific</td></tr>
+<tr><th>Category</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th></tr>
+<tr><td>Gram-Positive Cocci</td><td>Vancomycin / Beta-lactam</td><td>Per culture</td></tr>
+<tr><td>Gram-Positive Rods</td><td>Penicillin / TMP-SMX</td><td>Per culture</td></tr>
+<tr><td>Gram-Negative Cocci</td><td>Ceftriaxone</td><td>Per culture</td></tr>
+<tr><td>Gram-Negative Rods</td><td>Cefepime / Piperacillin-Tazobactam</td><td>Per culture</td></tr>
+<tr><td>Anaerobes</td><td>Metronidazole</td><td>Per culture</td></tr>
+<tr><td>Intracellular</td><td>Doxycycline / Macrolide</td><td>Per culture</td></tr>
+<tr><td>Fungi</td><td>Voriconazole / Echinocandin</td><td>Per susceptibility</td></tr>
+<tr><td>Viruses</td><td>Acyclovir / Oseltamivir / Ganciclovir</td><td>Per pathogen</td></tr>
 </table>
 </div>
 
-<!-- Pathogen Overview Expanded -->
+<!-- Pathogen Overview -->
 <div id="overview" style="display:none">
 <h2>Pathogen Overview</h2>
 
-<!-- Bacteria -->
-<div class="expandable" onclick="toggleVisibility('OverviewMycobacterium')">Mycobacterium spp.</div>
-<div id="OverviewMycobacterium" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewStrep')">Streptococcus spp.</div>
+<div id="overviewStrep" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Global; TB most common in Asia, Africa, Latin America</li>
-<li><b>Risk Factors:</b> Immunocompromised, HIV, close-contact exposure</li>
-<li><b>Vectors / Transmission:</b> Airborne droplets</li>
-<li><b>Resistance:</b> MDR/XDR strains increasing</li>
-<li><b>Pathophysiology:</b> Intracellular survival in macrophages, granuloma formation</li>
-<li><b>Clinical Notes:</b> Prolonged multi-drug therapy required; monitor liver function</li>
+<li>Worldwide prevalence</li>
+<li>Risk: Immunocompromised, post-viral</li>
+<li>Resistance: Macrolide resistance increasing</li>
+<li>Pathophysiology: Exotoxin, capsule</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewCorynebacterium')">Corynebacterium spp.</div>
-<div id="OverviewCorynebacterium" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewStaph')">Staphylococcus aureus</div>
+<div id="overviewStaph" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Worldwide, often commensal skin flora</li>
-<li><b>Risk Factors:</b> Immunocompromised, indwelling devices</li>
-<li><b>Vectors / Transmission:</b> Contact with colonized surfaces</li>
-<li><b>Resistance:</b> Varies by species; some resistant to penicillin</li>
-<li><b>Pathophysiology:</b> Toxin-mediated disease (C. diphtheriae)</li>
-<li><b>Clinical Notes:</b> Culture identification essential; treat symptomatic infections</li>
+<li>Worldwide prevalence</li>
+<li>Risk: Catheter, hospitalization</li>
+<li>Resistance: MRSA</li>
+<li>Biofilm and toxin mediated</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewNocardia')">Nocardia spp.</div>
-<div id="OverviewNocardia" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewMyco')">Mycobacterium spp.</div>
+<div id="overviewMyco" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Worldwide; soil and water exposure</li>
-<li><b>Risk Factors:</b> Immunocompromised, corticosteroids, chronic lung disease</li>
-<li><b>Vectors / Transmission:</b> Inhalation of airborne spores</li>
-<li><b>Resistance:</b> Variable; TMP-SMX usually effective</li>
-<li><b>Pathophysiology:</b> Intracellular survival; CNS and pulmonary involvement</li>
-<li><b>Clinical Notes:</b> Extended therapy (6–12 months) often required</li>
+<li>TB endemic regions</li>
+<li>Risk: HIV, crowded living</li>
+<li>MDR/XDR strains rising</li>
+<li>Slow-growing, intracellular</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewStreptococcus')">Streptococcus spp.</div>
-<div id="OverviewStreptococcus" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewNocardia')">Nocardia spp.</div>
+<div id="overviewNocardia" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Global; common cause of pharyngitis, pneumonia, endocarditis</li>
-<li><b>Risk Factors:</b> Elderly, immunocompromised, chronic illness</li>
-<li><b>Vectors / Transmission:</b> Person-to-person via droplets</li>
-<li><b>Resistance:</b> Penicillin generally effective; macrolide resistance increasing</li>
-<li><b>Pathophysiology:</b> Capsule prevents phagocytosis; hemolysins damage tissue</li>
-<li><b>Clinical Notes:</b> Site-specific therapy recommended</li>
+<li>Soil-borne opportunist</li>
+<li>Risk: Immunocompromised</li>
+<li>TMP-SMX usually effective</li>
+<li>Aerobic filamentous rods</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewStaphylococcus')">Staphylococcus aureus</div>
-<div id="OverviewStaphylococcus" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewCory')">Corynebacterium spp.</div>
+<div id="overviewCory" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Skin, soft tissue infections; MRSA increasing worldwide</li>
-<li><b>Risk Factors:</b> Hospitalization, IV catheters, diabetes</li>
-<li><b>Vectors / Transmission:</b> Person-to-person, fomites</li>
-<li><b>Resistance:</b> MRSA resistant to beta-lactams</li>
-<li><b>Pathophysiology:</b> Toxins, biofilm formation</li>
-<li><b>Clinical Notes:</b> Culture-directed therapy essential</li>
+<li>Skin/mucosa colonizer</li>
+<li>Risk: Immunocompromised</li>
+<li>Variable resistance</li>
+<li>Rod-shaped</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewClostridium')">Clostridium spp.</div>
-<div id="OverviewClostridium" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewAnaerobes')">Bacteroides, Prevotella, Actinomyces, Clostridium</div>
+<div id="overviewAnaerobes" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Soil-borne, intestinal flora; C. difficile common in hospitals</li>
-<li><b>Risk Factors:</b> Antibiotic exposure, hospitalization, GI surgery</li>
-<li><b>Vectors / Transmission:</b> Spores via contact surfaces</li>
-<li><b>Resistance:</b> Some strains resistant to metronidazole</li>
-<li><b>Pathophysiology:</b> Toxin production, tissue necrosis</li>
-<li><b>Clinical Notes:</b> Source control essential; oral vancomycin for C. difficile</li>
+<li>Normal flora/opportunistic infections</li>
+<li>Risk: GI surgery, aspiration</li>
+<li>Resistance patterns variable</li>
+<li>Rod-shaped, anaerobic</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewBacteroides')">Bacteroides spp.</div>
-<div id="OverviewBacteroides" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewBurkholderia')">Burkholderia spp.</div>
+<div id="overviewBurkholderia" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Normal gut flora; intra-abdominal infections</li>
-<li><b>Risk Factors:</b> GI surgery, perforation, immunocompromised</li>
-<li><b>Vectors / Transmission:</b> Endogenous</li>
-<li><b>Resistance:</b> Beta-lactamase production common</li>
-<li><b>Pathophysiology:</b> Anaerobic infection, abscess formation</li>
-<li><b>Clinical Notes:</b> Often requires surgical drainage plus antibiotics</li>
+<li>Soil, water exposure</li>
+<li>Risk: CF patients, immunocompromised</li>
+<li>Highly resistant</li>
+<li>Gram-negative rod</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewPrevotella')">Prevotella spp.</div>
-<div id="OverviewPrevotella" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewIntracellular')">Intracellular Pathogens</div>
+<div id="overviewIntracellular" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Oral and respiratory flora; abscesses</li>
-<li><b>Risk Factors:</b> Dental disease, aspiration</li>
-<li><b>Vectors / Transmission:</b> Endogenous</li>
-<li><b>Resistance:</b> Usually sensitive to metronidazole</li>
-<li><b>Pathophysiology:</b> Anaerobic infection</li>
-<li><b>Clinical Notes:</b> Often polymicrobial infections</li>
+<li>Chlamydia, Rickettsia, Legionella</li>
+<li>Risk: Exposure to vectors, endemic regions</li>
+<li>Macrolide / Doxycycline sensitive</li>
+<li>Obligate intracellular</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewActinomyces')">Actinomyces spp.</div>
-<div id="OverviewActinomyces" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewFungi')">Fungi</div>
+<div id="overviewFungi" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Oral and GI flora; cervicofacial, thoracic, abdominal infections</li>
-<li><b>Risk Factors:</b> Poor oral hygiene, dental procedures</li>
-<li><b>Vectors / Transmission:</b> Endogenous</li>
-<li><b>Resistance:</b> Usually sensitive to penicillin</li>
-<li><b>Pathophysiology:</b> Chronic granulomatous infections, abscesses</li>
-<li><b>Clinical Notes:</b> Long-term therapy required (6–12 months)</li>
+<li>Candida, Aspergillus, Cryptococcus</li>
+<li>Risk: Immunocompromised</li>
+<li>Resistance emerging</li>
+<li>Yeast or mold</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewBurkholderia')">Burkholderia cepacia</div>
-<div id="OverviewBurkholderia" class="hidden">
+<div class="expandable" onclick="toggleVisibility('overviewViruses')">Viruses</div>
+<div id="overviewViruses" class="hidden">
 <ul>
-<li><b>Prevalence:</b> CF patients, hospital outbreaks</li>
-<li><b>Risk Factors:</b> Cystic fibrosis, immunocompromised</li>
-<li><b>Vectors / Transmission:</b> Water sources, person-to-person in CF centers</li>
-<li><b>Resistance:</b> Often multidrug-resistant</li>
-<li><b>Pathophysiology:</b> Opportunistic, pulmonary infections</li>
-<li><b>Clinical Notes:</b> Requires combination therapy; culture-directed</li>
+<li>HSV, VZV, Influenza, CMV</li>
+<li>Risk: Immunosuppressed, exposure</li>
+<li>Virus-specific antiviral therapy</li>
+<li>Replicate intracellularly</li>
 </ul>
 </div>
-
-<!-- Fungal Overview -->
-<div class="expandable" onclick="toggleVisibility('OverviewCandida')">Candida spp.</div>
-<div id="OverviewCandida" class="hidden">
-<ul>
-<li><b>Prevalence:</b> Global; nosocomial bloodstream infections common</li>
-<li><b>Risk Factors:</b> Broad-spectrum antibiotics, central lines, ICU stay</li>
-<li><b>Vectors / Transmission:</b> Endogenous, catheter-related</li>
-<li><b>Resistance:</b> C. glabrata and C. auris can be resistant to azoles</li>
-<li><b>Pathophysiology:</b> Biofilm formation on indwelling devices</li>
-<li><b>Clinical Notes:</b> Bloodstream infections require echinocandin or fluconazole based on susceptibility</li>
-</ul>
-</div>
-
-<div class="expandable" onclick="toggleVisibility('OverviewAspergillus')">Aspergillus spp.</div>
-<div id="OverviewAspergillus" class="hidden">
-<ul>
-<li><b>Prevalence:</b> Ubiquitous; immunocompromised patients</li>
-<li><b>Risk Factors:</b> Neutropenia, transplant, chronic lung disease</li>
-<li><b>Vectors / Transmission:</b> Inhalation of spores</li>
-<li><b>Resistance:</b> Azole resistance emerging in some regions</li>
-<li><b>Pathophysiology:</b> Invasive pulmonary disease, angioinvasion</li>
-<li><b>Clinical Notes:</b> Voriconazole first-line; surgical resection for localized disease</li>
-</ul>
-</div>
-
-<!-- Viral Overview -->
-<div class="expandable" onclick="toggleVisibility('OverviewHSV')">HSV-1/2</div>
-<div id="OverviewHSV" class="hidden">
-<ul>
-<li><b>Prevalence:</b> Worldwide; HSV-1 common in oral, HSV-2 genital</li>
-<li><b>Risk Factors:</b> Immunocompromised, neonates</li>
-<li><b>Vectors / Transmission:</b> Direct contact with lesions or secretions</li>
-<li><b>Resistance:</b> Rare acyclovir resistance in immunocompromised</li>
-<li><b>Pathophysiology:</b> Latency in neurons; reactivation causes lesions</li>
-<li><b>Clinical Notes:</b> IV acyclovir for severe disease</li>
-</ul>
-</div>
-
-<div class="expandable" onclick="toggleVisibility('OverviewVZV')">Varicella Zoster Virus</div>
-<div id="OverviewVZV" class="hidden">
-<ul>
-<li><b>Prevalence:</b> Global; reactivation as shingles</li>
-<li><b>Risk Factors:</b> Older age, immunocompromised</li>
-<li><b>Vectors / Transmission:</b> Respiratory droplets, contact</li>
-<li><b>Resistance:</b> Rare</li>
-<li><b>Pathophysiology:</b> Latent in dorsal root ganglia; reactivation leads to dermatomal rash</li>
-<li><b>Clinical Notes:</b> IV acyclovir for severe cases or immunocompromised</li>
-</ul>
-</div>
-
-<div class="expandable" onclick="toggleVisibility('OverviewInfluenza')">Influenza A/B</div>
-<div id="OverviewInfluenza" class="hidden">
-<ul>
-<li><b>Prevalence:</b> Seasonal; worldwide</li>
-<li><b>Risk Factors:</b> Elderly, chronic lung disease, immunocompromised</li>
-<li><b>Vectors / Transmission:</b> Respiratory droplets</li>
-<li><b>Resistance:</b> Oseltamivir resistance uncommon</li>
-<li><b>Pathophysiology:</b> Rapid viral replication in respiratory epithelium</li>
-<li><b>Clinical Notes:</b> Early antiviral therapy reduces complications</li>
-</ul>
-</div>
-
-</div> <!-- End expanded overview -->
 
 </div>
 
@@ -399,15 +317,14 @@ function toggleVisibility(id){
 <div id="classes" style="display:none">
 <h2>Antibiotic Classes / Escalation</h2>
 <table>
-<tr><th>Class</th><th>Examples</th><th>Typical Use</th></tr>
-<tr><td>Beta-lactams</td><td>Penicillins, Cephalosporins, Carbapenems</td><td>Broad empiric coverage; adjust per susceptibility</td></tr>
-<tr><td>Glycopeptides</td><td>Vancomycin, Teicoplanin</td><td>MRSA and Gram-positive coverage</td></tr>
-<tr><td>Fluoroquinolones</td><td>Levofloxacin, Ciprofloxacin</td><td>Gram-negative, atypical coverage</td></tr>
-<tr><td>Macrolides</td><td>Azithromycin, Clarithromycin</td><td>Atypical bacteria, intracellular pathogens</td></tr>
-<tr><td>Tetracyclines</td><td>Doxycycline</td><td>Intracellular pathogens, MRSA</td></tr>
-<tr><td>Aminoglycosides</td><td>Gentamicin, Amikacin</td><td>Gram-negative synergy with beta-lactams</td></tr>
-<tr><td>Antifungals</td><td>Fluconazole, Voriconazole, Amphotericin B</td><td>Yeast and mold infections</td></tr>
-<tr><td>Antivirals</td><td>Acyclovir, Oseltamivir, Ganciclovir</td><td>HSV/VZV, Influenza, CMV</td></tr>
+<tr><th>Class</th><th>Example Drugs</th><th>Coverage</th><th>Notes</th></tr>
+<tr><td>Beta-lactams</td><td>Penicillins, Cephalosporins, Carbapenems</td><td>Gram-positive, Gram-negative, anaerobes</td><td>Adjust renal</td></tr>
+<tr><td>Glycopeptides</td><td>Vancomycin, Teicoplanin</td><td>Gram-positive</td><td>Monitor levels</td></tr>
+<tr><td>Macrolides</td><td>Azithromycin, Clarithromycin</td><td>Gram-positive, atypicals</td><td>QTc prolongation</td></tr>
+<tr><td>Fluoroquinolones</td><td>Levofloxacin, Ciprofloxacin</td><td>Gram-negative, atypicals</td><td>Tendon/neuropathy risk</td></tr>
+<tr><td>Tetracyclines</td><td>Doxycycline, Minocycline</td><td>Intracellular, atypicals</td><td>Photosensitivity</td></tr>
+<tr><td>Polyenes / Azoles</td><td>Amphotericin B, Voriconazole</td><td>Fungi</td><td>Monitor LFTs, renal</td></tr>
+<tr><td>Antivirals</td><td>Acyclovir, Oseltamivir, Ganciclovir</td><td>Virus-specific</td><td>Adjust renal</td></tr>
 </table>
 </div>
 
@@ -415,13 +332,11 @@ function toggleVisibility(id){
 <div id="references" style="display:none">
 <h2>References</h2>
 <ul>
-<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy/" target="_blank">IDSA Antimicrobial Therapy Guidelines</a></li>
-<li><a href="https://www.nejm.org/" target="_blank">NEJM Review Articles</a></li>
-<li><a href="https://jamanetwork.com/" target="_blank">JAMA Clinical Reviews</a></li>
-<li><a href="https://accessmedicine.mhmedical.com/book.aspx?bookid=2129" target="_blank">Harrison's Principles of Internal Medicine</a></li>
-<li><a href="https://www.cdc.gov/antibiotic-use/index.html" target="_blank">CDC Antibiotic Stewardship</a></li>
-<li><a href="https://www.cdc.gov/fungal/index.html" target="_blank">CDC Fungal Infections</a></li>
-<li><a href="https://www.cdc.gov/flu/index.htm" target="_blank">CDC Influenza Guidelines</a></li>
+<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy/">IDSA Guidelines - Antimicrobial Therapy</a></li>
+<li><a href="https://www.nejm.org/">New England Journal of Medicine</a></li>
+<li><a href="https://jamanetwork.com/">JAMA</a></li>
+<li><a href="https://accessmedicine.mhmedical.com/book.aspx?bookid=2129">Harrison's Principles of Internal Medicine</a></li>
+<li><a href="https://www.cdc.gov/">CDC Guidelines</a></li>
 </ul>
 </div>
 
