@@ -51,77 +51,146 @@ function toggleVisibility(id){
 </div>
 
 <div id="content">
-  <!-- Homepage -->
-  <div id="homepage">
-    <div style="text-align:center; margin-top:50px;">
-      <img src="mutant-icon.png" alt="Mutant Icon" style="width:150px; height:150px; margin-bottom:20px;">
-      <h1>Welcome to the Inpatient Antibiotic Guide</h1>
-      <p>Select a section from the sidebar to view empiric therapy, Gram-stain guidance, culture-directed therapy, or pathogen-based escalation guidance.</p>
-    </div>
-  </div>
 
-  <!-- Infection sections placeholders -->
-  <div id="cap" style="display:none;">
-    <h2>Community-Acquired Pneumonia (CAP)</h2>
-    <p><strong>Empiric Therapy:</strong> ...</p>
-    <p><strong>Gram-Stain Guidance:</strong> ...</p>
-    <p><strong>Culture-Directed Therapy:</strong> ...</p>
-  </div>
-
-  <div id="hap" style="display:none;">
-    <h2>Hospital-Acquired Pneumonia (HAP)</h2>
-    <p><strong>Empiric Therapy:</strong> ...</p>
-    <p><strong>Gram-Stain Guidance:</strong> ...</p>
-    <p><strong>Culture-Directed Therapy:</strong> ...</p>
-  </div>
-
-  <div id="uti" style="display:none;">
-    <h2>Urinary Tract Infection (UTI)</h2>
-    <p>Empiric therapy, Gram-stain, culture-directed therapy placeholders</p>
-  </div>
-
-  <div id="ssi" style="display:none;">
-    <h2>Skin & Soft Tissue Infection (SSI)</h2>
-    <p>Empiric therapy, Gram-stain, culture-directed therapy placeholders</p>
-  </div>
-
-  <div id="iai" style="display:none;">
-    <h2>Intra-Abdominal Infection (IAI)</h2>
-    <p>Empiric therapy, Gram-stain, culture-directed therapy placeholders</p>
-  </div>
-
-  <div id="cns" style="display:none;">
-    <h2>CNS Infection</h2>
-    <p>Empiric therapy, Gram-stain, culture-directed therapy placeholders</p>
-  </div>
-
-  <div id="endocarditis" style="display:none;">
-    <h2>Endocarditis</h2>
-    <p>Empiric therapy, Gram-stain, culture-directed therapy placeholders</p>
-  </div>
-
-  <!-- Pathogen-Based Guidance -->
-  <div id="pathogen" style="display:none;">
-    <!-- Include all expanded pathogen-based guidance sections here (from previous full draft including Gram-positive cocci, rods, Gram-negative rods, anaerobes, intracellular, Mycobacterium, Nocardia, Prevotella, Actinomyces, Burkholderia) -->
-    <!-- You can copy the full expandable tables we drafted earlier here -->
-  </div>
-
-  <!-- Antibiotic Classes / Escalation -->
-  <div id="classes" style="display:none;">
-    <h2>Antibiotic Classes / Escalation</h2>
-    <p>Placeholder for class, coverage, route, dose, renal adjustment, escalation hierarchy chart</p>
-  </div>
-
-  <!-- References -->
-  <div id="references" style="display:none;">
-    <h2>References</h2>
-    <ul>
-      <li>IDSA Guidelines 2016, 2018, 2019, 2020</li>
-      <li>Harrison's Principles of Internal Medicine, 20th Edition</li>
-      <li>NEJM, JAMA relevant articles</li>
-    </ul>
+<!-- Homepage -->
+<div id="homepage">
+  <div style="text-align:center; margin-top:50px;">
+    <img src="mutant-icon.png" alt="Mutant Icon" style="width:150px; height:150px; margin-bottom:20px;">
+    <h1>Welcome to the Inpatient Antibiotic Guide</h1>
+    <p>Select a section from the sidebar to view empiric therapy, Gram-stain guidance, culture-directed therapy, or pathogen-based escalation guidance.</p>
   </div>
 </div>
 
+<!-- CAP -->
+<div id="cap" style="display:none;">
+<h2>Community-Acquired Pneumonia (CAP)</h2>
+<h3>Empiric Therapy</h3>
+<table>
+<tr><th>Severity</th><th>Empiric Therapy</th><th>Duration</th><th>Notes</th></tr>
+<tr>
+<td>Outpatient, no comorbidities</td>
+<td>Amoxicillin 1 g PO TID OR Doxycycline 100 mg PO BID OR Macrolide (if local resistance <25%)</td>
+<td>5 days</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Outpatient, comorbidities</td>
+<td>Amox/Clav 875/125 mg PO BID OR Cephalosporin + Macrolide OR Respiratory FQ</td>
+<td>5–7 days</td>
+<td>Check allergies and local resistance</td>
+</tr>
+<tr>
+<td>Inpatient, non-ICU</td>
+<td>Ceftriaxone 1–2 g IV q24h + Azithromycin 500 mg IV/PO day1, then 250 mg daily</td>
+<td>5–7 days</td>
+<td>Consider respiratory FQ if contraindications</td>
+</tr>
+<tr>
+<td>ICU</td>
+<td>Ceftriaxone + Azithromycin IV</td>
+<td>7–10 days</td>
+<td>Add MRSA or Pseudomonas coverage if risk factors</td>
+</tr>
+</table>
+
+<h3>Culture-Directed Therapy</h3>
+<table>
+<tr><th>Organism</th><th>Drug</th><th>Dosing</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>Streptococcus pneumoniae (penicillin susceptible)</td><td>Penicillin G IV</td><td>2–4 M units IV q4–6h</td><td>7–10 days</td><td>Adjust per renal function</td></tr>
+<tr><td>MRSA</td><td>Vancomycin IV</td><td>15 mg/kg IV q12h (monitor trough)</td><td>7–14 days</td><td>Linezolid 600 mg IV/PO q12h alternative</td></tr>
+<tr><td>Pseudomonas aeruginosa</td><td>Cefepime IV</td><td>2 g IV q8h</td><td>7–10 days</td><td>Combination therapy if critically ill</td></tr>
+</table>
+</div>
+
+<!-- HAP -->
+<div id="hap" style="display:none;">
+<h2>Hospital-Acquired Pneumonia (HAP)</h2>
+<h3>Empiric Therapy</h3>
+<table>
+<tr><th>Risk Factor</th><th>Empiric Therapy</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>No MRSA or high-risk Gram-neg</td><td>Piperacillin-Tazobactam 4.5 g IV q6h OR Cefepime 2 g IV q8h OR Imipenem 1 g IV q6h</td><td>7–8 days</td><td>Adjust renal function</td></tr>
+<tr><td>Risk MRSA</td><td>Add Vancomycin IV or Linezolid IV/PO</td><td>7–14 days</td><td>Monitor drug levels</td></tr>
+<tr><td>High-risk MDR Gram-neg</td><td>Dual anti-pseudomonal therapy</td><td>7–14 days</td><td>Use culture-directed escalation</td></tr>
+</table>
+</div>
+
+<!-- UTI -->
+<div id="uti" style="display:none;">
+<h2>Urinary Tract Infection (UTI)</h2>
+<h3>Empiric Therapy</h3>
+<table>
+<tr><th>Setting</th><th>Drug</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>Outpatient, uncomplicated</td><td>Nitrofurantoin 100 mg PO BID x5d OR TMP-SMX 160/800 mg PO BID x3d</td><td>3–5 days</td><td>Avoid TMP-SMX if resistance>20%</td></tr>
+<tr><td>Inpatient, complicated</td><td>Ceftriaxone IV 1 g q24h OR Piperacillin-Tazobactam IV 4.5 g q6h</td><td>7–10 days</td><td>Adjust renal function</td></tr>
+</table>
+</div>
+
+<!-- SSI -->
+<div id="ssi" style="display:none;">
+<h2>Skin & Soft Tissue Infection (SSI)</h2>
+<h3>Empiric Therapy</h3>
+<table>
+<tr><th>Type</th><th>Drug</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>Mild outpatient</td><td>Cephalexin 500 mg PO q6h OR Dicloxacillin 500 mg PO q6h</td><td>5–7 days</td><td>-</td></tr>
+<tr><td>Severe inpatient</td><td>Vancomycin IV 15 mg/kg q12h ± Piperacillin-Tazobactam IV 4.5 g q6h</td><td>7–14 days</td><td>Adjust per renal function</td></tr>
+</table>
+</div>
+
+<!-- IAI -->
+<div id="iai" style="display:none;">
+<h2>Intra-Abdominal Infection (IAI)</h2>
+<h3>Empiric Therapy</h3>
+<table>
+<tr><th>Severity</th><th>Drug</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>Mild-moderate CA</td><td>Ceftriaxone IV + Metronidazole IV</td><td>4–7 days</td><td>-</td></tr>
+<tr><td>Severe / HA</td><td>Piperacillin-Tazobactam IV 4.5 g q6h OR Meropenem IV 1 g q8h</td><td>7–10 days</td><td>-</td></tr>
+</table>
+</div>
+
+<!-- CNS -->
+<div id="cns" style="display:none;">
+<h2>CNS Infection</h2>
+<h3>Empiric Therapy</h3>
+<table>
+<tr><th>Scenario</th><th>Drug</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>Bacterial meningitis, adult</td><td>Ceftriaxone 2 g IV q12h + Vancomycin IV 15 mg/kg q12h ± Dexamethasone</td><td>7–14 days</td><td>Add Ampicillin 2 g q4h if Listeria risk</td></tr>
+</table>
+</div>
+
+<!-- Endocarditis -->
+<div id="endocarditis" style="display:none;">
+<h2>Endocarditis</h2>
+<h3>Empiric Therapy (native valve, non-IVDU)</h3>
+<table>
+<tr><th>Drug</th><th>Dosing</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>Vancomycin IV</td><td>15 mg/kg q12h, target trough 15–20 mcg/mL</td><td>4–6 weeks</td><td>-</td></tr>
+<tr><td>Gentamicin IV (optional synergy)</td><td>1 mg/kg q8h, monitor renal</td><td>2 weeks (synergy only)</td><td>-</td></tr>
+</table>
+</div>
+
+<!-- Pathogen-Based Guidance -->
+<div id="pathogen" style="display:none;">
+<h2>Pathogen-Based Guidance</h2>
+<p>Insert full expandable tables here for each genus including Mycobacterium, Corynebacterium, Nocardia, Streptococcus, Prevotella, Staphylococcus, Clostridium, Bacteroides, Actinomyces, Burkholderia.</p>
+<!-- Ensure each table includes Duration column -->
+</div>
+
+<!-- Antibiotic Classes / Escalation -->
+<div id="classes" style="display:none;">
+<h2>Antibiotic Classes / Escalation</h2>
+<p>Insert class, coverage, dosing, route, renal adjustments, and escalation hierarchy.</p>
+</div>
+
+<!-- References -->
+<div id="references" style="display:none;">
+<h2>References</h2>
+<ul>
+<li>IDSA Guidelines 2016, 2018, 2019, 2020</li>
+<li>Harrison's Principles of Internal Medicine, 20th Edition</li>
+<li>NEJM and JAMA relevant articles</li>
+</ul>
+</div>
+
+</div>
 </body>
 </html>
