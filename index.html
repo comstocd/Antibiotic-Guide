@@ -204,36 +204,194 @@ function toggleVisibility(id){
 </table>
 </div>
 
-<!-- Pathogen Overview -->
+<!-- Pathogen Overview Expanded -->
 <div id="overview" style="display:none">
 <h2>Pathogen Overview</h2>
 
-<!-- Example for bacterial pathogens -->
-<div class="expandable" onclick="toggleVisibility('OverviewStrep')">Streptococcus spp.</div>
-<div id="OverviewStrep" class="hidden">
+<!-- Bacteria -->
+<div class="expandable" onclick="toggleVisibility('OverviewMycobacterium')">Mycobacterium spp.</div>
+<div id="OverviewMycobacterium" class="hidden">
 <ul>
-<li><b>Prevalence:</b> Worldwide; common cause of pharyngitis, pneumonia, endocarditis</li>
+<li><b>Prevalence:</b> Global; TB most common in Asia, Africa, Latin America</li>
+<li><b>Risk Factors:</b> Immunocompromised, HIV, close-contact exposure</li>
+<li><b>Vectors / Transmission:</b> Airborne droplets</li>
+<li><b>Resistance:</b> MDR/XDR strains increasing</li>
+<li><b>Pathophysiology:</b> Intracellular survival in macrophages, granuloma formation</li>
+<li><b>Clinical Notes:</b> Prolonged multi-drug therapy required; monitor liver function</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewCorynebacterium')">Corynebacterium spp.</div>
+<div id="OverviewCorynebacterium" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Worldwide, often commensal skin flora</li>
+<li><b>Risk Factors:</b> Immunocompromised, indwelling devices</li>
+<li><b>Vectors / Transmission:</b> Contact with colonized surfaces</li>
+<li><b>Resistance:</b> Varies by species; some resistant to penicillin</li>
+<li><b>Pathophysiology:</b> Toxin-mediated disease (C. diphtheriae)</li>
+<li><b>Clinical Notes:</b> Culture identification essential; treat symptomatic infections</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewNocardia')">Nocardia spp.</div>
+<div id="OverviewNocardia" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Worldwide; soil and water exposure</li>
+<li><b>Risk Factors:</b> Immunocompromised, corticosteroids, chronic lung disease</li>
+<li><b>Vectors / Transmission:</b> Inhalation of airborne spores</li>
+<li><b>Resistance:</b> Variable; TMP-SMX usually effective</li>
+<li><b>Pathophysiology:</b> Intracellular survival; CNS and pulmonary involvement</li>
+<li><b>Clinical Notes:</b> Extended therapy (6–12 months) often required</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewStreptococcus')">Streptococcus spp.</div>
+<div id="OverviewStreptococcus" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Global; common cause of pharyngitis, pneumonia, endocarditis</li>
 <li><b>Risk Factors:</b> Elderly, immunocompromised, chronic illness</li>
-<li><b>Vectors:</b> Person-to-person via droplets</li>
+<li><b>Vectors / Transmission:</b> Person-to-person via droplets</li>
 <li><b>Resistance:</b> Penicillin generally effective; macrolide resistance increasing</li>
 <li><b>Pathophysiology:</b> Capsule prevents phagocytosis; hemolysins damage tissue</li>
 <li><b>Clinical Notes:</b> Site-specific therapy recommended</li>
 </ul>
 </div>
 
-<div class="expandable" onclick="toggleVisibility('OverviewStaph')">Staphylococcus aureus</div>
-<div id="OverviewStaph" class="hidden">
+<div class="expandable" onclick="toggleVisibility('OverviewStaphylococcus')">Staphylococcus aureus</div>
+<div id="OverviewStaphylococcus" class="hidden">
 <ul>
 <li><b>Prevalence:</b> Skin, soft tissue infections; MRSA increasing worldwide</li>
 <li><b>Risk Factors:</b> Hospitalization, IV catheters, diabetes</li>
-<li><b>Vectors:</b> Person-to-person, fomites</li>
+<li><b>Vectors / Transmission:</b> Person-to-person, fomites</li>
 <li><b>Resistance:</b> MRSA resistant to beta-lactams</li>
 <li><b>Pathophysiology:</b> Toxins, biofilm formation</li>
 <li><b>Clinical Notes:</b> Culture-directed therapy essential</li>
 </ul>
 </div>
 
-<!-- Additional pathogens can be added in the same format for Mycobacterium, Nocardia, Corynebacterium, Clostridium, Actinomyces, Burkholderia, Bacteroides, Prevotella, intracellular bacteria, fungi, viruses -->
+<div class="expandable" onclick="toggleVisibility('OverviewClostridium')">Clostridium spp.</div>
+<div id="OverviewClostridium" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Soil-borne, intestinal flora; C. difficile common in hospitals</li>
+<li><b>Risk Factors:</b> Antibiotic exposure, hospitalization, GI surgery</li>
+<li><b>Vectors / Transmission:</b> Spores via contact surfaces</li>
+<li><b>Resistance:</b> Some strains resistant to metronidazole</li>
+<li><b>Pathophysiology:</b> Toxin production, tissue necrosis</li>
+<li><b>Clinical Notes:</b> Source control essential; oral vancomycin for C. difficile</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewBacteroides')">Bacteroides spp.</div>
+<div id="OverviewBacteroides" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Normal gut flora; intra-abdominal infections</li>
+<li><b>Risk Factors:</b> GI surgery, perforation, immunocompromised</li>
+<li><b>Vectors / Transmission:</b> Endogenous</li>
+<li><b>Resistance:</b> Beta-lactamase production common</li>
+<li><b>Pathophysiology:</b> Anaerobic infection, abscess formation</li>
+<li><b>Clinical Notes:</b> Often requires surgical drainage plus antibiotics</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewPrevotella')">Prevotella spp.</div>
+<div id="OverviewPrevotella" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Oral and respiratory flora; abscesses</li>
+<li><b>Risk Factors:</b> Dental disease, aspiration</li>
+<li><b>Vectors / Transmission:</b> Endogenous</li>
+<li><b>Resistance:</b> Usually sensitive to metronidazole</li>
+<li><b>Pathophysiology:</b> Anaerobic infection</li>
+<li><b>Clinical Notes:</b> Often polymicrobial infections</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewActinomyces')">Actinomyces spp.</div>
+<div id="OverviewActinomyces" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Oral and GI flora; cervicofacial, thoracic, abdominal infections</li>
+<li><b>Risk Factors:</b> Poor oral hygiene, dental procedures</li>
+<li><b>Vectors / Transmission:</b> Endogenous</li>
+<li><b>Resistance:</b> Usually sensitive to penicillin</li>
+<li><b>Pathophysiology:</b> Chronic granulomatous infections, abscesses</li>
+<li><b>Clinical Notes:</b> Long-term therapy required (6–12 months)</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewBurkholderia')">Burkholderia cepacia</div>
+<div id="OverviewBurkholderia" class="hidden">
+<ul>
+<li><b>Prevalence:</b> CF patients, hospital outbreaks</li>
+<li><b>Risk Factors:</b> Cystic fibrosis, immunocompromised</li>
+<li><b>Vectors / Transmission:</b> Water sources, person-to-person in CF centers</li>
+<li><b>Resistance:</b> Often multidrug-resistant</li>
+<li><b>Pathophysiology:</b> Opportunistic, pulmonary infections</li>
+<li><b>Clinical Notes:</b> Requires combination therapy; culture-directed</li>
+</ul>
+</div>
+
+<!-- Fungal Overview -->
+<div class="expandable" onclick="toggleVisibility('OverviewCandida')">Candida spp.</div>
+<div id="OverviewCandida" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Global; nosocomial bloodstream infections common</li>
+<li><b>Risk Factors:</b> Broad-spectrum antibiotics, central lines, ICU stay</li>
+<li><b>Vectors / Transmission:</b> Endogenous, catheter-related</li>
+<li><b>Resistance:</b> C. glabrata and C. auris can be resistant to azoles</li>
+<li><b>Pathophysiology:</b> Biofilm formation on indwelling devices</li>
+<li><b>Clinical Notes:</b> Bloodstream infections require echinocandin or fluconazole based on susceptibility</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewAspergillus')">Aspergillus spp.</div>
+<div id="OverviewAspergillus" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Ubiquitous; immunocompromised patients</li>
+<li><b>Risk Factors:</b> Neutropenia, transplant, chronic lung disease</li>
+<li><b>Vectors / Transmission:</b> Inhalation of spores</li>
+<li><b>Resistance:</b> Azole resistance emerging in some regions</li>
+<li><b>Pathophysiology:</b> Invasive pulmonary disease, angioinvasion</li>
+<li><b>Clinical Notes:</b> Voriconazole first-line; surgical resection for localized disease</li>
+</ul>
+</div>
+
+<!-- Viral Overview -->
+<div class="expandable" onclick="toggleVisibility('OverviewHSV')">HSV-1/2</div>
+<div id="OverviewHSV" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Worldwide; HSV-1 common in oral, HSV-2 genital</li>
+<li><b>Risk Factors:</b> Immunocompromised, neonates</li>
+<li><b>Vectors / Transmission:</b> Direct contact with lesions or secretions</li>
+<li><b>Resistance:</b> Rare acyclovir resistance in immunocompromised</li>
+<li><b>Pathophysiology:</b> Latency in neurons; reactivation causes lesions</li>
+<li><b>Clinical Notes:</b> IV acyclovir for severe disease</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewVZV')">Varicella Zoster Virus</div>
+<div id="OverviewVZV" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Global; reactivation as shingles</li>
+<li><b>Risk Factors:</b> Older age, immunocompromised</li>
+<li><b>Vectors / Transmission:</b> Respiratory droplets, contact</li>
+<li><b>Resistance:</b> Rare</li>
+<li><b>Pathophysiology:</b> Latent in dorsal root ganglia; reactivation leads to dermatomal rash</li>
+<li><b>Clinical Notes:</b> IV acyclovir for severe cases or immunocompromised</li>
+</ul>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('OverviewInfluenza')">Influenza A/B</div>
+<div id="OverviewInfluenza" class="hidden">
+<ul>
+<li><b>Prevalence:</b> Seasonal; worldwide</li>
+<li><b>Risk Factors:</b> Elderly, chronic lung disease, immunocompromised</li>
+<li><b>Vectors / Transmission:</b> Respiratory droplets</li>
+<li><b>Resistance:</b> Oseltamivir resistance uncommon</li>
+<li><b>Pathophysiology:</b> Rapid viral replication in respiratory epithelium</li>
+<li><b>Clinical Notes:</b> Early antiviral therapy reduces complications</li>
+</ul>
+</div>
+
+</div> <!-- End expanded overview -->
 
 </div>
 
