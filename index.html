@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Inpatient Antibiotic Guide</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 0; display: flex; height: 100vh; }
+  body { font-family: Arial; margin: 0; display: flex; height: 100vh; }
   #sidebar { width: 250px; background: #2c3e50; color: white; padding: 20px; overflow-y: auto; }
   #sidebar h2 { margin-top: 0; }
   #sidebar ul { list-style: none; padding-left: 0; }
@@ -26,7 +26,7 @@
 <body>
 
 <div id="sidebar">
-  <h2>Infections</h2>
+  <h2>Sections</h2>
   <ul>
     <li onclick="showContent('cap')">Community-Acquired Pneumonia</li>
     <li onclick="showContent('hap')">Hospital-Acquired Pneumonia</li>
@@ -35,140 +35,124 @@
     <li onclick="showContent('iab')">Intra-Abdominal Infection</li>
     <li onclick="showContent('cns')">CNS Infection</li>
     <li onclick="showContent('endocarditis')">Endocarditis</li>
+    <li onclick="showContent('pathogen')">Pathogen-Based Guidance</li>
   </ul>
 </div>
 
 <div id="content">
   <h1>Welcome to the Inpatient Antibiotic Guide</h1>
-  <p>Select an infection from the sidebar to view empiric therapy, Gram-stain guidance, culture-directed therapy, and references.</p>
+  <p>Select a section from the sidebar to view empiric therapy, Gram-stain guidance, culture-directed therapy, or pathogen-based escalation guidance.</p>
 </div>
 
 <script>
-  const contentData = {
-    cap: `
-      <h2>Community-Acquired Pneumonia (CAP)</h2>
-      <h3>Empiric Therapy</h3>
-      <table>
-        <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
-        <tr class="firstline"><td>Amoxicillin</td><td>1 g PO TID</td><td>First-line for non-severe CAP</td><td>IDSA 2019, NEJM 2021</td></tr>
-        <tr class="alternative"><td>Doxycycline</td><td>100 mg PO BID</td><td>Alternative if penicillin allergy</td><td>IDSA 2019</td></tr>
-        <tr class="alternative"><td>Azithromycin</td><td>500 mg PO Day 1, then 250 mg daily x4d</td><td>Macrolide monotherapy for healthy outpatient</td><td>IDSA 2019</td></tr>
-      </table>
-
-      <div class="expandable" onclick="toggleVisibility('capGram')">Gram-Stain Guidance</div>
-      <div id="capGram" class="hidden">
-        <ul>
-          <li>Gram-positive cocci in pairs → Streptococcus pneumoniae coverage</li>
-          <li>Gram-negative rods → Consider broad-spectrum coverage (e.g., cefepime, piperacillin-tazobactam)</li>
-          <li>MRSA suspected → Add vancomycin or linezolid</li>
-        </ul>
-      </div>
-
-      <div class="expandable" onclick="toggleVisibility('capCulture')">Culture-Directed Therapy</div>
-      <div id="capCulture" class="hidden">
-        <table>
-          <tr><th>Pathogen</th><th>Drug</th><th>Dose</th><th>Duration</th><th>References</th></tr>
-          <tr><td>Streptococcus pneumoniae</td><td>Penicillin G / Ceftriaxone</td><td>Pen G 2M units IV q4h, Ceftriaxone 1g IV daily</td><td>5–7 days</td><td>IDSA 2019</td></tr>
-          <tr><td>MRSA</td><td>Vancomycin / Linezolid</td><td>Vanc 15 mg/kg IV q12h, Linezolid 600 mg PO/IV q12h</td><td>7–14 days</td><td>IDSA 2019</td></tr>
-          <tr><td>Pseudomonas aeruginosa</td><td>Cefepime / Piperacillin-tazobactam</td><td>Cefepime 2g IV q8h, PIP-TAZO 4.5g IV q6h</td><td>7–10 days</td><td>IDSA 2019</td></tr>
-        </table>
-      </div>
-
-      <h3>Special Considerations</h3>
+const contentData = {
+  cap: `
+    <h2>Community-Acquired Pneumonia (CAP)</h2>
+    <h3>Empiric Therapy</h3>
+    <table>
+      <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
+      <tr class="firstline"><td>Amoxicillin</td><td>1 g PO TID</td><td>First-line for non-severe CAP</td><td>IDSA 2019, NEJM 2021</td></tr>
+      <tr class="alternative"><td>Doxycycline</td><td>100 mg PO BID</td><td>Allergy alternative</td><td>IDSA 2019</td></tr>
+    </table>
+    <div class="expandable" onclick="toggleVisibility('capGram')">Gram-Stain Guidance</div>
+    <div id="capGram" class="hidden">
       <ul>
-        <li>Renal/hepatic impairment → adjust dosing</li>
-        <li>Immunocompromised patients may require broader coverage</li>
-        <li>Allergies → select alternatives (e.g., doxycycline, levofloxacin)</li>
+        <li>Gram-positive cocci → Cover S. pneumoniae</li>
+        <li>Gram-negative rods → Broaden coverage (Pseudomonas, Enterobacteriaceae)</li>
+        <li>Clusters → Add MRSA coverage if risk factors present</li>
       </ul>
+    </div>
+    <div class="expandable" onclick="toggleVisibility('capCulture')">Culture-Directed Therapy</div>
+    <div id="capCulture" class="hidden">
+      <table>
+        <tr><th>Pathogen</th><th>Drug</th><th>Dose</th><th>Duration</th><th>References</th></tr>
+        <tr><td>Streptococcus pneumoniae</td><td>Penicillin / Ceftriaxone</td><td>Pen G 2M units IV q4h / Ceftriaxone 1g IV daily</td><td>5–7d</td><td>IDSA 2019</td></tr>
+        <tr><td>MRSA</td><td>Vancomycin / Linezolid</td><td>Vanc 15 mg/kg IV q12h / Linezolid 600 mg IV/PO q12h</td><td>7–14d</td><td>IDSA 2019</td></tr>
+      </table>
+    </div>
+  `,
 
-      <h3>References</h3>
+  hap: `
+    <h2>Hospital-Acquired Pneumonia (HAP)</h2>
+    <h3>Empiric Therapy</h3>
+    <table>
+      <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
+      <tr class="firstline"><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>MRSA coverage</td><td>IDSA 2016</td></tr>
+      <tr class="firstline"><td>Piperacillin-Tazobactam</td><td>4.5 g IV q6h</td><td>Gram-negative coverage incl. Pseudomonas</td><td>IDSA 2016</td></tr>
+    </table>
+    <div class="expandable" onclick="toggleVisibility('hapGram')">Gram-Stain Guidance</div>
+    <div id="hapGram" class="hidden">
       <ul>
-        <li>IDSA Guidelines 2019</li>
-        <li>NEJM Clinical Review 2021</li>
-        <li>Harrison's Principles of Internal Medicine, 20th Edition</li>
+        <li>Gram-positive cocci → MRSA coverage</li>
+        <li>Gram-negative rods → Continue broad-spectrum beta-lactam</li>
       </ul>
-    `,
-
-    hap: `
-      <h2>Hospital-Acquired Pneumonia (HAP)</h2>
-      <h3>Empiric Therapy</h3>
+    </div>
+    <div class="expandable" onclick="toggleVisibility('hapCulture')">Culture-Directed Therapy</div>
+    <div id="hapCulture" class="hidden">
       <table>
-        <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
-        <tr class="firstline"><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>MRSA coverage</td><td>IDSA 2016</td></tr>
-        <tr class="firstline"><td>Piperacillin-Tazobactam</td><td>4.5 g IV q6h</td><td>Gram-negative coverage including Pseudomonas</td><td>IDSA 2016</td></tr>
+        <tr><th>Pathogen</th><th>Drug</th><th>Dose</th><th>Duration</th><th>References</th></tr>
+        <tr><td>MRSA</td><td>Vancomycin / Linezolid</td><td>Vanc 15 mg/kg IV q12h / Linezolid 600 mg IV/PO q12h</td><td>7–14d</td><td>IDSA 2016</td></tr>
+        <tr><td>Pseudomonas</td><td>Cefepime / Piperacillin-Tazobactam / Meropenem</td><td>Standard IV dosing per IDSA</td><td>7–10d</td><td>IDSA 2016</td></tr>
       </table>
+    </div>
+  `,
 
-      <div class="expandable" onclick="toggleVisibility('hapGram')">Gram-Stain Guidance</div>
-      <div id="hapGram" class="hidden">
-        <ul>
-          <li>Gram-positive cocci → MRSA coverage</li>
-          <li>Gram-negative rods → Continue broad-spectrum beta-lactam</li>
-        </ul>
-      </div>
+  uti: `
+    <h2>Urinary Tract Infection (UTI)</h2>
+    <h3>Empiric Therapy</h3>
+    <table>
+      <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
+      <tr class="firstline"><td>Ceftriaxone</td><td>1 g IV daily</td><td>Uncomplicated inpatient UTI</td><td>IDSA 2019</td></tr>
+      <tr class="alternative"><td>Ciprofloxacin</td><td>400 mg IV q12h</td><td>Alternative for allergy/resistant pathogen</td><td>IDSA 2019</td></tr>
+    </table>
+    <div class="expandable" onclick="toggleVisibility('utiGram')">Gram-Stain Guidance</div>
+    <div id="utiGram" class="hidden">
+      <ul>
+        <li>Gram-negative rods → Continue broad-spectrum coverage (E. coli, Klebsiella)</li>
+        <li>Gram-positive cocci → Consider Enterococcus coverage</li>
+      </ul>
+    </div>
+  `,
 
-      <div class="expandable" onclick="toggleVisibility('hapCulture')">Culture-Directed Therapy</div>
-      <div id="hapCulture" class="hidden">
-        <table>
-          <tr><th>Pathogen</th><th>Drug</th><th>Dose</th><th>Duration</th><th>References</th></tr>
-          <tr><td>MRSA</td><td>Vancomycin / Linezolid</td><td>Vanc 15 mg/kg IV q12h, Linezolid 600 mg IV/PO q12h</td><td>7–14 days</td><td>IDSA 2016</td></tr>
-          <tr><td>Pseudomonas</td><td>Cefepime / Piperacillin-tazobactam / Meropenem</td><td>Standard IV dosing per IDSA</td><td>7–10 days</td><td>IDSA 2016</td></tr>
-        </table>
-      </div>
-    `,
+  ssi: `
+    <h2>Skin & Soft Tissue Infection (SSI)</h2>
+    <h3>Empiric Therapy</h3>
+    <table>
+      <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
+      <tr class="firstline"><td>Cephalexin</td><td>500 mg PO QID</td><td>Mild infection</td><td>IDSA 2014</td></tr>
+      <tr class="alternative"><td>Clindamycin</td><td>300 mg PO TID</td><td>Allergy alternative</td><td>IDSA 2014</td></tr>
+      <tr class="caution"><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>Severe or MRSA risk</td><td>IDSA 2014</td></tr>
+    </table>
+  `,
 
-    uti: `
-      <h2>Urinary Tract Infection (UTI)</h2>
-      <h3>Empiric Therapy</h3>
-      <table>
-        <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
-        <tr class="firstline"><td>Ceftriaxone</td><td>1 g IV daily</td><td>Uncomplicated inpatient UTI</td><td>IDSA 2019</td></tr>
-        <tr class="alternative"><td>Ciprofloxacin</td><td>400 mg IV q12h</td><td>Alternative for allergy or resistant pathogen</td><td>IDSA 2019</td></tr>
-      </table>
+  iab: `<h2>Intra-Abdominal Infection (IAI)</h2><p>Empiric therapy depends on severity and source; often broad-spectrum beta-lactams ± metronidazole. Adjust per culture.</p>`,
 
-      <div class="expandable" onclick="toggleVisibility('utiGram')">Gram-Stain Guidance</div>
-      <div id="utiGram" class="hidden">
-        <ul>
-          <li>Gram-negative rods → Continue broad-spectrum coverage (E. coli, Klebsiella)</li>
-          <li>Gram-positive cocci → Consider Enterococcus coverage</li>
-        </ul>
-      </div>
-    `,
+  cns: `<h2>CNS Infection</h2><p>Empiric therapy guided by age, immune status, and risk factors: Vancomycin + Ceftriaxone ± Ampicillin. Adjust per Gram stain and culture.</p>`,
 
-    ssi: `
-      <h2>Skin & Soft Tissue Infection (SSI)</h2>
-      <h3>Empiric Therapy</h3>
-      <table>
-        <tr><th>Drug</th><th>Dose</th><th>Notes</th><th>References</th></tr>
-        <tr class="firstline"><td>Cephalexin</td><td>500 mg PO QID</td><td>Mild infection</td><td>IDSA 2014</td></tr>
-        <tr class="alternative"><td>Clindamycin</td><td>300 mg PO TID</td><td>Allergy alternative</td><td>IDSA 2014</td></tr>
-        <tr class="caution"><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>Severe or MRSA risk</td><td>IDSA 2014</td></tr>
-      </table>
-    `,
+  endocarditis: `<h2>Endocarditis</h2><p>Empiric therapy: Vancomycin ± Gentamicin until blood cultures return. Adjust therapy per pathogen and susceptibility.</p>`,
 
-    iab: `
-      <h2>Intra-Abdominal Infection (IAI)</h2>
-      <p>Empiric therapy depends on severity and community vs hospital-acquired; often includes broad-spectrum beta-lactams ± metronidazole. Customize per culture results.</p>
-    `,
+  pathogen: `
+    <h2>Pathogen-Based Guidance</h2>
+    <table>
+      <tr><th>Pathogen Type</th><th>Empiric Coverage</th><th>Alternative / Escalation</th><th>Notes</th><th>References</th></tr>
+      <tr class="firstline"><td>Gram-positive cocci (clusters)</td><td>Vancomycin IV</td><td>Linezolid PO/IV</td><td>MRSA coverage; renal adjustment</td><td>IDSA 2016</td></tr>
+      <tr class="firstline"><td>Gram-positive cocci (chains, Enterococcus)</td><td>Ampicillin IV</td><td>Vancomycin IV if resistant</td><td>Adjust for renal function</td><td>IDSA 2016</td></tr>
+      <tr class="firstline"><td>Gram-negative rods (Enterobacteriaceae)</td><td>Cefepime IV</td><td>Piperacillin-Tazobactam IV</td><td>Check local resistance</td><td>IDSA 2016</td></tr>
+      <tr class="firstline"><td>Gram-negative rods (Pseudomonas)</td><td>Cefepime IV</td><td>Meropenem IV if resistant</td><td>Check susceptibilities</td><td>IDSA 2016</td></tr>
+      <tr class="firstline"><td>Anaerobes</td><td>Metronidazole IV</td><td>Piperacillin-Tazobactam IV</td><td>Combine with Gram-negative coverage</td><td>IDSA 2016</td></tr>
+      <tr class="firstline"><td>Intracellular bacteria</td><td>Doxycycline IV/PO</td><td>Azithromycin IV/PO</td><td>Legionella, Mycoplasma, Chlamydia coverage</td><td>IDSA 2019</td></tr>
+    </table>
+  `
+};
 
-    cns: `
-      <h2>CNS Infection</h2>
-      <p>Empiric therapy guided by age, immunocompetence, and risk factors. Includes vancomycin + ceftriaxone ± ampicillin for Listeria. Adjust based on CSF Gram stain and cultures.</p>
-    `,
+function showContent(section) {
+  document.getElementById('content').innerHTML = contentData[section];
+}
 
-    endocarditis: `
-      <h2>Endocarditis</h2>
-      <p>Empiric therapy: Vancomycin ± gentamicin until blood culture results. Adjust therapy based on Gram stain, culture, and organism susceptibility.</p>
-    `
-  };
-
-  function showContent(infection) {
-    document.getElementById('content').innerHTML = contentData[infection];
-  }
-
-  function toggleVisibility(id) {
-    const elem = document.getElementById(id);
-    elem.classList.toggle('hidden');
-  }
+function toggleVisibility(id) {
+  const elem = document.getElementById(id);
+  elem.classList.toggle('hidden');
+}
 </script>
 
 </body>
