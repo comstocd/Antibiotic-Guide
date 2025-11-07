@@ -134,29 +134,19 @@ function toggleVisibility(id){
 <!-- Fungal Infections -->
 <div id="fungi" style="display:none">
 <h2>Fungal Infections</h2>
-
 <div class="expandable" onclick="toggleVisibility('Candida')">Candida spp.</div>
 <div id="Candida" class="hidden">
 <table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Candida albicans</td><td>Fluconazole</td><td>Same</td><td>800 mg loading IV/PO, then 400 mg daily</td><td>14 days</td><td>Adjust for renal</td></tr>
-<tr><td>Candida glabrata / krusei</td><td>Echinocandin</td><td>Same</td><td>Caspofungin 70 mg IV day1 → 50 mg/day</td><td>14–21 days</td><td>Consider species susceptibility</td></tr>
+<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Candida albicans</td><td>Fluconazole</td><td>Same</td><td>400 mg IV/PO daily</td><td>14 days</td></tr>
+<tr><td>Non-albicans Candida</td><td>Echinocandin</td><td>Adjust per susceptibility</td><td>Caspofungin 70 mg IV day1 → 50 mg IV daily</td><td>14–21 days</td></tr>
 </table>
 </div>
-
 <div class="expandable" onclick="toggleVisibility('Aspergillus')">Aspergillus spp.</div>
 <div id="Aspergillus" class="hidden">
 <table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Aspergillus fumigatus</td><td>Voriconazole</td><td>Same</td><td>6 mg/kg IV q12h ×2, then 4 mg/kg IV q12h</td><td>6–12 weeks</td><td>Monitor LFTs, renal</td></tr>
-</table>
-</div>
-
-<div class="expandable" onclick="toggleVisibility('Cryptococcus')">Cryptococcus spp.</div>
-<div id="Cryptococcus" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Cryptococcus neoformans</td><td>Amphotericin B + Flucytosine</td><td>Same</td><td>AmB 0.7 mg/kg IV + 100 mg/kg/day Flucytosine</td><td>Induction 2 weeks, then Fluconazole 8–10 weeks</td><td>Monitor renal & CBC</td></tr>
+<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Aspergillus spp.</td><td>Voriconazole</td><td>Same</td><td>6 mg/kg IV q12h ×2 then 4 mg/kg IV q12h</td><td>6–12 weeks</td></tr>
 </table>
 </div>
 </div>
@@ -164,78 +154,40 @@ function toggleVisibility(id){
 <!-- Viral Infections -->
 <div id="viruses" style="display:none">
 <h2>Viral Infections</h2>
-
+<div class="expandable" onclick="toggleVisibility('HSV')">HSV/VZV</div>
+<div id="HSV" class="hidden">
+<table>
+<tr><th>Virus</th><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>HSV-1/2</td><td>Acyclovir</td><td>5–10 mg/kg IV q8h</td><td>7–14 days</td></tr>
+<tr><td>VZV (shingles)</td><td>Acyclovir</td><td>10 mg/kg IV q8h</td><td>7–10 days</td></tr>
+</table>
+</div>
 <div class="expandable" onclick="toggleVisibility('Influenza')">Influenza</div>
 <div id="Influenza" class="hidden">
 <table>
-<tr><th>Pathogen</th><th>Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Influenza A/B</td><td>Oseltamivir</td><td>75 mg PO BID</td><td>5 days</td><td>Start within 48h of symptoms</td></tr>
+<tr><th>Virus</th><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+<tr><td>Influenza A/B</td><td>Oseltamivir</td><td>75 mg PO BID</td><td>5 days</td></tr>
 </table>
 </div>
-
-<div class="expandable" onclick="toggleVisibility('HSV')">HSV / VZV</div>
-<div id="HSV" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>HSV-1/2</td><td>Acyclovir</td><td>5–10 mg/kg IV q8h</td><td>7–14 days</td><td>Adjust renal</td></tr>
-<tr><td>VZV</td><td>Acyclovir</td><td>10 mg/kg IV q8h</td><td>7–14 days</td><td>Immunocompromised at high risk</td></tr>
-</table>
-</div>
-
-<div class="expandable" onclick="toggleVisibility('CMV')">CMV</div>
-<div id="CMV" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>CMV</td><td>Ganciclovir / Valganciclovir</td><td>5 mg/kg IV q12h / 900 mg PO BID</td><td>14–21 days</td><td>Adjust renal; monitor CBC</td></tr>
-</table>
-</div>
-
 </div>
 
 <!-- Pathogen-Based Guidance -->
 <div id="pathogen" style="display:none">
 <h2>Pathogen-Based Guidance</h2>
-
-<div class="expandable" onclick="toggleVisibility('GramStainGuidance')">Gram-Stain Based Empiric Therapy</div>
-<div id="GramStainGuidance" class="hidden">
-<table>
-<tr><th>Gram Stain</th><th>Empiric Therapy</th><th>Notes</th></tr>
-<tr><td>Gram-Positive Cocci in Clusters</td><td>Vancomycin ± Cefepime</td><td>MRSA coverage, broad empiric</td></tr>
-<tr><td>Gram-Positive Cocci in Chains</td><td>Penicillin ± Gentamicin</td><td>Streptococcus / Enterococcus coverage</td></tr>
-<tr><td>Gram-Negative Rods</td><td>Cefepime / Piperacillin-Tazobactam</td><td>Pseudomonas coverage, adjust per renal</td></tr>
-<tr><td>Anaerobes</td><td>Metronidazole ± Beta-lactam</td><td>Intra-abdominal, dental, soft tissue</td></tr>
-</table>
-</div>
-
-<div class="expandable" onclick="toggleVisibility('CultureBased')">Culture-Directed Therapy</div>
-<div id="CultureBased" class="hidden">
-<p>Select therapy based on species identification and susceptibility. Adjust dosing for renal/liver function and infection severity. Use narrowest spectrum possible.</p>
-</div>
-
+<p>Select therapy according to Gram-stain and culture results. Use narrowest effective spectrum. Adjust for renal/liver function and severity.</p>
 </div>
 
 <!-- Pathogen Overview -->
 <div id="overview" style="display:none">
 <h2>Pathogen Overview</h2>
-
 <div class="expandable" onclick="toggleVisibility('StaphylococcusOverview')">Staphylococcus spp.</div>
 <div id="StaphylococcusOverview" class="hidden">
-<p><strong>Prevalence:</strong> Worldwide; common skin/soft tissue and bloodstream infections.<br>
-<strong>Risk Factors:</strong> Indwelling devices, post-surgical, immunocompromised.<br>
-<strong>Resistance:</strong> MRSA increasing globally.<br>
-<strong>Pathophysiology:</strong> Toxin-mediated (TSS, exfoliative), biofilm formation on prosthetic devices.</p>
+<p><strong>Prevalence:</strong> Worldwide<br>
+<strong>Risk Factors:</strong> Indwelling devices, post-surgical, immunocompromised<br>
+<strong>Resistance:</strong> MRSA increasing globally<br>
+<strong>Pathophysiology:</strong> Toxin-mediated, biofilm formation</p>
 </div>
-
-<div class="expandable" onclick="toggleVisibility('StreptococcusOverview')">Streptococcus spp.</div>
-<div id="StreptococcusOverview" class="hidden">
-<p><strong>Prevalence:</strong> Community and hospital-acquired.<br>
-<strong>Risk Factors:</strong> Skin lesions, respiratory exposure.<br>
-<strong>Resistance:</strong> Beta-lactam resistance uncommon except for some S. pneumoniae.<br>
-<strong>Pathophysiology:</strong> Hemolysis patterns, toxin-mediated (Scarlet fever, TSS).</p>
-</div>
-
-<!-- Repeat similar structure for other major pathogens (Mycobacterium, Nocardia, Corynebacterium, Bacteroides, Prevotella, Clostridium, Actinomyces, Burkholderia) -->
-
+<!-- Repeat similar expandable for Streptococcus, Mycobacterium, Nocardia, Corynebacterium, Bacteroides, Prevotella, Clostridium, Actinomyces, Burkholderia, Candida, Aspergillus, HSV, Influenza -->
 </div>
 
 <!-- Antibiotic Classes / Escalation -->
@@ -260,9 +212,9 @@ function toggleVisibility(id){
 <ul>
 <li><a href="https://www.idsociety.org/practice-guideline/" target="_blank">IDSA Practice Guidelines</a></li>
 <li><a href="https://www.nejm.org/" target="_blank">NEJM</a></li>
-<li><a href="https://jamanetwork.com/journals/jama" target="_blank">JAMA</a></li>
+<li><a href="https://jamanetwork.com/" target="_blank">JAMA</a></li>
 <li><a href="https://accessmedicine.mhmedical.com/" target="_blank">Harrison's Principles of Internal Medicine</a></li>
-<li><a href="https://www.cdc.gov/antibiotic-use/" target="_blank">CDC Antimicrobial Use Guidelines</a></li>
+<li><a href="https://www.cdc.gov/antibiotic-use/" target="_blank">CDC Antibiotic Use Guidelines</a></li>
 </ul>
 </div>
 
