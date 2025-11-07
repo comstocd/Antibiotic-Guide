@@ -137,64 +137,173 @@ const contentData = {
 
   pathogen: `
 <h2>Pathogen-Based Guidance</h2>
-<table>
-  <tr>
-    <th>Pathogen Type</th>
-    <th>Empiric Coverage</th>
-    <th>Typical Dosing</th>
-    <th>Alternative / Escalation</th>
-    <th>Notes</th>
-    <th>References</th>
-  </tr>
-  <tr class="firstline">
-    <td>Gram-positive cocci (clusters, MRSA)</td>
-    <td>Vancomycin IV</td>
-    <td>15 mg/kg IV q12h (adjust renal)</td>
-    <td>Linezolid IV/PO 600 mg q12h</td>
-    <td>Check renal function, troughs if prolonged therapy</td>
-    <td>IDSA 2016</td>
-  </tr>
-  <tr class="firstline">
-    <td>Gram-positive cocci (chains, Enterococcus)</td>
-    <td>Ampicillin IV</td>
-    <td>2 g IV q4h</td>
-    <td>Vancomycin IV 15 mg/kg q12h if resistant</td>
-    <td>Adjust dosing for renal impairment</td>
-    <td>IDSA 2016</td>
-  </tr>
-  <tr class="firstline">
-    <td>Gram-negative rods (Enterobacteriaceae)</td>
-    <td>Cefepime IV</td>
-    <td>2 g IV q8h</td>
-    <td>Piperacillin-Tazobactam IV 4.5 g q6h</td>
-    <td>Adjust for renal function; check local antibiogram</td>
-    <td>IDSA 2016</td>
-  </tr>
-  <tr class="firstline">
-    <td>Gram-negative rods (Pseudomonas)</td>
-    <td>Cefepime IV</td>
-    <td>2 g IV q8h</td>
-    <td>Meropenem IV 1 g q8h if resistant</td>
-    <td>Consider combination therapy if critically ill</td>
-    <td>IDSA 2016</td>
-  </tr>
-  <tr class="firstline">
-    <td>Anaerobes (Bacteroides, Clostridium)</td>
-    <td>Metronidazole IV/PO</td>
-    <td>500 mg IV q8h or 500 mg PO q8h</td>
-    <td>Piperacillin-Tazobactam IV 4.5 g q6h</td>
-    <td>Often combined with Gram-negative coverage</td>
-    <td>IDSA 2016</td>
-  </tr>
-  <tr class="firstline">
-    <td>Intracellular bacteria (Legionella, Mycoplasma, Chlamydia)</td>
-    <td>Doxycycline IV/PO</td>
-    <td>100 mg IV/PO q12h</td>
-    <td>Azithromycin IV/PO 500 mg day 1 then 250 mg daily x4d</td>
-    <td>Consider duration based on site/severity</td>
-    <td>IDSA 2019</td>
-  </tr>
-</table>
+
+<div class="expandable" onclick="toggleVisibility('gpClusters')">Gram-positive cocci (clusters, MRSA)</div>
+<div id="gpClusters" class="hidden">
+  <table>
+    <tr>
+      <th>Organism</th>
+      <th>Empiric Coverage</th>
+      <th>Typical Dosing</th>
+      <th>Alternative / Escalation</th>
+      <th>Notes</th>
+      <th>References</th>
+    </tr>
+    <tr class="firstline">
+      <td>Staphylococcus aureus (MRSA)</td>
+      <td>Vancomycin IV</td>
+      <td>15 mg/kg IV q12h</td>
+      <td>Linezolid IV/PO 600 mg q12h</td>
+      <td>Adjust for renal function; monitor troughs</td>
+      <td>IDSA 2016</td>
+    </tr>
+    <tr class="alternative">
+      <td>Staphylococcus aureus (MSSA)</td>
+      <td>Nafcillin / Oxacillin IV</td>
+      <td>2 g IV q4h</td>
+      <td>Cefazolin IV 2 g q8h</td>
+      <td>First-line if MSSA confirmed</td>
+      <td>IDSA 2016</td>
+    </tr>
+  </table>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('gpChains')">Gram-positive cocci (chains, Enterococcus)</div>
+<div id="gpChains" class="hidden">
+  <table>
+    <tr>
+      <th>Organism</th>
+      <th>Empiric Coverage</th>
+      <th>Typical Dosing</th>
+      <th>Alternative / Escalation</th>
+      <th>Notes</th>
+      <th>References</th>
+    </tr>
+    <tr class="firstline">
+      <td>Enterococcus faecalis</td>
+      <td>Ampicillin IV</td>
+      <td>2 g IV q4h</td>
+      <td>Vancomycin IV 15 mg/kg q12h if resistant</td>
+      <td>Adjust dosing for renal function</td>
+      <td>IDSA 2016</td>
+    </tr>
+    <tr class="alternative">
+      <td>Enterococcus faecium (VRE)</td>
+      <td>Linezolid IV/PO 600 mg q12h</td>
+      <td>-</td>
+      <td>Daptomycin IV 6–8 mg/kg q24h</td>
+      <td>Consider ICU setting and severity</td>
+      <td>IDSA 2016</td>
+    </tr>
+  </table>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('gnRods')">Gram-negative rods (Enterobacteriaceae, Pseudomonas)</div>
+<div id="gnRods" class="hidden">
+  <table>
+    <tr>
+      <th>Organism</th>
+      <th>Empiric Coverage</th>
+      <th>Typical Dosing</th>
+      <th>Alternative / Escalation</th>
+      <th>Notes</th>
+      <th>References</th>
+    </tr>
+    <tr class="firstline">
+      <td>Escherichia coli</td>
+      <td>Cefepime IV</td>
+      <td>2 g IV q8h</td>
+      <td>Piperacillin-Tazobactam IV 4.5 g q6h</td>
+      <td>Check local antibiogram; adjust renal</td>
+      <td>IDSA 2016</td>
+    </tr>
+    <tr class="firstline">
+      <td>Klebsiella pneumoniae</td>
+      <td>Cefepime IV</td>
+      <td>2 g IV q8h</td>
+      <td>Meropenem IV 1 g q8h if resistant</td>
+      <td>Consider ESBL risk</td>
+      <td>IDSA 2016</td>
+    </tr>
+    <tr class="alternative">
+      <td>Pseudomonas aeruginosa</td>
+      <td>Cefepime IV</td>
+      <td>2 g IV q8h</td>
+      <td>Meropenem IV 1 g q8h if resistant</td>
+      <td>Combination therapy if critically ill</td>
+      <td>IDSA 2016</td>
+    </tr>
+  </table>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('anaerobes')">Anaerobes (Bacteroides, Clostridium)</div>
+<div id="anaerobes" class="hidden">
+  <table>
+    <tr>
+      <th>Organism</th>
+      <th>Empiric Coverage</th>
+      <th>Typical Dosing</th>
+      <th>Alternative / Escalation</th>
+      <th>Notes</th>
+      <th>References</th>
+    </tr>
+    <tr class="firstline">
+      <td>Bacteroides fragilis</td>
+      <td>Metronidazole IV/PO</td>
+      <td>500 mg IV q8h or 500 mg PO q8h</td>
+      <td>Piperacillin-Tazobactam IV 4.5 g q6h</td>
+      <td>Often combined with Gram-negative coverage</td>
+      <td>IDSA 2016</td>
+    </tr>
+    <tr class="firstline">
+      <td>Clostridium perfringens</td>
+      <td>Penicillin IV</td>
+      <td>3–4 M units IV q4–6h</td>
+      <td>Consider adding Clindamycin IV 900 mg q8h for toxin suppression</td>
+      <td>Severe soft tissue infections</td>
+      <td>IDSA 2014</td>
+    </tr>
+  </table>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('intracellular')">Intracellular bacteria (Legionella, Mycoplasma, Chlamydia)</div>
+<div id="intracellular" class="hidden">
+  <table>
+    <tr>
+      <th>Organism</th>
+      <th>Empiric Coverage</th>
+      <th>Typical Dosing</th>
+      <th>Alternative / Escalation</th>
+      <th>Notes</th>
+      <th>References</th>
+    </tr>
+    <tr class="firstline">
+      <td>Legionella pneumophila</td>
+      <td>Azithromycin IV/PO</td>
+      <td>500 mg IV/PO day 1, then 250 mg daily x4d</td>
+      <td>Doxycycline IV/PO 100 mg q12h</td>
+      <td>Duration: 7–14 days depending on severity</td>
+      <td>IDSA 2019</td>
+    </tr>
+    <tr class="firstline">
+      <td>Mycoplasma pneumoniae</td>
+      <td>Doxycycline IV/PO</td>
+      <td>100 mg IV/PO q12h</td>
+      <td>Azithromycin IV/PO as alternative</td>
+      <td>Usually 5–7 days</td>
+      <td>IDSA 2019</td>
+    </tr>
+    <tr class="firstline">
+      <td>Chlamydia pneumoniae</td>
+      <td>Doxycycline IV/PO</td>
+      <td>100 mg IV/PO q12h</td>
+      <td>Azithromycin IV/PO as alternative</td>
+      <td>Usually 7–10 days</td>
+      <td>IDSA 2019</td>
+    </tr>
+  </table>
+</div>
+
 
   `
 };
