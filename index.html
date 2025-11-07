@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <title>Inpatient Antimicrobial Guide</title>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; display:flex; }
-#sidebar { width:250px; background:#f8f8f8; padding:10px; border-right:1px solid #ccc; height:100vh; overflow-y:auto; }
+body { font-family: Arial, sans-serif; margin:0; padding:0; display:flex; height:100vh; }
+#sidebar { width:250px; background:#f8f8f8; padding:10px; border-right:1px solid #ccc; overflow-y:auto; }
 #sidebar h2 { margin-top:0; }
 #sidebar ul { list-style:none; padding-left:0; }
 #sidebar li { margin:5px 0; cursor:pointer; color:#007BFF; }
@@ -52,7 +52,7 @@ function toggleVisibility(id){
 <div style="text-align:center; margin-top:50px;">
 <img src="mutant-icon.png" alt="Mutant Icon" style="width:150px; height:150px; margin-bottom:20px;">
 <h1>Inpatient Antimicrobial Guide</h1>
-<p>Select a section from the sidebar to view empiric therapy, culture-directed therapy, Gram-stain/diagnostic guidance, pathogen-specific recommendations, and detailed pathogen information.</p>
+<p>Select a section from the sidebar to view empiric therapy, culture-directed therapy, Gram-stain/diagnostic guidance, pathogen-specific recommendations, dosing, duration, and references.</p>
 </div>
 </div>
 
@@ -60,7 +60,6 @@ function toggleVisibility(id){
 <div id="bacteria" style="display:none">
 <h2>Bacterial Infections</h2>
 
-<!-- Gram-Positive Cocci -->
 <div class="expandable" onclick="toggleVisibility('GramPositiveCocci')">Gram-Positive Cocci</div>
 <div id="GramPositiveCocci" class="hidden">
 <table>
@@ -72,7 +71,6 @@ function toggleVisibility(id){
 </table>
 </div>
 
-<!-- Gram-Positive Rods -->
 <div class="expandable" onclick="toggleVisibility('GramPositiveRods')">Gram-Positive Rods</div>
 <div id="GramPositiveRods" class="hidden">
 <table>
@@ -85,7 +83,6 @@ function toggleVisibility(id){
 </table>
 </div>
 
-<!-- Gram-Negative Cocci -->
 <div class="expandable" onclick="toggleVisibility('GramNegativeCocci')">Gram-Negative Cocci</div>
 <div id="GramNegativeCocci" class="hidden">
 <table>
@@ -96,19 +93,17 @@ function toggleVisibility(id){
 </table>
 </div>
 
-<!-- Gram-Negative Rods -->
 <div class="expandable" onclick="toggleVisibility('GramNegativeRods')">Gram-Negative Rods</div>
 <div id="GramNegativeRods" class="hidden">
 <table>
 <tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
 <tr><td>Enterobacteriaceae</td><td>Cefepime / Meropenem</td><td>Per susceptibility</td><td>2 g IV q8h / 1 g IV q8h</td><td>7–10 days</td><td>Adjust per renal function</td></tr>
-<tr><td>Burkholderia cepacia</td><td>Meropenem + TMP-SMX</td><td>Same</td><td>Meropenem 1 g IV q8h; TMP-SMX 15 mg/kg/day TMP</td><td>10–14 days</td><td>CF patients often affected</td></tr>
+<tr><td>Burkholderia cepacia</td><td>Meropenem + TMP-SMX</td><td>Same</td><td>Meropenem 1 g IV q8h; TMP-SMX 15 mg/kg/day</td><td>10–14 days</td><td>CF patients often affected</td></tr>
 <tr><td>Bacteroides spp.</td><td>Metronidazole ± Beta-lactam</td><td>Same</td><td>500 mg IV q8h</td><td>7–10 days</td><td>Intra-abdominal source control essential</td></tr>
 <tr><td>Prevotella spp.</td><td>Metronidazole</td><td>Same</td><td>500 mg IV q8h</td><td>7–10 days</td><td>Oral anaerobes</td></tr>
 </table>
 </div>
 
-<!-- Aerobes & Anaerobes -->
 <div class="expandable" onclick="toggleVisibility('AerobesAnaerobes')">Aerobes & Anaerobes</div>
 <div id="AerobesAnaerobes" class="hidden">
 <table>
@@ -118,7 +113,6 @@ function toggleVisibility(id){
 </table>
 </div>
 
-<!-- Intracellular Pathogens -->
 <div class="expandable" onclick="toggleVisibility('Intracellular')">Intracellular Pathogens</div>
 <div id="Intracellular" class="hidden">
 <table>
@@ -129,6 +123,7 @@ function toggleVisibility(id){
 <tr><td>Mycoplasma pneumoniae</td><td>Azithromycin</td><td>Same</td><td>500 mg PO day1 → 250 mg PO ×4 days</td><td>5 days</td><td>Alternative: Doxycycline</td></tr>
 <tr><td>Coxiella burnetii</td><td>Doxycycline</td><td>Same</td><td>100 mg PO BID</td><td>14 days acute, 18 months chronic</td><td>Chronic: add hydroxychloroquine</td></tr>
 </table>
+</div>
 </div>
 
 <!-- Fungal Infections -->
@@ -154,7 +149,7 @@ function toggleVisibility(id){
 <!-- Viral Infections -->
 <div id="viruses" style="display:none">
 <h2>Viral Infections</h2>
-<div class="expandable" onclick="toggleVisibility('HSV')">HSV/VZV</div>
+<div class="expandable" onclick="toggleVisibility('HSV')">HSV / VZV</div>
 <div id="HSV" class="hidden">
 <table>
 <tr><th>Virus</th><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
@@ -162,7 +157,7 @@ function toggleVisibility(id){
 <tr><td>VZV (shingles)</td><td>Acyclovir</td><td>10 mg/kg IV q8h</td><td>7–10 days</td></tr>
 </table>
 </div>
-<div class="expandable" onclick="toggleVisibility('Influenza')">Influenza</div>
+<div class="expandable" onclick="toggleVisibility('Influenza')">Influenza A/B</div>
 <div id="Influenza" class="hidden">
 <table>
 <tr><th>Virus</th><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
@@ -174,7 +169,7 @@ function toggleVisibility(id){
 <!-- Pathogen-Based Guidance -->
 <div id="pathogen" style="display:none">
 <h2>Pathogen-Based Guidance</h2>
-<p>Select therapy according to Gram-stain and culture results. Use narrowest effective spectrum. Adjust for renal/liver function and severity.</p>
+<p>Use Gram-stain and culture results to select targeted therapy. Always de-escalate to the narrowest spectrum once susceptibilities are known. Adjust dosing and duration per organ function and infection severity.</p>
 </div>
 
 <!-- Pathogen Overview -->
@@ -326,8 +321,6 @@ function toggleVisibility(id){
 
 </div> <!-- End Pathogen Overview -->
 
-<!-- Repeat similar expandable for Streptococcus, Mycobacterium, Nocardia, Corynebacterium, Bacteroides, Prevotella, Clostridium, Actinomyces, Burkholderia, Candida, Aspergillus, HSV, Influenza -->
-</div>
 
 <!-- Antibiotic Classes / Escalation -->
 <div id="classes" style="display:none">
