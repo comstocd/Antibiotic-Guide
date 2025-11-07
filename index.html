@@ -180,13 +180,152 @@ function toggleVisibility(id){
 <!-- Pathogen Overview -->
 <div id="overview" style="display:none">
 <h2>Pathogen Overview</h2>
+
+<!-- Bacteria -->
 <div class="expandable" onclick="toggleVisibility('StaphylococcusOverview')">Staphylococcus spp.</div>
 <div id="StaphylococcusOverview" class="hidden">
 <p><strong>Prevalence:</strong> Worldwide<br>
 <strong>Risk Factors:</strong> Indwelling devices, post-surgical, immunocompromised<br>
-<strong>Resistance:</strong> MRSA increasing globally<br>
-<strong>Pathophysiology:</strong> Toxin-mediated, biofilm formation</p>
+<strong>Vectors / Reservoirs:</strong> Skin, nares<br>
+<strong>Resistance:</strong> MRSA increasing globally; some strains have vancomycin intermediate resistance<br>
+<strong>Pathophysiology:</strong> Toxin-mediated diseases, biofilm formation, invasive infections<br>
+<strong>Clinical Notes:</strong> Causes SSTIs, bacteremia, endocarditis, osteomyelitis</p>
 </div>
+
+<div class="expandable" onclick="toggleVisibility('StreptococcusOverview')">Streptococcus spp.</div>
+<div id="StreptococcusOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide<br>
+<strong>Risk Factors:</strong> Children (group A), elderly, comorbidities<br>
+<strong>Vectors / Reservoirs:</strong> Oropharynx, skin<br>
+<strong>Resistance:</strong> Penicillin generally effective; macrolide resistance varies<br>
+<strong>Pathophysiology:</strong> Exotoxins, post-infectious sequelae<br>
+<strong>Clinical Notes:</strong> Causes pharyngitis, pneumonia, endocarditis, necrotizing fasciitis</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('MycobacteriumOverview')">Mycobacterium spp.</div>
+<div id="MycobacteriumOverview" class="hidden">
+<p><strong>Prevalence:</strong> TB endemic regions worldwide<br>
+<strong>Risk Factors:</strong> Immunocompromised, close contacts, HIV<br>
+<strong>Vectors / Reservoirs:</strong> Aerosol droplets<br>
+<strong>Resistance:</strong> MDR and XDR TB rising<br>
+<strong>Pathophysiology:</strong> Intracellular survival in macrophages, granuloma formation<br>
+<strong>Clinical Notes:</strong> Pulmonary, extrapulmonary TB, chronic infection</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('NocardiaOverview')">Nocardia spp.</div>
+<div id="NocardiaOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide, rare<br>
+<strong>Risk Factors:</strong> Immunocompromised (steroids, transplant)<br>
+<strong>Vectors / Reservoirs:</strong> Soil, environment<br>
+<strong>Resistance:</strong> TMP-SMX sensitive, variable resistance<br>
+<strong>Pathophysiology:</strong> Filamentous, partially acid-fast, opportunistic infection<br>
+<strong>Clinical Notes:</strong> Pulmonary, CNS, disseminated disease</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('CorynebacteriumOverview')">Corynebacterium spp.</div>
+<div id="CorynebacteriumOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide<br>
+<strong>Risk Factors:</strong> Immunocompromised, invasive devices<br>
+<strong>Vectors / Reservoirs:</strong> Skin, mucosa<br>
+<strong>Resistance:</strong> Some strains resistant to penicillin<br>
+<strong>Pathophysiology:</strong> Exotoxin production in diphtheria; opportunistic infections<br>
+<strong>Clinical Notes:</strong> Diphtheria, bloodstream infections, endocarditis</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('BacteroidesOverview')">Bacteroides spp.</div>
+<div id="BacteroidesOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide, commensal in gut<br>
+<strong>Risk Factors:</strong> Abdominal surgery, perforated viscus<br>
+<strong>Vectors / Reservoirs:</strong> Human gut<br>
+<strong>Resistance:</strong> Beta-lactamase producers common<br>
+<strong>Pathophysiology:</strong> Anaerobic infection, abscess formation<br>
+<strong>Clinical Notes:</strong> Intra-abdominal abscess, sepsis</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('PrevotellaOverview')">Prevotella spp.</div>
+<div id="PrevotellaOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide, oral and gut flora<br>
+<strong>Risk Factors:</strong> Dental procedures, aspiration<br>
+<strong>Vectors / Reservoirs:</strong> Mouth, GI tract<br>
+<strong>Resistance:</strong> Usually susceptible to metronidazole<br>
+<strong>Pathophysiology:</strong> Anaerobic infection<br>
+<strong>Clinical Notes:</strong> Aspiration pneumonia, oral infections</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('ClostridiumOverview')">Clostridium spp.</div>
+<div id="ClostridiumOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide, environmental spores<br>
+<strong>Risk Factors:</strong> Trauma, antibiotic use, immunocompromised<br>
+<strong>Vectors / Reservoirs:</strong> Soil, gut flora<br>
+<strong>Resistance:</strong> Some species resistant to clindamycin<br>
+<strong>Pathophysiology:</strong> Toxin-mediated, anaerobic infection<br>
+<strong>Clinical Notes:</strong> C. difficile colitis, gas gangrene, tetanus</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('ActinomycesOverview')">Actinomyces spp.</div>
+<div id="ActinomycesOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide, rare<br>
+<strong>Risk Factors:</strong> Poor dental hygiene, immunocompromised<br>
+<strong>Vectors / Reservoirs:</strong> Oral cavity, GI tract<br>
+<strong>Resistance:</strong> Penicillin sensitive<br>
+<strong>Pathophysiology:</strong> Chronic granulomatous infection<br>
+<strong>Clinical Notes:</strong> Cervicofacial, thoracic, abdominal infections</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('BurkholderiaOverview')">Burkholderia spp.</div>
+<div id="BurkholderiaOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide, often in CF patients<br>
+<strong>Risk Factors:</strong> Cystic fibrosis, immunocompromised<br>
+<strong>Vectors / Reservoirs:</strong> Environmental soil and water<br>
+<strong>Resistance:</strong> Multidrug resistance common<br>
+<strong>Pathophysiology:</strong> Gram-negative bacilli, opportunistic pathogen<br>
+<strong>Clinical Notes:</strong> Pulmonary infections, sepsis</p>
+</div>
+
+<!-- Fungi -->
+<div class="expandable" onclick="toggleVisibility('CandidaOverview')">Candida spp.</div>
+<div id="CandidaOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide, hospital-acquired common<br>
+<strong>Risk Factors:</strong> Central lines, ICU, immunosuppression<br>
+<strong>Vectors / Reservoirs:</strong> GI tract, mucosa<br>
+<strong>Resistance:</strong> Fluconazole resistance increasing<br>
+<strong>Pathophysiology:</strong> Yeast infection, biofilm formation<br>
+<strong>Clinical Notes:</strong> Candidemia, mucosal infections</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('AspergillusOverview')">Aspergillus spp.</div>
+<div id="AspergillusOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide, immunocompromised hosts<br>
+<strong>Risk Factors:</strong> Neutropenia, transplant, steroids<br>
+<strong>Vectors / Reservoirs:</strong> Environmental spores<br>
+<strong>Resistance:</strong> Azole resistance rising<br>
+<strong>Pathophysiology:</strong> Mold infection, angioinvasion<br>
+<strong>Clinical Notes:</strong> Pulmonary, disseminated aspergillosis</p>
+</div>
+
+<!-- Viruses -->
+<div class="expandable" onclick="toggleVisibility('HSVOverview')">HSV / VZV</div>
+<div id="HSVOverview" class="hidden">
+<p><strong>Prevalence:</strong> Worldwide<br>
+<strong>Risk Factors:</strong> Immunosuppression, neonates<br>
+<strong>Vectors / Reservoirs:</strong> Human mucosa, secretions<br>
+<strong>Resistance:</strong> Rare acyclovir resistance in immunocompromised<br>
+<strong>Pathophysiology:</strong> Latent viral infection, reactivation<br>
+<strong>Clinical Notes:</strong> Mucocutaneous lesions, encephalitis</p>
+</div>
+
+<div class="expandable" onclick="toggleVisibility('InfluenzaOverview')">Influenza A/B</div>
+<div id="InfluenzaOverview" class="hidden">
+<p><strong>Prevalence:</strong> Seasonal, worldwide<br>
+<strong>Risk Factors:</strong> Elderly, comorbidities, children<br>
+<strong>Vectors / Reservoirs:</strong> Respiratory droplets<br>
+<strong>Resistance:</strong> Oseltamivir resistance rare<br>
+<strong>Pathophysiology:</strong> Respiratory viral infection<br>
+<strong>Clinical Notes:</strong> Pneumonia, exacerbation of chronic illness</p>
+</div>
+
+</div> <!-- End Pathogen Overview -->
+
 <!-- Repeat similar expandable for Streptococcus, Mycobacterium, Nocardia, Corynebacterium, Bacteroides, Prevotella, Clostridium, Actinomyces, Burkholderia, Candida, Aspergillus, HSV, Influenza -->
 </div>
 
