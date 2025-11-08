@@ -234,26 +234,131 @@
       </section>
 
 <!-- Empiric Therapy -->
-<section id="empiric-grampos" class="content-panel">
-<h2>Gram-Positive Cocci</h2>
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Notes / Dosing</th></tr>
-<tr class="color-grampos"><td>Staphylococcus aureus</td><td>Vancomycin ± Nafcillin if MSSA known</td><td>15 mg/kg IV q12h; monitor renal</td></tr>
-<tr class="color-grampos"><td>Streptococcus spp.</td><td>Penicillin G or Ceftriaxone</td><td>Adjust for allergy</td></tr>
-<tr class="color-grampos"><td>Enterococcus faecalis</td><td>Ampicillin ± Gentamicin</td><td>14–21 days depending on infection</td></tr>
-</table>
+<section id="empiric-therapy">
+  <h2>Empiric Therapy & Sepsis Assessment</h2>
+
+  <!-- Patient Data Input -->
+  <div class="calculator">
+    <h3>Patient Data</h3>
+    <label>Age: <input type="number" id="et-age" min="0"></label>
+    <label>Sex: 
+      <select id="et-sex">
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+      </select>
+    </label>
+    <label>Weight: <input type="number" id="et-weight" min="0">
+      <select id="et-weight-unit">
+        <option value="kg">kg</option>
+        <option value="lb">lb</option>
+      </select>
+    </label>
+    <label>Serum Creatinine (mg/dL): <input type="number" id="et-cr" step="0.1"></label>
+    <label>Temperature (°C): <input type="number" id="et-temp" step="0.1"></label>
+    <label>Heart Rate (bpm): <input type="number" id="et-hr"></label>
+    <label>Respiratory Rate (breaths/min): <input type="number" id="et-rr"></label>
+    <label>Blood Pressure (mmHg, MAP): <input type="number" id="et-map"></label>
+    <label>Mental Status: 
+      <select id="et-mental">
+        <option value="alert">Alert</option>
+        <option value="confused">Confused</option>
+        <option value="unresponsive">Unresponsive</option>
+      </select>
+    </label>
+  </div>
+
+  <!-- Calculators -->
+  <div class="calculator">
+    <h3>Calculators</h3>
+    <button onclick="calculateSIRS()">Calculate SIRS</button> 
+    <button onclick="calculateqSOFA()">Calculate qSOFA</button>
+    <button onclick="calculateCrCl()">Calculate CrCl</button>
+    <div id="et-results" style="margin-top:1rem;"></div>
+  </div>
+
+  <!-- Empiric Therapy Recommendations -->
+  <div class="content-panel" id="et-therapy">
+    <h3>Empiric Therapy Recommendations</h3>
+    <p>Recommendations update dynamically as patient data is entered and lab results are provided.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Suspected Source</th>
+          <th>Empiric Therapy</th>
+          <th>Notes / Dose Adjustments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sepsis of Unknown Source</td>
+          <td>Meropenem 1g IV q8h + Vancomycin (dose per CrCl)</td>
+          <td>Adjust doses for renal function; consider allergy status</td>
+        </tr>
+        <tr>
+          <td>Community-Acquired Pneumonia, Severe</td>
+          <td>Ceftriaxone 2g IV q24h + Azithromycin 500mg IV q24h</td>
+          <td>Adjust for renal impairment; monitor liver function</td>
+        </tr>
+        <tr>
+          <td>Urinary Tract / Pyelonephritis, Severe</td>
+          <td>Piperacillin-Tazobactam 4.5g IV q6-8h</td>
+          <td>Renal dosing required; adjust based on culture</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 
-<section id="empiric-gramneg" class="content-panel">
-<h2>Gram-Negative Rods & Cocci</h2>
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Notes / Dosing</th></tr>
-<tr class="color-gramneg"><td>E. coli</td><td>Ceftriaxone or Piperacillin-Tazobactam</td><td>1–2 g IV daily; adjust for renal</td></tr>
-<tr class="color-gramneg"><td>Klebsiella spp.</td><td>Ceftriaxone or Piperacillin-Tazobactam</td><td>Monitor for ESBL</td></tr>
-<tr class="color-gramneg"><td>Pseudomonas</td><td>Piperacillin-Tazobactam or Cefepime</td><td>4.5 g IV q6-8h; severe infections</td></tr>
-<tr class="color-gramneg"><td>Neisseria meningitidis</td><td>Ceftriaxone 2 g IV q12h</td><td>Vaccination & prophylaxis considerations</td></tr>
-</table>
-</section>
+<script>
+// ---- Calculators ----
+function calculateSIRS() {
+  const temp = parseFloat(document.getElementById('et-temp').value);
+  const hr = parseInt(document.getElementById('et-hr').value);
+  const rr = parseInt(document.getElementById('et-rr').value);
+  const wbc = 0; // placeholder, could add WBC input later
+
+  let criteria = 0;
+  if (temp < 36 || temp > 38) criteria++;
+  if (hr > 90) criteria++;
+  if (rr > 20) criteria++;
+  // WBC evaluation can be added
+  document.getElementById('et-results').innerHTML = `SIRS Criteria Met: ${criteria} ${criteria>=2 ? '(Suggests SIRS)' : ''}`;
+}
+
+function calculateqSOFA() {
+  const rr = parseInt(document.getElementById('et-rr').value);
+  const map = parseInt(document.getElementById('et-map').value);
+  const mental = document.getElementById('et-mental').value;
+
+  let score = 0;
+  if (rr >= 22) score++;
+  if (map <= 65) score++;
+  if (mental !== 'alert') score++;
+
+  document.getElementById('et-results').innerHTML += `<br>qSOFA Score: ${score} ${score>=2 ? '(High risk for poor outcome)' : ''}`;
+}
+
+function calculateCrCl() {
+  let age = parseFloat(document.getElementById('et-age').value);
+  let cr = parseFloat(document.getElementById('et-cr').value);
+  let weight = parseFloat(document.getElementById('et-weight').value);
+  const sex = document.getElementById('et-sex').value;
+  const unit = document.getElementById('et-weight-unit').value;
+
+  if (unit === 'lb') weight = weight / 2.20462; // convert lb to kg
+
+  if (!age || !cr || !weight) {
+    document.getElementById('et-results').innerHTML += `<br>Enter age, weight, and serum creatinine to calculate CrCl.`;
+    return;
+  }
+
+  let crcl = ((140 - age) * weight) / (72 * cr);
+  if (sex === 'F') crcl *= 0.85;
+
+  document.getElementById('et-results').innerHTML += `<br>Estimated CrCl: ${crcl.toFixed(1)} mL/min`;
+}
+</script>
+
 
 <section id="empiric-anaerobes" class="content-panel">
 <h2>Anaerobes</h2>
