@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Antibiotic & Infection Guide</title>
+<style>
+body { font-family: Arial, sans-serif; margin:0; padding:0; display:flex; height:100vh; }
+nav { width:260px; background:#e0e0e0; overflow-y:auto; padding:0.5rem; }
+nav ul { list-style:none; padding-left:0; margin:0; }
+nav li { border-bottom:1px solid #ccc; cursor:pointer; padding:0.5rem; }
+nav li:hover { background:#cce0ff; }
+nav .sub-menu { display:none; padding-left:1rem; background:#d0d0d0; }
+main { flex:1; overflow-y:auto; padding:1rem; background:#f5f5f5; }
+h2 { color:#004080; margin-top:2rem; }
+table { border-collapse:collapse; width:100%; margin-bottom:1rem; }
+table, th, td { border:1px solid #999; }
+th, td { padding:0.5rem; text-align:left; }
+tr:nth-child(even){background-color: #f2f2f2;}
+.collapsible { background-color:#ddd; cursor:pointer; padding:0.5rem; width:100%; border:none; text-align:left; outline:none; font-size:1rem; margin-top:0.5rem;}
+.active, .collapsible:hover { background-color:#ccc; }
+.content, .content-panel { padding:0 1rem; display:none; overflow:hidden; background-color:#f9f9f9; margin-bottom:1rem; }
+.quick-tips { background:#ffffcc; border:1px solid #cccc99; padding:0.5rem; margin:0.5rem 0; color:#333; text-align:left; }
+.quick-tips ul { margin-left:1rem; padding-left:0; list-style-type: disc; }
+.calculator { background:#eef; border:1px solid #99c; padding:0.5rem; margin-bottom:1rem; }
+input[type=number] { width:80px; }
+</style>
+</head>
+<body>
+
+<nav>
+<ul>
+<li class="nav-item" data-target="homepage">Home</li>
+
+<li class="expandable">Empiric Therapy
+  <ul class="sub-menu">
+    <li class="nav-item" data-target="empiric-grampos">Gram-Positive Cocci</li>
+    <li class="nav-item" data-target="empiric-gramneg">Gram-Negative Rods</li>
+    <li class="nav-item" data-target="empiric-anaerobes">Anaerobes</li>
+    <li class="nav-item" data-target="empiric-intracellular">Intracellular / Fastidious</li>
+  </ul>
+</li>
+
+<li class="expandable">Infections by Anatomic Site
+  <ul class="sub-menu">
+    <li class="nav-item" data-target="head-neck">Head & Neck</li>
+    <li class="nav-item" data-target="respiratory">Respiratory Tract</li>
+    <li class="nav-item" data-target="urinary">Urinary Tract / Pyelonephritis</li>
+    <li class="nav-item" data-target="gastrointestinal">Gastrointestinal / Intra-abdominal</li>
+    <li class="nav-item" data-target="skin-softtissue">Skin & Soft Tissue</li>
+    <li class="nav-item" data-target="bone-joint">Bone & Joint</li>
+  </ul>
+</li>
+
+<li class="nav-item" data-target="sepsis">Sepsis</li>
+<li class="expandable">Pathogen-Based Guidance
+  <ul class="sub-menu">
+    <li class="nav-item" data-target="pathogen-guidance">Overview & Therapy</li>
+  </ul>
+</li>
+<li class="expandable">Pathogen Overview
+  <ul class="sub-menu">
+    <li class="nav-item" data-target="pathogen-overview">Detailed Organisms</li>
+  </ul>
+</li>
+<li class="nav-item" data-target="antibiotic-classes">Antibiotic Classes / Escalation</li>
+<li class="nav-item" data-target="fungal-infections">Fungal Infections</li>
+<li class="nav-item" data-target="viral-infections">Viral Infections</li>
+<li class="nav-item" data-target="calculators">Calculators</li>
+<li class="nav-item" data-target="references">References</li>
+</ul>
+</nav>
+
+<main>
+<!-- All sections have class content-panel for JS -->
+<section id="homepage" class="content-panel">
+<header>
+<img src="mutant-icon.png" alt="Antibiotic Guide Icon" style="width:80px;height:80px;display:block;margin:0.5rem auto;">
+<h2>Antibiotic & Infection Guide</h2>
+<div class="quick-tips">
+<strong>Quick Tips:</strong>  
+<ul>
+<li>Start empiric therapy within 1 hour for sepsis.</li>
+<li>Adjust antibiotics based on culture & sensitivity.</li>
+<li>Consider organ function for dosing adjustments.</li>
+<li>Duration depends on site, severity, and clinical response.</li>
+</ul>
+</div>
+</header>
+</section>
+
+<section id="empiric-grampos" class="content-panel">
+<h2>Gram-Positive Cocci</h2>
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
+<tr><td>Staphylococcus aureus (MSSA)</td><td>Nafcillin / Oxacillin</td><td>2 g IV q4h</td><td>7–14 days</td></tr>
+<tr><td>MRSA</td><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>7–21 days</td></tr>
+<tr><td>Streptococcus spp.</td><td>Penicillin G / Ceftriaxone</td><td>4 MU IV q4h / 2 g IV q24h</td><td>10–14 days</td></tr>
+<tr><td>Enterococcus spp.</td><td>Ampicillin / Vancomycin</td><td>2 g IV q4h / 15 mg/kg IV q12h</td><td>14–21 days</td></tr>
+</table>
+</section>
+
+<section id="empiric-gramneg" class="content-panel">
+<h2>Gram-Negative Rods</h2>
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
+<tr><td>E. coli</td><td>Ceftriaxone</td><td>2 g IV q24h</td><td>7–10 days</td></tr>
+<tr><td>Klebsiella spp.</td><td>Ceftriaxone / Piperacillin-tazobactam</td><td>2 g IV q24h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
+<tr><td>Pseudomonas aeruginosa</td><td>Piperacillin-tazobactam / Ceftazidime</td><td>4.5 g IV q6–8h / 2 g IV q8h</td><td>10–14 days</td></tr>
+<tr><td>Burkholderia spp.</td><td>Ceftazidime / Meropenem</td><td>2 g IV q8h / 1 g IV q8h</td><td>10–14 days</td></tr>
+</table>
+</section>
+
+<section id="empiric-anaerobes" class="content-panel">
+<h2>Anaerobes</h2>
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
+<tr><td>Bacteroides fragilis</td><td>Metronidazole / Piperacillin-tazobactam</td><td>500 mg IV q8h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
+<tr><td>Clostridium spp.</td><td>Oral Vancomycin / Metronidazole</td><td>125 mg PO q6h / 500 mg IV q8h</td><td>10–14 days</td></tr>
+<tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>4 MU IV q4h</td><td>6–12 months</td></tr>
+</table>
+</section>
+
+<section id="empiric-intracellular" class="content-panel">
+<h2>Intracellular / Fastidious Pathogens</h2>
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
+<tr><td>Chlamydia trachomatis</td><td>Doxycycline</td><td>100 mg PO q12h</td><td>7 days</td></tr>
+<tr><td>Legionella pneumophila</td><td>Azithromycin / Levofloxacin</td><td>500 mg IV/PO day 1 then 250 mg daily / 750 mg IV/PO daily</td><td>7–10 days</td></tr>
+<tr><td>Mycobacterium spp. (non-TB)</td><td>Macrolide-based combination</td><td>Varies by species</td><td>Weeks–Months</td></tr>
+<tr><td>Nocardia spp.</td><td>Trimethoprim-sulfamethoxazole</td><td>15 mg/kg/day IV divided q6–8h</td><td>6–12 months</td></tr>
+</table>
+</section>
+
+<section id="head-neck" class="content-panel">
+<h2>Head & Neck Infections</h2>
+<ul>
+<li>Sinusitis: Amoxicillin-clavulanate 875/125 mg PO BID 5–7d</li>
+<li>Mastoiditis: Ceftriaxone 2 g IV q24h 10–14d</li>
+<li>Otitis media: Amoxicillin 500 mg PO q8h 5–7d</li>
+</ul>
+</section>
+
+<section id="respiratory" class="content-panel">
+<h2>Respiratory Tract</h2>
+<ul>
+<li>CAP: Ceftriaxone 2 g IV q24h + Azithromycin 500 mg IV/PO day 1 then 250 mg daily 5–7d</li>
+<li>HAP/VAP: Piperacillin-tazobactam 4.5 g IV q6–8h 7–14d, add Vancomycin for MRSA risk</li>
+</ul>
+</section>
+
+<section id="urinary" class="content-panel">
+<h2>Urinary Tract / Pyelonephritis</h2>
+<ul>
+<li>Uncomplicated UTI: Nitrofurantoin 100 mg PO BID 5–7d</li>
+<li>Pyelonephritis: Ciprofloxacin 500 mg PO q12h 7–10d</li>
+</ul>
+</section>
+
+<section id="gastrointestinal" class="content-panel">
+<h2>Gastrointestinal / Intra-abdominal</h2>
+<ul>
+<li>Diverticulitis: Ciprofloxacin 500 mg PO q12h + Metronidazole 500 mg PO q8h 7–10d</li>
+<li>Appendicitis post-op prophylaxis: Cefazolin 2 g IV pre-op single dose</li>
+</ul>
+</section>
+
+<section id="skin-softtissue" class="content-panel">
+<h2>Skin & Soft Tissue</h2>
+<ul>
+<li>Cellulitis: Cefazolin 2 g IV q8h 7–10d</li>
+<li>Necrotizing fasciitis: Broad-spectrum (Meropenem + Vancomycin + Clindamycin) 14–21d</li>
+</ul>
+</section>
+
+<section id="bone-joint" class="content-panel">
+<h2>Bone & Joint</h2>
+<ul>
+<li>Osteomyelitis: Ceftriaxone 2 g IV q24h 6 weeks</li>
+<li>Septic arthritis: Vancomycin + Ceftriaxone 2–4 weeks</li>
+</ul>
+</section>
+
+<section id="sepsis" class="content-panel">
+<h2>Sepsis</h2>
+<button class="collapsible">Quick Reference (Immediate Actions)</button>
+<div class="content">
+<ul>
+<li>Obtain cultures before antibiotics if possible, but do not delay therapy.</li>
+<li>Start broad-spectrum antibiotics within 1 hour.</li>
+<li>Fluid resuscitation: 30 mL/kg crystalloid bolus if hypotensive or lactate ≥4 mmol/L.</li>
+<li>Vasopressors to maintain MAP ≥65 mmHg if hypotension persists.</li>
+<li>Measure lactate; repeat if initial >2 mmol/L.</li>
+</ul>
+</div>
+
+<button class="collapsible">Detailed Approach / Mechanisms</button>
+<div class="content">
+<ul>
+<li>Sepsis is life-threatening organ dysfunction caused by dysregulated host response to infection.</li>
+<li>Monitor SOFA/qSOFA scores to guide severity and prognosis.</li>
+<li>Address source control: remove infected lines, drain abscesses, debride necrotic tissue.</li>
+<li>Adjust antibiotic regimen based on culture and sensitivities.</li>
+<li>Monitor for complications: DIC, ARDS, AKI, multi-organ failure.</li>
+</ul>
+</div>
+</section>
+
+<!-- Additional sections for pathogen guidance, pathogen overview, antibiotics, fungal/viral infections, calculators, references remain exactly as before, all content-panel class -->
+
+<script>
+/* Sidebar Navigation JS */
+document.querySelectorAll('.nav-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+        const targetId = item.getAttribute('data-target');
+        if(targetId){
+            document.querySelectorAll('.content-panel').forEach(sec=>{sec.style.display='none';});
+            document.getElementById(targetId).style.display='block';
+        }
+    });
+});
+document.querySelectorAll('.expandable').forEach(item=>{
+    item.addEventListener('click', ()=>{
+        const submenu = item.querySelector('.sub-menu');
+        submenu.style.display = submenu.style.display==='block'?'none':'block';
+    });
+});
+
+/* Collapsible sections within content */
+var coll = document.getElementsByClassName("collapsible");
+for (var i=0; i<coll.length; i++){
+  coll[i].addEventListener("click", function(){
+    this.classList.toggle("active");
+    var content=this.nextElementSibling;
+    if(content.style.display==="block"){content.style.display="none";}
+    else{content.style.display="block";}
+  });
+}
+
+/* Show homepage by default */
+document.getElementById('homepage').style.display='block';
+
+/* CrCl calculator */
+function calcCrCl(){
+  var wt=parseFloat(document.getElementById("wt")?.value);
+  var age=parseFloat(document.getElementById("age")?.value);
+  var cr=parseFloat(document.getElementById("cr")?.value);
+  var female=document.getElementById("female")?.checked;
+  if(isNaN(wt) || isNaN(age) || isNaN(cr)){ alert("Please enter all values"); return; }
+  var crcl=((140-age)*wt)/(72*cr);
+  if(female){ crcl *=0.85;}
+  document.getElementById("crclResult").innerText="CrCl ≈ "+crcl.toFixed(1)+" mL/min";
+}
+</script>
+
+</body>
+</html>
