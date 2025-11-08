@@ -19,6 +19,57 @@
     font-weight: bold;
     z-index: 1000;
   }
+/* ===== Banner and Search Bar ===== */
+#top-banner {
+  background-color: #004080;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 20px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#top-banner h1 {
+  margin: 0;
+  font-size: 1.4em;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+#search-bar {
+  padding: 4px 6px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9em;
+  width: 180px;
+}
+
+#search-btn {
+  background-color: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 0.9em;
+}
+
+#search-btn:hover {
+  background-color: #0050a0;
+}
 
   /* Body now flex container for nav + main */
   body {
@@ -111,9 +162,13 @@
 </head>
 <body>
   <!-- Top banner -->
-  <div id="top-banner">
-    <h1>Antibiotic and Infection Guide</h1>
+<div id="top-banner">
+  <h1>Antibiotic and Infection Guide</h1>
+  <div class="search-container">
+    <input type="text" id="search-bar" placeholder="Search..." />
+    <button id="search-btn">🔍</button>
   </div>
+</div>
 
   <!-- Main layout container -->
   <div class="container">
@@ -364,4 +419,25 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
     </main>
   </div>
+  <script>
+document.getElementById('search-btn').addEventListener('click', function() {
+  const query = document.getElementById('search-bar').value.toLowerCase();
+  const sections = document.querySelectorAll('main section');
+  let found = false;
+
+  sections.forEach(sec => {
+    if (sec.textContent.toLowerCase().includes(query)) {
+      sec.scrollIntoView({ behavior: 'smooth' });
+      sec.style.border = '2px solid #004080';
+      setTimeout(() => sec.style.border = '', 2000);
+      found = true;
+    }
+  });
+
+  if (!found && query.trim() !== '') {
+    alert('No matches found.');
+  }
+});
+</script>
+
 </body>
