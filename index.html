@@ -374,53 +374,60 @@
 </section>
 
 <script>
-// Navigation expand/collapse
-document.querySelectorAll('.expandable').forEach(item=>{
-  item.addEventListener('click',()=>{ 
-    let sub=item.querySelector('.sub-menu'); 
-    sub.style.display = (sub.style.display==='block')?'none':'block';
+// ----------------------------
+// Navigation: expand/collapse
+// ----------------------------
+document.querySelectorAll('.expandable').forEach(item => {
+  item.addEventListener('click', () => {
+    const sub = item.querySelector('.sub-menu');
+    sub.style.display = (sub.style.display === 'block') ? 'none' : 'block';
   });
 });
 
-// Show content panel without collapsing the sidebar
-document.querySelectorAll('.nav-item').forEach(item=>{
-  item.addEventListener('click',()=>{
-    document.querySelectorAll('.content-panel').forEach(c=>c.style.display='none');
-    let target=document.getElementById(item.getAttribute('data-target'));
-    if(target) target.style.display='block';
+// ----------------------------
+// Navigation: show content panel
+// ----------------------------
+document.querySelectorAll('.nav-item').forEach(item => {
+  item.addEventListener('click', e => {
+    e.stopPropagation(); // prevent parent expandable from toggling
+    // Hide all content panels
+    document.querySelectorAll('.content-panel').forEach(c => c.style.display = 'none');
+    // Show target panel
+    const target = document.getElementById(item.getAttribute('data-target'));
+    if (target) target.style.display = 'block';
   });
 });
 
+// ----------------------------
 // Collapsible sections
-document.querySelectorAll('.collapsible').forEach(btn=>{
-  btn.addEventListener('click', function(){
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if(content.style.display==="block"){content.style.display="none";}
-    else{content.style.display="block";}
+// ----------------------------
+document.querySelectorAll('.collapsible').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.classList.toggle('active');
+    const content = this.nextElementSibling;
+    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
   });
 });
 
+// ----------------------------
 // Calculator functions
-function calculateCrCl(){
-  var age = parseFloat(document.getElementById('age').value);
-  var cr = parseFloat(document.getElementById('cr').value);
-  var wt = parseFloat(document.getElementById('wt').value);
-  if(!age || !cr || !wt){document.getElementById('crcl-result').innerText="Enter all values"; return;}
-  var crcl = ((140 - age) * wt) / (72 * cr);
-  document.getElementById('crcl-result').innerText = "Estimated CrCl: " + crcl.toFixed(1) + " mL/min";
+// ----------------------------
+function calculateCrCl() {
+  const age = parseFloat(document.getElementById('age').value);
+  const cr = parseFloat(document.getElementById('cr').value);
+  const wt = parseFloat(document.getElementById('wt').value);
+  if (!age || !cr || !wt) {
+    document.getElementById('crcl-result').innerText = "Enter all values";
+    return;
+  }
+  const crcl = ((140 - age) * wt) / (72 * cr);
+  document.getElementById('crcl-result').innerText = `Estimated CrCl: ${crcl.toFixed(1)} mL/min`;
 }
 
-// Show homepage by default
-document.addEventListener('DOMContentLoaded', () => {
-  const homepage = document.getElementById('homepage');
-  if(homepage) homepage.style.display = 'block';
-});
-</script>
-    </main>
-  </div>
-  <script>
-document.getElementById('search-btn').addEventListener('click', function() {
+// ----------------------------
+// Search functionality
+// ----------------------------
+document.getElementById('search-btn').addEventListener('click', () => {
   const query = document.getElementById('search-bar').value.toLowerCase();
   const sections = document.querySelectorAll('main section');
   let found = false;
@@ -438,6 +445,15 @@ document.getElementById('search-btn').addEventListener('click', function() {
     alert('No matches found.');
   }
 });
+
+// ----------------------------
+// Show homepage by default
+// ----------------------------
+document.addEventListener('DOMContentLoaded', () => {
+  const homepage = document.getElementById('homepage');
+  if (homepage) homepage.style.display = 'block';
+});
 </script>
+
 
 </body>
