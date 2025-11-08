@@ -72,7 +72,6 @@ input[type=number] { width:80px; }
 </nav>
 
 <main>
-<!-- All sections have class content-panel for JS -->
 <section id="homepage" class="content-panel">
 <header>
 <img src="mutant-icon.png" alt="Antibiotic Guide Icon" style="width:80px;height:80px;display:block;margin:0.5rem auto;">
@@ -84,132 +83,216 @@ input[type=number] { width:80px; }
 <li>Adjust antibiotics based on culture & sensitivity.</li>
 <li>Consider organ function for dosing adjustments.</li>
 <li>Duration depends on site, severity, and clinical response.</li>
+<li>Review local resistance patterns before therapy.</li>
+<li>Document rationale for escalation/de-escalation.</li>
 </ul>
 </div>
 </header>
 </section>
 
+<!-- Empiric Therapy Sections -->
 <section id="empiric-grampos" class="content-panel">
 <h2>Gram-Positive Cocci</h2>
 <table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
-<tr><td>Staphylococcus aureus (MSSA)</td><td>Nafcillin / Oxacillin</td><td>2 g IV q4h</td><td>7–14 days</td></tr>
-<tr><td>MRSA</td><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>7–21 days</td></tr>
-<tr><td>Streptococcus spp.</td><td>Penicillin G / Ceftriaxone</td><td>4 MU IV q4h / 2 g IV q24h</td><td>10–14 days</td></tr>
-<tr><td>Enterococcus spp.</td><td>Ampicillin / Vancomycin</td><td>2 g IV q4h / 15 mg/kg IV q12h</td><td>14–21 days</td></tr>
+<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Notes</th></tr>
+<tr><td>Staphylococcus aureus</td><td>Vancomycin ± Cefazolin if MSSA known</td><td>MRSA risk factors: prior MRSA, hospital exposure</td></tr>
+<tr><td>Streptococcus spp.</td><td>Penicillin or Ceftriaxone</td><td>Adjust for allergies</td></tr>
+<tr><td>Enterococcus spp.</td><td>Ampicillin or Vancomycin</td><td>VRE consideration if risk factors</td></tr>
 </table>
 </section>
 
 <section id="empiric-gramneg" class="content-panel">
 <h2>Gram-Negative Rods</h2>
 <table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
-<tr><td>E. coli</td><td>Ceftriaxone</td><td>2 g IV q24h</td><td>7–10 days</td></tr>
-<tr><td>Klebsiella spp.</td><td>Ceftriaxone / Piperacillin-tazobactam</td><td>2 g IV q24h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
-<tr><td>Pseudomonas aeruginosa</td><td>Piperacillin-tazobactam / Ceftazidime</td><td>4.5 g IV q6–8h / 2 g IV q8h</td><td>10–14 days</td></tr>
-<tr><td>Burkholderia spp.</td><td>Ceftazidime / Meropenem</td><td>2 g IV q8h / 1 g IV q8h</td><td>10–14 days</td></tr>
+<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Notes</th></tr>
+<tr><td>E. coli / Klebsiella</td><td>Ceftriaxone or Piperacillin-Tazobactam</td><td>Consider ESBL risk</td></tr>
+<tr><td>Pseudomonas</td><td>Piperacillin-Tazobactam or Cefepime</td><td>Severe infection / neutropenia</td></tr>
+<tr><td>Burkholderia</td><td>Meropenem or TMP-SMX</td><td>CF patients / immunocompromised</td></tr>
 </table>
 </section>
 
 <section id="empiric-anaerobes" class="content-panel">
 <h2>Anaerobes</h2>
 <table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
-<tr><td>Bacteroides fragilis</td><td>Metronidazole / Piperacillin-tazobactam</td><td>500 mg IV q8h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
-<tr><td>Clostridium spp.</td><td>Oral Vancomycin / Metronidazole</td><td>125 mg PO q6h / 500 mg IV q8h</td><td>10–14 days</td></tr>
-<tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>4 MU IV q4h</td><td>6–12 months</td></tr>
+<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Notes</th></tr>
+<tr><td>Bacteroides spp.</td><td>Metronidazole ± Beta-lactam</td><td>Intra-abdominal, diverticulitis</td></tr>
+<tr><td>Clostridium spp.</td><td>Vancomycin oral (C. difficile), Penicillin (C. perfringens)</td><td>Toxin-mediated disease</td></tr>
+<tr><td>Actinomyces spp.</td><td>Penicillin G long course</td><td>Chronic granulomatous infections</td></tr>
 </table>
 </section>
 
 <section id="empiric-intracellular" class="content-panel">
-<h2>Intracellular / Fastidious Pathogens</h2>
+<h2>Intracellular / Fastidious</h2>
 <table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
-<tr><td>Chlamydia trachomatis</td><td>Doxycycline</td><td>100 mg PO q12h</td><td>7 days</td></tr>
-<tr><td>Legionella pneumophila</td><td>Azithromycin / Levofloxacin</td><td>500 mg IV/PO day 1 then 250 mg daily / 750 mg IV/PO daily</td><td>7–10 days</td></tr>
-<tr><td>Mycobacterium spp. (non-TB)</td><td>Macrolide-based combination</td><td>Varies by species</td><td>Weeks–Months</td></tr>
-<tr><td>Nocardia spp.</td><td>Trimethoprim-sulfamethoxazole</td><td>15 mg/kg/day IV divided q6–8h</td><td>6–12 months</td></tr>
+<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Notes</th></tr>
+<tr><td>Legionella</td><td>Azithromycin or Levofloxacin</td><td>Atypical pneumonia</td></tr>
+<tr><td>Chlamydia / Chlamydophila</td><td>Doxycycline</td><td>Urogenital or respiratory</td></tr>
 </table>
 </section>
 
+<!-- Infections by Anatomic Site (Top-to-Toe) -->
 <section id="head-neck" class="content-panel">
 <h2>Head & Neck Infections</h2>
 <ul>
-<li>Sinusitis: Amoxicillin-clavulanate 875/125 mg PO BID 5–7d</li>
-<li>Mastoiditis: Ceftriaxone 2 g IV q24h 10–14d</li>
-<li>Otitis media: Amoxicillin 500 mg PO q8h 5–7d</li>
+<li>Sinusitis: Amoxicillin-clavulanate</li>
+<li>Otitis media: Amoxicillin</li>
+<li>Dental abscess: Clindamycin or Amoxicillin-clavulanate</li>
 </ul>
 </section>
 
 <section id="respiratory" class="content-panel">
 <h2>Respiratory Tract</h2>
 <ul>
-<li>CAP: Ceftriaxone 2 g IV q24h + Azithromycin 500 mg IV/PO day 1 then 250 mg daily 5–7d</li>
-<li>HAP/VAP: Piperacillin-tazobactam 4.5 g IV q6–8h 7–14d, add Vancomycin for MRSA risk</li>
+<li>CAP: Ceftriaxone + Macrolide or Monotherapy Respiratory Fluoroquinolone</li>
+<li>HAP/VAP: Piperacillin-tazobactam, Cefepime, or Meropenem ± Vancomycin</li>
 </ul>
 </section>
 
 <section id="urinary" class="content-panel">
 <h2>Urinary Tract / Pyelonephritis</h2>
 <ul>
-<li>Uncomplicated UTI: Nitrofurantoin 100 mg PO BID 5–7d</li>
-<li>Pyelonephritis: Ciprofloxacin 500 mg PO q12h 7–10d</li>
+<li>Uncomplicated: Nitrofurantoin or Trimethoprim-SMX</li>
+<li>Complicated / Pyelonephritis: Ceftriaxone or Ciprofloxacin</li>
 </ul>
 </section>
 
 <section id="gastrointestinal" class="content-panel">
 <h2>Gastrointestinal / Intra-abdominal</h2>
 <ul>
-<li>Diverticulitis: Ciprofloxacin 500 mg PO q12h + Metronidazole 500 mg PO q8h 7–10d</li>
-<li>Appendicitis post-op prophylaxis: Cefazolin 2 g IV pre-op single dose</li>
+<li>Diverticulitis (mild): Ciprofloxacin + Metronidazole</li>
+<li>Diverticulitis (severe/hospitalized): Piperacillin-tazobactam</li>
+<li>Peritonitis: Broad-spectrum coverage with anaerobic and Gram-negative coverage</li>
 </ul>
 </section>
 
 <section id="skin-softtissue" class="content-panel">
 <h2>Skin & Soft Tissue</h2>
 <ul>
-<li>Cellulitis: Cefazolin 2 g IV q8h 7–10d</li>
-<li>Necrotizing fasciitis: Broad-spectrum (Meropenem + Vancomycin + Clindamycin) 14–21d</li>
+<li>Cellulitis: Cefazolin or Vancomycin if MRSA risk</li>
+<li>Necrotizing fasciitis: Broad-spectrum including MRSA, anaerobic coverage</li>
 </ul>
 </section>
 
 <section id="bone-joint" class="content-panel">
-<h2>Bone & Joint</h2>
+<h2>Bone & Joint Infections</h2>
 <ul>
-<li>Osteomyelitis: Ceftriaxone 2 g IV q24h 6 weeks</li>
-<li>Septic arthritis: Vancomycin + Ceftriaxone 2–4 weeks</li>
+<li>Osteomyelitis: Nafcillin / Vancomycin ± Gram-negative coverage if post-trauma</li>
+<li>Septic arthritis: Ceftriaxone ± Vancomycin</li>
 </ul>
 </section>
 
+<!-- Sepsis -->
 <section id="sepsis" class="content-panel">
 <h2>Sepsis</h2>
-<button class="collapsible">Quick Reference (Immediate Actions)</button>
+<button class="collapsible">Quick Reference: Immediate Actions</button>
 <div class="content">
 <ul>
-<li>Obtain cultures before antibiotics if possible, but do not delay therapy.</li>
-<li>Start broad-spectrum antibiotics within 1 hour.</li>
-<li>Fluid resuscitation: 30 mL/kg crystalloid bolus if hypotensive or lactate ≥4 mmol/L.</li>
-<li>Vasopressors to maintain MAP ≥65 mmHg if hypotension persists.</li>
-<li>Measure lactate; repeat if initial >2 mmol/L.</li>
+<li>Obtain cultures before antibiotics if not delaying therapy.</li>
+<li>Start broad-spectrum empiric antibiotics within 1 hour.</li>
+<li>Fluid resuscitation: 30 mL/kg crystalloid for hypotension or lactate ≥4 mmol/L.</li>
+<li>Monitor vitals, urine output, lactate.</li>
+<li>Escalate to ICU for vasopressors if persistent hypotension.</li>
 </ul>
 </div>
-
-<button class="collapsible">Detailed Approach / Mechanisms</button>
+<button class="collapsible">Detailed Overview</button>
 <div class="content">
 <ul>
-<li>Sepsis is life-threatening organ dysfunction caused by dysregulated host response to infection.</li>
-<li>Monitor SOFA/qSOFA scores to guide severity and prognosis.</li>
-<li>Address source control: remove infected lines, drain abscesses, debride necrotic tissue.</li>
-<li>Adjust antibiotic regimen based on culture and sensitivities.</li>
-<li>Monitor for complications: DIC, ARDS, AKI, multi-organ failure.</li>
+<li>Pathophysiology: dysregulated host response, cytokine storm, organ dysfunction.</li>
+<li>Complications: ARDS, AKI, DIC, shock.</li>
+<li>Approach: identify source, source control, pathogen-targeted therapy, supportive care.</li>
 </ul>
 </div>
 </section>
 
-<!-- Additional sections for pathogen guidance, pathogen overview, antibiotics, fungal/viral infections, calculators, references remain exactly as before, all content-panel class -->
+<!-- Pathogen-Based Guidance (example for key organisms, dosing can be added) -->
+<section id="pathogen-guidance" class="content-panel">
+<h2>Pathogen-Based Guidance</h2>
+<button class="collapsible">E. coli</button>
+<div class="content">
+<ul>
+<li>Gram-negative rod, facultative anaerobe</li>
+<li>Common causes: UTI, bacteremia</li>
+<li>Empiric: Ceftriaxone; targeted: based on culture & sensitivity</li>
+<li>Dosing: Ceftriaxone 1-2g IV daily; adjust renal function</li>
+</ul>
+</div>
+<button class="collapsible">Klebsiella</button>
+<div class="content">
+<ul>
+<li>Gram-negative rod</li>
+<li>Common: UTI, pneumonia, bacteremia</li>
+<li>Empiric: Ceftriaxone or Piperacillin-Tazobactam</li>
+<li>Dosing: Piperacillin-Tazobactam 4.5g IV q6-8h</li>
+</ul>
+</div>
+</section>
+
+<!-- Pathogen Overview -->
+<section id="pathogen-overview" class="content-panel">
+<h2>Pathogen Overview</h2>
+<!-- Previously fully expanded pathogen overview from earlier message goes here -->
+</section>
+
+<!-- Antibiotic Classes / Escalation -->
+<section id="antibiotic-classes" class="content-panel">
+<h2>Antibiotic Classes / Escalation</h2>
+<table>
+<tr><th>Class</th><th>Examples</th><th>Coverage / Notes</th></tr>
+<tr><td>Beta-lactams</td><td>Penicillin, Ceftriaxone, Piperacillin-tazobactam</td><td>Gram-positive/negative, some anaerobes</td></tr>
+<tr><td>Vancomycin</td><td>Vancomycin</td><td>Gram-positive including MRSA</td></tr>
+<tr><td>Fluoroquinolones</td><td>Ciprofloxacin, Levofloxacin</td><td>Broad Gram-negative, some Gram-positive, atypicals</td></tr>
+<tr><td>Macrolides</td><td>Azithromycin, Clarithromycin</td><td>Atypicals, some Gram-positive</td></tr>
+<tr><td>Metronidazole</td><td>Metronidazole</td><td>Anaerobes</td></tr>
+</table>
+</section>
+
+<!-- Fungal Infections -->
+<section id="fungal-infections" class="content-panel">
+<h2>Fungal Infections</h2>
+<ul>
+<li>Candida spp.: fluconazole; echinocandins for resistant species</li>
+<li>Aspergillus spp.: voriconazole; amphotericin B if refractory</li>
+<li>Cryptococcus: amphotericin B + flucytosine, then fluconazole</li>
+</ul>
+</section>
+
+<!-- Viral Infections -->
+<section id="viral-infections" class="content-panel">
+<h2>Viral Infections</h2>
+<ul>
+<li>Influenza A/B: oseltamivir 75mg PO BID x5 days</li>
+<li>HSV 1/2: acyclovir 400mg PO TID or IV if severe</li>
+<li>CMV: ganciclovir IV, valganciclovir PO maintenance</li>
+</ul>
+</section>
+
+<!-- Calculators -->
+<section id="calculators" class="content-panel">
+<h2>Calculators</h2>
+<div class="calculator">
+<label>Weight (kg): <input type="number" id="wt"></label>
+<label>Age (years): <input type="number" id="age"></label>
+<label>Serum Creatinine (mg/dL): <input type="number" id="cr"></label>
+<label>Female <input type="checkbox" id="female"></label>
+<button onclick="calcCrCl()">Calculate CrCl</button>
+<div id="crclResult"></div>
+</div>
+</section>
+
+<!-- References -->
+<section id="references" class="content-panel">
+<h2>References</h2>
+<ul>
+<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-stewardship/" target="_blank">IDSA Guidelines</a></li>
+<li><a href="https://www.nejm.org/" target="_blank">NEJM</a></li>
+<li><a href="https://jamanetwork.com/" target="_blank">JAMA</a></li>
+<li><a href="https://accessmedicine.mhmedical.com/" target="_blank">Harrison's Principles of Internal Medicine</a></li>
+<li><a href="https://www.cdc.gov/antibiotic-use/index.html" target="_blank">CDC Antibiotic Use</a></li>
+</ul>
+</section>
 
 <script>
-/* Sidebar Navigation JS */
+/* Sidebar Navigation */
 document.querySelectorAll('.nav-item').forEach(item=>{
     item.addEventListener('click', ()=>{
         const targetId = item.getAttribute('data-target');
@@ -226,7 +309,7 @@ document.querySelectorAll('.expandable').forEach(item=>{
     });
 });
 
-/* Collapsible sections within content */
+/* Collapsible content sections */
 var coll = document.getElementsByClassName("collapsible");
 for (var i=0; i<coll.length; i++){
   coll[i].addEventListener("click", function(){
@@ -240,12 +323,12 @@ for (var i=0; i<coll.length; i++){
 /* Show homepage by default */
 document.getElementById('homepage').style.display='block';
 
-/* CrCl calculator */
+/* CrCl Calculator */
 function calcCrCl(){
-  var wt=parseFloat(document.getElementById("wt")?.value);
-  var age=parseFloat(document.getElementById("age")?.value);
-  var cr=parseFloat(document.getElementById("cr")?.value);
-  var female=document.getElementById("female")?.checked;
+  var wt=parseFloat(document.getElementById("wt").value);
+  var age=parseFloat(document.getElementById("age").value);
+  var cr=parseFloat(document.getElementById("cr").value);
+  var female=document.getElementById("female").checked;
   if(isNaN(wt) || isNaN(age) || isNaN(cr)){ alert("Please enter all values"); return; }
   var crcl=((140-age)*wt)/(72*cr);
   if(female){ crcl *=0.85;}
