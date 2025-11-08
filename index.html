@@ -570,6 +570,49 @@ function calculateCrCl(){
   var crcl=((140-wt)*wt)/(72*cr);
   document.getElementById('crcl-result').innerText="Estimated CrCl: "+crcl.toFixed(1)+" mL/min";
 }
+
+  <script>
+// Navigation expand/collapse
+document.querySelectorAll('.expandable').forEach(item=>{
+  let sub=item.querySelector('.sub-menu');
+  item.addEventListener('click',()=>{ 
+    sub.style.display = (sub.style.display==='block')?'none':'block';
+  });
+});
+
+// Show content panel without collapsing the sidebar
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.addEventListener('click',()=>{
+    document.querySelectorAll('.content-panel').forEach(c=>c.style.display='none');
+    let target=document.getElementById(item.getAttribute('data-target'));
+    if(target) target.style.display='block';
+  });
+});
+
+// Collapsible sections
+document.querySelectorAll('.collapsible').forEach(btn=>{
+  btn.addEventListener('click', function(){
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if(content.style.display==="block"){content.style.display="none";}
+    else{content.style.display="block";}
+  });
+});
+
+// Calculator functions
+function calculateCrCl(){
+  var cr=document.getElementById('cr').value;
+  var wt=document.getElementById('wt').value;
+  if(!cr || !wt){document.getElementById('crcl-result').innerText="Enter both values"; return;}
+  var crcl=((140-wt)*wt)/(72*cr);
+  document.getElementById('crcl-result').innerText="Estimated CrCl: "+crcl.toFixed(1)+" mL/min";
+}
+
+// Show homepage by default
+document.addEventListener('DOMContentLoaded', () => {
+  const homepage = document.getElementById('homepage');
+  if(homepage) homepage.style.display = 'block';
+});
 </script>
 
 
