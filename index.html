@@ -315,12 +315,13 @@ function calculateSIRS() {
   const temp = parseFloat(document.getElementById('et-temp').value);
   const hr = parseInt(document.getElementById('et-hr').value);
   const rr = parseInt(document.getElementById('et-rr').value);
-  const wbc = 0; // placeholder, can add WBC input later
+  const wbc = 0; // placeholder, could add WBC input later
 
   let criteria = 0;
   if (temp < 36 || temp > 38) criteria++;
   if (hr > 90) criteria++;
   if (rr > 20) criteria++;
+  // WBC evaluation can be added
   document.getElementById('et-results').innerHTML = `SIRS Criteria Met: ${criteria} ${criteria>=2 ? '(Suggests SIRS)' : ''}`;
 }
 
@@ -357,6 +358,7 @@ function calculateCrCl() {
   document.getElementById('et-results').innerHTML += `<br>Estimated CrCl: ${crcl.toFixed(1)} mL/min`;
 }
 </script>
+
 
 
 
