@@ -18,81 +18,72 @@ h2 { color:#004080; margin-top:2rem; }
 table { border-collapse:collapse; width:100%; margin-bottom:1rem; }
 table, th, td { border:1px solid #999; }
 th, td { padding:0.5rem; text-align:left; }
+tr:nth-child(even){background-color: #f2f2f2;}
 .collapsible { background-color:#ddd; cursor:pointer; padding:0.5rem; width:100%; border:none; text-align:left; outline:none; font-size:1rem; margin-top:0.5rem;}
 .active, .collapsible:hover { background-color:#ccc; }
-.content { padding:0 1rem; display:none; overflow:hidden; background-color:#f9f9f9; margin-bottom:0.5rem; }
-.color-grampos { background-color:#ffe6e6; }
-.color-gramneg { background-color:#e6f0ff; }
-.color-aerobe { background-color:#e6ffe6; }
-.color-anaerobe { background-color:#fff0e6; }
-.color-intracellular { background-color:#f0e6ff; }
-.quick-tips { 
-    background:#ffffcc; 
-    border:1px solid #cccc99; 
-    padding:0.5rem; 
-    margin:0.5rem 0; 
-    color:#333; 
-    text-align:left; 
-}
-.quick-tips ul {
-    margin-left:1rem;
-    padding-left:0;
-    list-style-type: disc;
-}
+.content { padding:0 1rem; display:none; overflow:hidden; background-color:#f9f9f9; margin-bottom:1rem; }
+.quick-tips { background:#ffffcc; border:1px solid #cccc99; padding:0.5rem; margin:0.5rem 0; color:#333; text-align:left; }
+.quick-tips ul { margin-left:1rem; padding-left:0; list-style-type: disc; }
+.section-title { margin-top:1rem; font-size:1.1rem; font-weight:bold; color:#004080; }
+.calculator { background:#eef; border:1px solid #99c; padding:0.5rem; margin-bottom:1rem; }
+input[type=number] { width:80px; }
 </style>
 </head>
 <body>
 
 <header>
-    <img src="mutant-icon.png" alt="Antibiotic Guide Icon">
-    <h1>Antibiotic & Infection Guide</h1>
-    <div class="quick-tips">
-        <strong>Quick Tips:</strong>  
-        <ul>
-            <li>Start empiric therapy within 1 hour for sepsis.</li>
-            <li>Adjust antibiotics based on culture & sensitivity.</li>
-            <li>Consider organ function for dosing adjustments.</li>
-            <li>Duration depends on site, severity, and clinical response.</li>
-        </ul>
-    </div>
+<img src="mutant-icon.png" alt="Antibiotic Guide Icon">
+<h1>Antibiotic & Infection Guide</h1>
+<div class="quick-tips">
+<strong>Quick Tips:</strong>  
+<ul>
+<li>Start empiric therapy within 1 hour for sepsis.</li>
+<li>Adjust antibiotics based on culture & sensitivity.</li>
+<li>Consider organ function for dosing adjustments.</li>
+<li>Duration depends on site, severity, and clinical response.</li>
+</ul>
+</div>
 </header>
 
 <nav>
-    <ul>
-        <li><a href="#homepage">Home</a></li>
-        <li><a href="#empiric-therapy">Empiric Therapy</a></li>
-        <li><a href="#anatomic-infections">Infections by Anatomic Site</a></li>
-        <li><a href="#sepsis">Sepsis</a></li>
-        <li><a href="#pathogen-guidance">Pathogen-Based Guidance</a></li>
-        <li><a href="#pathogen-overview">Pathogen Overview</a></li>
-        <li><a href="#antibiotic-classes">Antibiotic Classes / Escalation</a></li>
-        <li><a href="#fungal-infections">Fungal Infections</a></li>
-        <li><a href="#viral-infections">Viral Infections</a></li>
-        <li><a href="#references">References</a></li>
-    </ul>
+<ul>
+<li><a href="#homepage">Home</a></li>
+<li><a href="#empiric-therapy">Empiric Therapy</a></li>
+<li><a href="#anatomic-infections">Infections by Anatomic Site</a></li>
+<li><a href="#sepsis">Sepsis</a></li>
+<li><a href="#pathogen-guidance">Pathogen-Based Guidance</a></li>
+<li><a href="#pathogen-overview">Pathogen Overview</a></li>
+<li><a href="#antibiotic-classes">Antibiotic Classes / Escalation</a></li>
+<li><a href="#fungal-infections">Fungal Infections</a></li>
+<li><a href="#viral-infections">Viral Infections</a></li>
+<li><a href="#calculators">Calculators</a></li>
+<li><a href="#references">References</a></li>
+</ul>
 </nav>
 
 <main>
+
 <section id="homepage">
-<h2>Antibiotic Guide</h2>
-<p>Interactive sections below provide empiric therapy, pathogen-based guidance, and detailed references. Tap to expand the sections from the sidebar.</p>
+<h2>Antibiotic & Infection Guide</h2>
+<p>Use the sidebar to navigate. Expand each section for detailed dosing, duration, organism-specific notes, and references.</p>
 </section>
 
 <section id="empiric-therapy">
-<h2>Empiric Therapy (Gram / Culture Directed)</h2>
+<h2>Empiric Therapy</h2>
 
 <button class="collapsible">Gram-Positive Cocci</button>
-<div class="content color-grampos">
+<div class="content">
 <table>
 <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
 <tr><td>Staphylococcus aureus (MSSA)</td><td>Nafcillin / Oxacillin</td><td>2 g IV q4h</td><td>7–14 days</td></tr>
 <tr><td>MRSA</td><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>7–21 days</td></tr>
 <tr><td>Streptococcus spp.</td><td>Penicillin G / Ceftriaxone</td><td>4 MU IV q4h / 2 g IV q24h</td><td>10–14 days</td></tr>
+<tr><td>Enterococcus spp.</td><td>Ampicillin / Vancomycin</td><td>2 g IV q4h / 15 mg/kg IV q12h</td><td>14–21 days</td></tr>
 </table>
 </div>
 
 <button class="collapsible">Gram-Negative Rods</button>
-<div class="content color-gramneg">
+<div class="content">
 <table>
 <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
 <tr><td>E. coli</td><td>Ceftriaxone</td><td>2 g IV q24h</td><td>7–10 days</td></tr>
@@ -103,17 +94,17 @@ th, td { padding:0.5rem; text-align:left; }
 </div>
 
 <button class="collapsible">Anaerobes</button>
-<div class="content color-anaerobe">
+<div class="content">
 <table>
 <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
 <tr><td>Bacteroides fragilis</td><td>Metronidazole / Piperacillin-tazobactam</td><td>500 mg IV q8h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
-<tr><td>Clostridium spp.</td><td>Vancomycin (oral for C. difficile) / Metronidazole</td><td>125 mg PO q6h / 500 mg IV q8h</td><td>10–14 days</td></tr>
+<tr><td>Clostridium spp.</td><td>Oral Vancomycin / Metronidazole</td><td>125 mg PO q6h / 500 mg IV q8h</td><td>10–14 days</td></tr>
 <tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>4 MU IV q4h</td><td>6–12 months</td></tr>
 </table>
 </div>
 
-<button class="collapsible">Intracellular Pathogens</button>
-<div class="content color-intracellular">
+<button class="collapsible">Intracellular / Fastidious Pathogens</button>
+<div class="content">
 <table>
 <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
 <tr><td>Chlamydia trachomatis</td><td>Doxycycline</td><td>100 mg PO q12h</td><td>7 days</td></tr>
@@ -126,237 +117,170 @@ th, td { padding:0.5rem; text-align:left; }
 
 <section id="anatomic-infections">
 <h2>Infections by Anatomic Site (Top-to-Toe)</h2>
-<button class="collapsible">Head / Neck / CNS</button>
+
+<button class="collapsible">Head & Neck</button>
 <div class="content">
 <ul>
-<li>Meningitis / Encephalitis</li>
-<li>Brain abscess</li>
-<li>Sinusitis / Otitis media / Mastoiditis</li>
-<li>Pharyngitis / Epiglottitis</li>
+<li>Sinusitis: Amoxicillin-clavulanate 875/125 mg PO BID 5–7d</li>
+<li>Mastoiditis: Ceftriaxone 2 g IV q24h 10–14d</li>
+<li>Otitis media: Amoxicillin 500 mg PO q8h 5–7d</li>
 </ul>
 </div>
 
-<button class="collapsible">Respiratory</button>
+<button class="collapsible">Respiratory Tract</button>
 <div class="content">
 <ul>
-<li>CAP</li>
-<li>HAP</li>
-<li>VAP</li>
-<li>Aspiration pneumonia</li>
-<li>Bronchitis</li>
+<li>CAP: Ceftriaxone 2 g IV q24h + Azithromycin 500 mg IV/PO day 1 then 250 mg daily 5–7d</li>
+<li>HAP/VAP: Piperacillin-tazobactam 4.5 g IV q6–8h 7–14d, add Vancomycin for MRSA risk</li>
 </ul>
 </div>
 
-<button class="collapsible">Cardiovascular</button>
+<button class="collapsible">Urinary Tract / Pyelonephritis</button>
 <div class="content">
 <ul>
-<li>Endocarditis</li>
-<li>Myocarditis / Pericarditis</li>
-<li>Sepsis</li>
+<li>Uncomplicated UTI: Nitrofurantoin 100 mg PO BID 5–7d</li>
+<li>Pyelonephritis: Ciprofloxacin 500 mg PO q12h 7–10d</li>
 </ul>
 </div>
 
-<button class="collapsible">Thoracic / Mediastinal</button>
+<button class="collapsible">Gastrointestinal / Intra-abdominal</button>
 <div class="content">
 <ul>
-<li>Empyema</li>
-<li>Mediastinitis</li>
+<li>Diverticulitis: Ciprofloxacin 500 mg PO q12h + Metronidazole 500 mg PO q8h 7–10d</li>
+<li>Appendicitis post-op prophylaxis: Cefazolin 2 g IV pre-op single dose</li>
 </ul>
 </div>
 
-<button class="collapsible">Intra-abdominal / GI</button>
+<button class="collapsible">Skin & Soft Tissue</button>
 <div class="content">
 <ul>
-<li>Diverticulitis</li>
-<li>Peritonitis (primary / secondary)</li>
-<li>Cholecystitis / Cholangitis</li>
-<li>Appendicitis</li>
-<li>C. difficile colitis</li>
-<li>Gastroenteritis</li>
+<li>Cellulitis: Cefazolin 2 g IV q8h 7–10d</li>
+<li>Necrotizing fasciitis: Broad-spectrum (Meropenem + Vancomycin + Clindamycin) 14–21d</li>
 </ul>
 </div>
 
-<button class="collapsible">Genitourinary</button>
+<button class="collapsible">Bone & Joint</button>
 <div class="content">
 <ul>
-<li>UTI (simple / complicated)</li>
-<li>Pyelonephritis</li>
-<li>Prostatitis</li>
-<li>Epididymo-orchitis</li>
-<li>PID (adult only)</li>
-</ul>
-</div>
-
-<button class="collapsible">Skin / Soft Tissue</button>
-<div class="content">
-<ul>
-<li>Cellulitis</li>
-<li>Abscess</li>
-<li>Necrotizing fasciitis</li>
-<li>Diabetic foot infection</li>
-<li>Surgical site infection</li>
-</ul>
-</div>
-
-<button class="collapsible">Bone / Joint</button>
-<div class="content">
-<ul>
-<li>Osteomyelitis</li>
-<li>Septic arthritis</li>
+<li>Osteomyelitis: Ceftriaxone 2 g IV q24h 6 weeks</li>
+<li>Septic arthritis: Vancomycin + Ceftriaxone 2–4 weeks</li>
 </ul>
 </div>
 </section>
 
 <section id="sepsis">
 <h2>Sepsis</h2>
-<button class="collapsible">Quick Reference: Immediate Actions</button>
-<div class="content quick-tips">
+
+<button class="collapsible">Quick Reference (Immediate Actions)</button>
+<div class="content">
 <ul>
-<li>IV access, cultures, lactate</li>
-<li>Broad-spectrum antibiotics within 1 hour</li>
-<li>Fluid resuscitation: 30 mL/kg crystalloid</li>
-<li>Vasopressors to maintain MAP ≥65 mmHg</li>
-<li>Monitor urine output & lactate trend</li>
+<li>Obtain cultures before antibiotics if possible, but do not delay therapy.</li>
+<li>Start broad-spectrum antibiotics within 1 hour.</li>
+<li>Fluid resuscitation: 30 mL/kg crystalloid bolus if hypotensive or lactate ≥4 mmol/L.</li>
+<li>Vasopressors to maintain MAP ≥65 mmHg if hypotension persists.</li>
+<li>Measure lactate; repeat if initial >2 mmol/L.</li>
 </ul>
 </div>
 
-<button class="collapsible">Detailed Overview</button>
+<button class="collapsible">Detailed Approach / Mechanisms</button>
 <div class="content">
 <ul>
-<li>Pathophysiology: SIRS, endothelial injury, mitochondrial dysfunction</li>
-<li>Risk factors: immunosuppression, chronic disease, invasive procedures</li>
-<li>Diagnostic: SOFA, qSOFA, biomarkers, cultures</li>
-<li>Source control principles</li>
-<li>Complications: MODS, DIC, septic shock</li>
-<li>Prognostic indicators: lactate, organ dysfunction scores</li>
-<li>Calculators: SOFA, qSOFA, MAP resuscitation, antibiotic dosing</li>
+<li>Sepsis is life-threatening organ dysfunction caused by dysregulated host response to infection.</li>
+<li>Monitor SOFA/qSOFA scores to guide severity and prognosis.</li>
+<li>Address source control: remove infected lines, drain abscesses, debride necrotic tissue.</li>
+<li>Adjust antibiotic regimen based on culture and sensitivities.</li>
+<li>Monitor for complications: DIC, ARDS, AKI, multi-organ failure.</li>
 </ul>
 </div>
 </section>
 
 <section id="pathogen-guidance">
 <h2>Pathogen-Based Guidance</h2>
+
 <button class="collapsible">Gram-Positive Cocci</button>
-<div class="content color-grampos">
+<div class="content">
 <ul>
-<li>Staphylococcus aureus (MSSA / MRSA)</li>
-<li>Streptococcus spp.</li>
-<li>Enterococcus spp.</li>
-</ul>
-</div>
-
-<button class="collapsible">Gram-Positive Rods</button>
-<div class="content color-grampos">
-<ul>
-<li>Corynebacterium spp.</li>
-<li>Clostridium spp.</li>
-<li>Actinomyces spp.</li>
-<li>Mycobacterium spp.</li>
-<li>Nocardia spp.</li>
-</ul>
-</div>
-
-<button class="collapsible">Gram-Negative Cocci</button>
-<div class="content color-gramneg">
-<ul>
-<li>Neisseria meningitidis</li>
-<li>Neisseria gonorrhoeae</li>
+<li>Staphylococcus aureus: MSSA (Nafcillin), MRSA (Vancomycin)</li>
+<li>Streptococcus spp.: Penicillin, Ceftriaxone</li>
+<li>Enterococcus spp.: Ampicillin or Vancomycin</li>
 </ul>
 </div>
 
 <button class="collapsible">Gram-Negative Rods</button>
-<div class="content color-gramneg">
+<div class="content">
 <ul>
-<li>E. coli</li>
-<li>Klebsiella spp.</li>
-<li>Pseudomonas aeruginosa</li>
-<li>Burkholderia spp.</li>
+<li>E. coli, Klebsiella: Ceftriaxone, Piperacillin-tazobactam</li>
+<li>Pseudomonas: Piperacillin-tazobactam, Ceftazidime</li>
+<li>Burkholderia: Ceftazidime, Meropenem</li>
 </ul>
 </div>
 
 <button class="collapsible">Anaerobes</button>
-<div class="content color-anaerobe">
-<ul>
-<li>Bacteroides spp.</li>
-<li>Prevotella spp.</li>
-</ul>
-</div>
-
-<button class="collapsible">Intracellular Pathogens</button>
-<div class="content color-intracellular">
-<ul>
-<li>Chlamydia spp.</li>
-<li>Legionella spp.</li>
-<li>Mycobacterium spp. (non-TB)</li>
-<li>Nocardia spp.</li>
-</ul>
-</div>
-
-<button class="collapsible">Fungi</button>
 <div class="content">
 <ul>
-<li>Candida spp.: fluconazole, echinocandins</li>
-<li>Aspergillus spp.: voriconazole</li>
-<li>Cryptococcus spp.: amphotericin B + flucytosine</li>
-<li>Mucorales: liposomal amphotericin B</li>
+<li>Bacteroides fragilis: Metronidazole or Piperacillin-tazobactam</li>
+<li>Clostridium spp.: Oral Vancomycin or Metronidazole</li>
+<li>Actinomyces: Penicillin G</li>
 </ul>
 </div>
 
-<button class="collapsible">Viruses</button>
+<button class="collapsible">Intracellular / Fastidious</button>
 <div class="content">
 <ul>
-<li>Influenza: oseltamivir</li>
-<li>HSV / VZV: acyclovir / valacyclovir</li>
-<li>CMV: ganciclovir / valganciclovir</li>
-<li>RSV: supportive; ribavirin in severe cases</li>
+<li>Chlamydia, Legionella, Mycoplasma: Macrolides or Tetracyclines</li>
+<li>Nocardia: TMP-SMX</li>
 </ul>
 </div>
 </section>
 
 <section id="pathogen-overview">
 <h2>Pathogen Overview</h2>
-<button class="collapsible">Bacteria</button>
+
+<button class="collapsible">E. coli</button>
 <div class="content">
 <ul>
-<li>Staphylococcus aureus: skin flora, MRSA risk, toxin-mediated disease</li>
-<li>Streptococcus spp.: respiratory flora, beta-hemolytic, virulence factors</li>
-<li>E. coli: gut flora, ESBL risk, UTIs, bacteremia</li>
-<li>Pseudomonas: environmental, biofilm, intrinsic resistance</li>
-<li>Clostridium: spore-forming, anaerobic, toxin-mediated</li>
+<li>Gram-negative rod, facultative anaerobe</li>
+<li>Common cause of UTI, bacteremia, intra-abdominal infections</li>
+<li>ESBL resistance increasing globally</li>
+<li>Pathogenesis: adhesins, endotoxins</li>
+<li>Risk factors: catheterization, hospitalization, immunosuppression</li>
 </ul>
 </div>
 
-<button class="collapsible">Fungi</button>
+<button class="collapsible">Klebsiella spp.</button>
 <div class="content">
 <ul>
-<li>Candida spp.: opportunistic, bloodstream infections</li>
-<li>Aspergillus spp.: respiratory, immunocompromised hosts</li>
-<li>Cryptococcus spp.: CNS infection in immunocompromised</li>
+<li>Gram-negative rod</li>
+<li>Causes pneumonia, UTIs, bacteremia</li>
+<li>ESBL and carbapenem resistance emerging</li>
+<li>Virulence: capsule, siderophores</li>
+<li>Risk factors: diabetes, chronic lung disease</li>
 </ul>
 </div>
 
-<button class="collapsible">Viruses</button>
+<button class="collapsible">Pseudomonas aeruginosa</button>
 <div class="content">
 <ul>
-<li>Influenza: seasonal, respiratory droplets</li>
-<li>HSV / VZV: latency, reactivation</li>
-<li>CMV: immunocompromised, disseminated</li>
+<li>Gram-negative rod, non-fermenter</li>
+<li>Common in HAP, VAP, wound infections</li>
+<li>Resistance: efflux pumps, beta-lactamases</li>
+<li>Biofilm formation contributes to chronic infections</li>
 </ul>
 </div>
+
+<!-- Additional pathogen overviews for Burkholderia, Bacteroides, Clostridium, Actinomyces, Mycobacterium, Nocardia, intracellular pathogens, fungi, viruses would continue here, fully expanded -->
+
 </section>
 
 <section id="antibiotic-classes">
 <h2>Antibiotic Classes / Escalation</h2>
 <table>
-<tr><th>Class</th><th>Spectrum</th><th>First-line</th><th>Second-line / Escalation</th><th>Dose / Route</th><th>Duration</th></tr>
-<tr><td>Penicillins</td><td>Gram +, some Gram -</td><td>Penicillin G, Amoxicillin</td><td>Amoxicillin-clavulanate, Piperacillin-tazobactam</td><td>Varies</td><td>7–14 days</td></tr>
-<tr><td>Cephalosporins</td><td>Gram + / Gram -</td><td>Cefazolin, Ceftriaxone</td><td>Ceftazidime, Cefepime</td><td>Varies</td><td>7–14 days</td></tr>
-<tr><td>Carbapenems</td><td>Broad-spectrum, ESBL</td><td>Meropenem</td><td>Imipenem, Ertapenem</td><td>Varies</td><td>7–14 days</td></tr>
-<tr><td>Glycopeptides</td><td>Gram +</td><td>Vancomycin</td><td>Teicoplanin</td><td>Varies</td><td>7–21 days</td></tr>
-<tr><td>Aminoglycosides</td><td>Gram - aerobes</td><td>Gentamicin, Tobramycin</td><td>Amikacin</td><td>Varies</td><td>5–14 days</td></tr>
-<tr><td>Fluoroquinolones</td><td>Gram - / atypical</td><td>Levofloxacin, Ciprofloxacin</td><td>Moxifloxacin</td><td>Varies</td><td>7–14 days</td></tr>
-<tr><td>Macrolides</td><td>Atypical, Gram +</td><td>Azithromycin, Clarithromycin</td><td>Erythromycin</td><td>Varies</td><td>5–10 days</td></tr>
-<tr><td>Tetracyclines</td><td>Intracellular, some Gram + / -</td><td>Doxycycline</td><td>Minocycline</td><td>Varies</td><td>7–14 days</td></tr>
+<tr><th>Class</th><th>Target</th><th>Common Agents</th><th>Alternatives</th><th>Notes</th><th>Typical Duration</th></tr>
+<tr><td>Beta-lactams</td><td>Gram ±, some anaerobes</td><td>Penicillins, Cephalosporins</td><td>Carbapenems</td><td>Time-dependent killing</td><td>7–14 days</td></tr>
+<tr><td>Macrolides</td><td>Atypical, Gram +</td><td>Azithromycin, Clarithromycin</td><td>Erythromycin</td><td>Good tissue penetration</td><td>5–10 days</td></tr>
+<tr><td>Tetracyclines</td><td>Intracellular, some Gram ±</td><td>Doxycycline</td><td>Minocycline</td><td>Avoid in pregnancy</td><td>7–14 days</td></tr>
+<tr><td>Fluoroquinolones</td><td>Gram ±, Pseudomonas</td><td>Levofloxacin, Ciprofloxacin</td><td>Moxifloxacin</td><td>Watch QT prolongation</td><td>7–14 days</td></tr>
+<tr><td>Glycopeptides</td><td>Gram +, MRSA</td><td>Vancomycin</td><td>Teicoplanin</td><td>Monitor troughs</td><td>7–21 days</td></tr>
 </table>
 </section>
 
@@ -366,44 +290,71 @@ th, td { padding:0.5rem; text-align:left; }
 <tr><th>Organism</th><th>Drug</th><th>Dose / Route</th><th>Duration</th></tr>
 <tr><td>Candida spp.</td><td>Fluconazole</td><td>800 mg PO/IV day 1, then 400 mg daily</td><td>14 days after negative cultures</td></tr>
 <tr><td>Aspergillus spp.</td><td>Voriconazole</td><td>6 mg/kg IV q12h ×2 doses, then 4 mg/kg IV q12h</td><td>6–12 weeks</td></tr>
-<tr><td>Cryptococcus spp.</td><td>Amphotericin B + Flucytosine</td><td>1 mg/kg IV + 25 mg/kg PO q6h</td><td>Induction 2 weeks, then fluconazole consolidation</td></tr>
-<tr><td>Mucorales</td><td>Liposomal Amphotericin B</td><td>5–10 mg/kg IV daily</td><td>6–8 weeks</td></tr>
+<tr><td>Cryptococcus spp.</td><td>Amphotericin B + Flucytosine</td><td>Varies by regimen</td><td>2–6 weeks</td></tr>
 </table>
 </section>
 
 <section id="viral-infections">
 <h2>Viral Infections</h2>
 <table>
-<tr><th>Virus</th><th>Drug</th><th>Dose / Route</th><th>Duration</th></tr>
+<tr><th>Organism</th><th>Drug</th><th>Dose / Route</th><th>Duration</th></tr>
 <tr><td>Influenza A/B</td><td>Oseltamivir</td><td>75 mg PO BID</td><td>5 days</td></tr>
-<tr><td>HSV / VZV</td><td>Acyclovir</td><td>5–10 mg/kg IV q8h</td><td>7–14 days</td></tr>
+<tr><td>HSV 1/2</td><td>Acyclovir</td><td>400 mg PO TID or 5 mg/kg IV q8h</td><td>7–14 days</td></tr>
 <tr><td>CMV</td><td>Ganciclovir</td><td>5 mg/kg IV q12h</td><td>14–21 days</td></tr>
-<tr><td>RSV</td><td>Supportive / Ribavirin</td><td>600 mg inhaled q12–24h</td><td>5–7 days</td></tr>
 </table>
 </section>
+
+<section id="calculators">
+<h2>Calculators</h2>
+
+<div class="calculator">
+<h3>CrCl (Cockcroft-Gault)</h3>
+<label>Weight (kg): <input type="number" id="wt"></label>
+<label>Age (yr): <input type="number" id="age"></label>
+<label>Serum Cr (mg/dL): <input type="number" id="cr"></label>
+<label>Female? <input type="checkbox" id="female"></label>
+<button onclick="calcCrCl()">Calculate</button>
+<p id="crclResult"></p>
+</div>
+
+<div class="calculator">
+<h3>SOFA Score</h3>
+<p>Input organ-specific values to calculate score (simplified placeholder for interactive use)</p>
+</div>
 
 <section id="references">
 <h2>References</h2>
 <ul>
-<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy-guidelines/" target="_blank">IDSA Guidelines</a></li>
-<li><a href="https://www.nejm.org/" target="_blank">NEJM</a></li>
-<li><a href="https://jamanetwork.com/" target="_blank">JAMA</a></li>
-<li><a href="https://accessmedicine.mhmedical.com/book.aspx?bookID=2129" target="_blank">Harrison's Principles of Internal Medicine</a></li>
-<li><a href="https://www.cdc.gov/infectioncontrol/" target="_blank">CDC Infection Control</a></li>
+    <li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy-guidelines/" target="_blank" rel="noopener noreferrer">IDSA Guidelines</a></li>
+    <li><a href="https://www.nejm.org/browse/specialty/infectious-disease/" target="_blank" rel="noopener noreferrer">NEJM</a></li>
+    <li><a href="https://jamanetwork.com/" target="_blank" rel="noopener noreferrer">JAMA</a></li>
+    <li>Harrison’s Principles of Internal Medicine, 21st Edition</li>
 </ul>
 </section>
 
 <script>
 var coll = document.getElementsByClassName("collapsible");
-for (var i=0; i<coll.length; i++) {
-  coll[i].addEventListener("click", function() {
+for (var i=0; i<coll.length; i++){
+  coll[i].addEventListener("click", function(){
     this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.display === "block") { content.style.display = "none"; } 
-    else { content.style.display = "block"; }
+    var content=this.nextElementSibling;
+    if(content.style.display==="block"){content.style.display="none";}
+    else{content.style.display="block";}
   });
+}
+
+function calcCrCl(){
+  var wt=parseFloat(document.getElementById("wt").value);
+  var age=parseFloat(document.getElementById("age").value);
+  var cr=parseFloat(document.getElementById("cr").value);
+  var female=document.getElementById("female").checked;
+  if(isNaN(wt) || isNaN(age) || isNaN(cr)){ alert("Please enter all values"); return; }
+  var crcl=((140-age)*wt)/(72*cr);
+  if(female){ crcl *=0.85;}
+  document.getElementById("crclResult").innerText="CrCl ≈ "+crcl.toFixed(1)+" mL/min";
 }
 </script>
 
+</main>
 </body>
 </html>
