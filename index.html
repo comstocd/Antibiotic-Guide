@@ -542,6 +542,8 @@ document.querySelectorAll('.expandable').forEach(item=>{
     sub.style.display = (sub.style.display==='block')?'none':'block';
   });
 });
+
+// Show content panel without collapsing the sidebar
 document.querySelectorAll('.nav-item').forEach(item=>{
   item.addEventListener('click',()=>{
     document.querySelectorAll('.content-panel').forEach(c=>c.style.display='none');
@@ -560,7 +562,7 @@ document.querySelectorAll('.collapsible').forEach(btn=>{
   });
 });
 
-// Calculator
+// Calculator functions
 function calculateCrCl(){
   var cr=document.getElementById('cr').value;
   var wt=document.getElementById('wt').value;
@@ -569,6 +571,7 @@ function calculateCrCl(){
   document.getElementById('crcl-result').innerText="Estimated CrCl: "+crcl.toFixed(1)+" mL/min";
 }
 </script>
+
 
 </main>
 </body>
