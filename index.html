@@ -6,47 +6,56 @@
 <title>Antibiotic & Infection Guide</title>
 <style>
   #top-banner {
-  background-color: #004080; /* dark blue */
-  color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 15px 0;
-  text-align: center;
-  font-size: 1.8em;
-  font-weight: bold;
-  z-index: 1000;
-}
+    background-color: #004080; /* dark blue */
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: bold;
+    z-index: 1000;
+  }
+
   body {
-  font-family: Arial, sans-serif;
-  margin: 70px 0 0 0; /* top margin equal to banner height */
-  padding:0;
-  display:flex;
-  height:100vh;
-}
-nav { width:260px; background:#e0e0e0; overflow-y:auto; padding:0.5rem; }
-nav ul { list-style:none; padding-left:0; margin:0; }
-nav li { border-bottom:1px solid #ccc; cursor:pointer; padding:0.5rem; }
-nav li:hover { background:#cce0ff; }
-nav .sub-menu { display:none; padding-left:1rem; background:#d0d0d0; }
-main { flex:1; overflow-y:auto; padding:1rem; background:#f5f5f5; }
-h2 { color:#004080; margin-top:2rem; }
-table { border-collapse:collapse; width:100%; margin-bottom:1rem; }
-table, th, td { border:1px solid #999; }
-th, td { padding:0.5rem; text-align:left; }
-tr:nth-child(even){background-color: #f2f2f2;}
-.collapsible { background-color:#ddd; cursor:pointer; padding:0.5rem; width:100%; border:none; text-align:left; outline:none; font-size:1rem; margin-top:0.5rem;}
-.active, .collapsible:hover { background-color:#ccc; }
-.content, .content-panel { padding:0 1rem; display:none; overflow:hidden; background-color:#f9f9f9; margin-bottom:1rem; }
-.quick-tips { background:#ffffcc; border:1px solid #cccc99; padding:0.5rem; margin:0.5rem 0; color:#333; text-align:left; }
-.quick-tips ul { margin-left:1rem; padding-left:0; list-style-type: disc; }
-.calculator { background:#eef; border:1px solid #99c; padding:0.5rem; margin-bottom:1rem; }
-input[type=number] { width:80px; }
-.color-grampos {background-color:#c6efce;}
-.color-gramneg {background-color:#ffeb9c;}
-.color-anaerobe {background-color:#ffc7ce;}
-.color-intracellular {background-color:#d9d2e9;}
+    font-family: Arial, sans-serif;
+    margin: 100px 0 0 0; /* adjusted top margin for banner */
+    padding: 0;
+    display: flex;
+    height: 100vh;
+  }
+
+  nav {
+    width: 260px;
+    background: #e0e0e0;
+    overflow-y: auto;
+    padding: 0.5rem;
+  }
+
+  nav ul { list-style: none; padding-left: 0; margin: 0; }
+  nav li { border-bottom: 1px solid #ccc; cursor: pointer; padding: 0.5rem; }
+  nav li:hover { background: #cce0ff; }
+  nav .sub-menu { display: none; padding-left: 1rem; background: #d0d0d0; }
+
+  main { flex: 1; overflow-y: auto; padding: 1rem; background: #f5f5f5; }
+  h2 { color: #004080; margin-top: 2rem; }
+  table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+  table, th, td { border: 1px solid #999; }
+  th, td { padding: 0.5rem; text-align: left; }
+  tr:nth-child(even){background-color: #f2f2f2;}
+  .collapsible { background-color:#ddd; cursor:pointer; padding:0.5rem; width:100%; border:none; text-align:left; outline:none; font-size:1rem; margin-top:0.5rem;}
+  .active, .collapsible:hover { background-color:#ccc; }
+  .content, .content-panel { padding:0 1rem; display:none; overflow:hidden; background-color:#f9f9f9; margin-bottom:1rem; }
+  .quick-tips { background:#ffffcc; border:1px solid #cccc99; padding:0.5rem; margin:0.5rem 0; color:#333; text-align:left; }
+  .quick-tips ul { margin-left:1rem; padding-left:0; list-style-type: disc; }
+  .calculator { background:#eef; border:1px solid #99c; padding:0.5rem; margin-bottom:1rem; }
+  input[type=number] { width:80px; }
+  .color-grampos {background-color:#c6efce;}
+  .color-gramneg {background-color:#ffeb9c;}
+  .color-anaerobe {background-color:#ffc7ce;}
+  .color-intracellular {background-color:#d9d2e9;}
 </style>
 </head>
 <body>
@@ -233,314 +242,15 @@ input[type=number] { width:80px; }
 </div>
 </section>
 
-<!-- Pathogen-Based Guidance -->
-<section id="pathogen-guidance" class="content-panel">
-<h2>Pathogen-Based Guidance</h2>
-
-<button class="collapsible">E. coli</button>
-<div class="content">
-<ul>
-<li>Gram-negative rod, facultative anaerobe</li>
-<li>Common infections: UTI, bacteremia</li>
-<li>Empiric: Ceftriaxone; targeted: based on culture & sensitivity</li>
-<li>Dosing: Ceftriaxone 1–2 g IV daily; adjust renal</li>
-</ul>
-</div>
-
-<button class="collapsible">Klebsiella spp.</button>
-<div class="content">
-<ul>
-<li>Gram-negative rod</li>
-<li>UTI, bacteremia, pneumonia</li>
-<li>Empiric: Ceftriaxone or Piperacillin-Tazobactam</li>
-<li>Dosing: 1–2 g IV daily; monitor for ESBL</li>
-</ul>
-</div>
-
-<button class="collapsible">Pseudomonas aeruginosa</button>
-<div class="content">
-<ul>
-<li>Gram-negative rod, opportunistic pathogen</li>
-<li>HAP, VAP, bacteremia</li>
-<li>Empiric: Piperacillin-Tazobactam 4.5 g IV q6–8h, Cefepime 2 g IV q8h</li>
-<li>Dosing: adjust for renal; combination therapy in severe cases</li>
-</ul>
-</div>
-
-<button class="collapsible">Staphylococcus aureus</button>
-<div class="content">
-<ul>
-<li>Gram-positive coccus</li>
-<li>Skin, soft tissue, bloodstream infections</li>
-<li>Empiric: Vancomycin; targeted: Nafcillin for MSSA</li>
-<li>Dosing: Vancomycin 15 mg/kg IV q12h; monitor troughs</li>
-</ul>
-</div>
-
-<button class="collapsible">Streptococcus spp.</button>
-<div class="content">
-<ul>
-<li>Gram-positive coccus</li>
-<li>Pneumonia, pharyngitis, endocarditis</li>
-<li>Empiric: Penicillin or Ceftriaxone</li>
-<li>Dosing: varies by site; 2 g IV q24h typical for pneumonia</li>
-</ul>
-</div>
-
-<button class="collapsible">Enterococcus faecalis</button>
-<div class="content">
-<ul>
-<li>Gram-positive coccus</li>
-<li>UTI, bacteremia, endocarditis</li>
-<li>Empiric: Ampicillin ± Gentamicin</li>
-<li>Dosing: Ampicillin 2 g IV q4h</li>
-</ul>
-</div>
-
-<button class="collapsible">Bacteroides fragilis</button>
-<div class="content">
-<ul>
-<li>Anaerobe, Gram-negative rod</li>
-<li>Intra-abdominal infections</li>
-<li>Empiric: Metronidazole 500 mg IV q8h</li>
-<li>Duration: 7–14 days depending on source control</li>
-</ul>
-</div>
-
-<button class="collapsible">Clostridium difficile</button>
-<div class="content">
-<ul>
-<li>Anaerobe, Gram-positive rod</li>
-<li>Diarrhea, pseudomembranous colitis</li>
-<li>Empiric/targeted: Vancomycin 125 mg PO q6h</li>
-<li>Duration: 10–14 days</li>
-</ul>
-</div>
-
-<button class="collapsible">Actinomyces spp.</button>
-<div class="content">
-<ul>
-<li>Anaerobe, Gram-positive rod</li>
-<li>Chronic granulomatous infections</li>
-<li>Empiric: Penicillin G IV → oral amoxicillin</li>
-<li>Duration: IV 4–6 weeks then oral 6–12 months</li>
-</ul>
-</div>
-
-<button class="collapsible">Legionella pneumophila</button>
-<div class="content">
-<ul>
-<li>Intracellular, Gram-negative rod</li>
-<li>Pneumonia (atypical)</li>
-<li>Empiric/targeted: Azithromycin 500 mg IV/PO q24h</li>
-<li>Duration: 7–14 days</li>
-</ul>
-</div>
-
-<button class="collapsible">Chlamydophila pneumoniae / Mycoplasma pneumoniae</button>
-<div class="content">
-<ul>
-<li>Intracellular pathogens</li>
-<li>Atypical pneumonia</li>
-<li>Empiric: Doxycycline 100 mg PO/IV q12h or Azithromycin 500 mg daily</li>
-<li>Duration: 7–14 days</li>
-</ul>
-</div>
-
-<button class="collapsible">Fungi (Candida, Aspergillus)</button>
-<div class="content">
-<ul>
-<li>Empiric: Fluconazole 400 mg IV/PO daily (Candida), Voriconazole 6 mg/kg IV q12h load then 4 mg/kg IV q12h (Aspergillus)</li>
-<li>Duration: depends on site and immunocompetence</li>
-</ul>
-</div>
-
-<button class="collapsible">Viruses (HSV, CMV, Influenza)</button>
-<div class="content">
-<ul>
-<li>HSV: Acyclovir 5–10 mg/kg IV q8h</li>
-<li>CMV: Ganciclovir 5 mg/kg IV q12h</li>
-<li>Influenza: Oseltamivir 75 mg PO BID x5 days</li>
-</ul>
-</div>
-</section>
-
-<!-- Antibiotic Classes / Escalation -->
-<section id="antibiotic-classes" class="content-panel">
-<h2>Antibiotic Classes & Escalation</h2>
-<table>
-<tr><th>Class</th><th>Examples</th><th>Coverage / Notes</th></tr>
-<tr><td>Beta-lactams</td><td>Penicillins, Cephalosporins, Carbapenems</td><td>Broad Gram-positive & Gram-negative, some anaerobes</td></tr>
-<tr><td>Glycopeptides</td><td>Vancomycin, Teicoplanin</td><td>Gram-positive including MRSA</td></tr>
-<tr><td>Macrolides</td><td>Azithromycin, Clarithromycin</td><td>Atypical coverage, some Gram-positive</td></tr>
-<tr><td>Fluoroquinolones</td><td>Ciprofloxacin, Levofloxacin</td><td>Broad Gram-negative, atypicals</td></tr>
-<tr><td>Tetracyclines</td><td>Doxycycline, Minocycline</td><td>Atypical, intracellular</td></tr>
-<tr><td>Antifungals</td><td>Fluconazole, Voriconazole, Amphotericin</td><td>Yeasts & molds</td></tr>
-<tr><td>Antivirals</td><td>Acyclovir, Oseltamivir</td><td>HSV, Influenza</td></tr>
-</table>
-</section>
-
-<!-- Fungal Infections -->
-<section id="fungal-infections" class="content-panel">
-<h2>Fungal Infections</h2>
-<ul>
-<li>Candida bloodstream: Fluconazole 400 mg IV daily; adjust for renal</li>
-<li>Invasive Aspergillus: Voriconazole 6 mg/kg IV q12h loading → 4 mg/kg q12h</li>
-<li>Crytococcus: Amphotericin B 0.7–1 mg/kg IV + Flucytosine 100 mg/kg PO daily</li>
-</ul>
-</section>
-
-<!-- Viral Infections -->
-<section id="viral-infections" class="content-panel">
-<h2>Viral Infections</h2>
-<ul>
-<li>HSV: Acyclovir 5–10 mg/kg IV q8h</li>
-<li>CMV: Ganciclovir 5 mg/kg IV q12h</li>
-<li>Influenza: Oseltamivir 75 mg PO BID x5 days</li>
-</ul>
-</section>
-
 <!-- Calculators -->
 <section id="calculators" class="content-panel">
 <h2>Calculators</h2>
 <div class="calculator">
-<label for="crcl">Creatinine (mg/dL): </label><input type="number" id="cr" step="0.01">
-<label for="weight">Weight (kg): </label><input type="number" id="wt" step="0.1">
+<label for="age">Age (years): </label><input type="number" id="age" step="1">
+<label for="cr">Creatinine (mg/dL): </label><input type="number" id="cr" step="0.01">
+<label for="wt">Weight (kg): </label><input type="number" id="wt" step="0.1">
 <button onclick="calculateCrCl()">Calculate CrCl (Cockcroft-Gault)</button>
 <p id="crcl-result"></p>
-</div>
-</section>
-
-<!-- Pathogen Overview -->
-<section id="pathogen-overview" class="content-panel">
-<h2>Pathogen Overview</h2>
-
-<button class="collapsible">E. coli</button>
-<div class="content">
-<ul>
-<li>Gram-negative rod, facultative anaerobe</li>
-<li>UTI, bacteremia, sepsis</li>
-<li>Virulence: fimbriae adhesion, endotoxin</li>
-<li>Resistance: ESBL increasing globally</li>
-</ul>
-</div>
-
-<button class="collapsible">Klebsiella spp.</button>
-<div class="content">
-<ul>
-<li>Gram-negative rod</li>
-<li>UTI, pneumonia, liver abscess</li>
-<li>Virulence: capsule, siderophores</li>
-<li>Resistance: ESBL, carbapenem-resistant strains</li>
-</ul>
-</div>
-
-<button class="collapsible">Pseudomonas aeruginosa</button>
-<div class="content">
-<ul>
-<li>Gram-negative rod</li>
-<li>HAP/VAP, bacteremia</li>
-<li>Virulence: biofilm, exotoxin A</li>
-<li>Resistance: MDR common; check antibiogram</li>
-</ul>
-</div>
-
-<button class="collapsible">Staphylococcus aureus</button>
-<div class="content">
-<ul>
-<li>Gram-positive cocci</li>
-<li>Skin, soft tissue, endocarditis</li>
-<li>Virulence: toxins, adhesins</li>
-<li>Resistance: MRSA prevalent</li>
-</ul>
-</div>
-
-<button class="collapsible">Streptococcus spp.</button>
-<div class="content">
-<ul>
-<li>Gram-positive cocci</li>
-<li>Pneumonia, pharyngitis, endocarditis</li>
-<li>Virulence: capsule, hemolysins</li>
-<li>Resistance: emerging macrolide resistance</li>
-</ul>
-</div>
-
-<button class="collapsible">Enterococcus faecalis</button>
-<div class="content">
-<ul>
-<li>Gram-positive cocci</li>
-<li>UTI, endocarditis</li>
-<li>Virulence: biofilm, adhesins</li>
-<li>Resistance: VRE increasing</li>
-</ul>
-</div>
-
-<button class="collapsible">Bacteroides fragilis</button>
-<div class="content">
-<ul>
-<li>Gram-negative anaerobe rod</li>
-<li>Intra-abdominal infections</li>
-<li>Virulence: capsule, beta-lactamase</li>
-<li>Resistance: increasing beta-lactamase-mediated resistance</li>
-</ul>
-</div>
-
-<button class="collapsible">Clostridium difficile</button>
-<div class="content">
-<ul>
-<li>Gram-positive anaerobe rod</li>
-<li>Diarrhea, pseudomembranous colitis</li>
-<li>Virulence: Toxin A/B</li>
-<li>Resistance: Rare, some fidaxomicin considerations</li>
-</ul>
-</div>
-
-<button class="collapsible">Actinomyces spp.</button>
-<div class="content">
-<ul>
-<li>Gram-positive anaerobe rod</li>
-<li>Chronic granulomatous infections</li>
-<li>Virulence: filamentous growth, biofilm</li>
-<li>Resistance: rare</li>
-</ul>
-</div>
-
-<button class="collapsible">Legionella pneumophila</button>
-<div class="content">
-<ul>
-<li>Intracellular Gram-negative rod</li>
-<li>Atypical pneumonia</li>
-<li>Virulence: survives in macrophages</li>
-<li>Resistance: generally susceptible to macrolides/fluoroquinolones</li>
-</ul>
-</div>
-
-<button class="collapsible">Chlamydophila pneumoniae / Mycoplasma pneumoniae</button>
-<div class="content">
-<ul>
-<li>Intracellular pathogens</li>
-<li>Atypical pneumonia</li>
-<li>Virulence: adhesion to respiratory epithelium</li>
-<li>Resistance: uncommon</li>
-</ul>
-</div>
-
-<button class="collapsible">Fungi</button>
-<div class="content">
-<ul>
-<li>Candida, Aspergillus, Cryptococcus</li>
-<li>Virulence: biofilm, immune evasion</li>
-<li>Resistance: fluconazole-resistant strains emerging</li>
-</ul>
-</div>
-
-<button class="collapsible">Viruses</button>
-<div class="content">
-<ul>
-<li>HSV, CMV, Influenza</li>
-<li>Transmission: droplet, contact, vectors</li>
-<li>Resistance: some antiviral-resistant strains</li>
-</ul>
 </div>
 </section>
 
@@ -548,11 +258,11 @@ input[type=number] { width:80px; }
 <section id="references" class="content-panel">
 <h2>References</h2>
 <ul>
-<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy-guidelines/" target="_blank">IDSA Guidelines</a></li>
-<li><a href="https://www.nejm.org" target="_blank">New England Journal of Medicine</a></li>
-<li><a href="https://jamanetwork.com" target="_blank">JAMA</a></li>
-<li><a href="https://accessmedicine.mhmedical.com" target="_blank">Harrison's Principles of Internal Medicine</a></li>
-<li><a href="https://www.cdc.gov/antibiotic-use" target="_blank">CDC Antibiotic Use</a></li>
+<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy-guidelines/" target="_blank" rel="noopener noreferrer">IDSA Guidelines</a></li>
+<li><a href="https://www.nejm.org" target="_blank" rel="noopener noreferrer">New England Journal of Medicine</a></li>
+<li><a href="https://jamanetwork.com" target="_blank" rel="noopener noreferrer">JAMA</a></li>
+<li><a href="https://accessmedicine.mhmedical.com" target="_blank" rel="noopener noreferrer">Harrison's Principles of Internal Medicine</a></li>
+<li><a href="https://www.cdc.gov/antibiotic-use" target="_blank" rel="noopener noreferrer">CDC Antibiotic Use</a></li>
 </ul>
 </section>
 
@@ -586,48 +296,12 @@ document.querySelectorAll('.collapsible').forEach(btn=>{
 
 // Calculator functions
 function calculateCrCl(){
-  var cr=document.getElementById('cr').value;
-  var wt=document.getElementById('wt').value;
-  if(!cr || !wt){document.getElementById('crcl-result').innerText="Enter both values"; return;}
-  var crcl=((140-wt)*wt)/(72*cr);
-  document.getElementById('crcl-result').innerText="Estimated CrCl: "+crcl.toFixed(1)+" mL/min";
-}
-
-  <script>
-// Navigation expand/collapse
-document.querySelectorAll('.expandable').forEach(item=>{
-  let sub=item.querySelector('.sub-menu');
-  item.addEventListener('click',()=>{ 
-    sub.style.display = (sub.style.display==='block')?'none':'block';
-  });
-});
-
-// Show content panel without collapsing the sidebar
-document.querySelectorAll('.nav-item').forEach(item=>{
-  item.addEventListener('click',()=>{
-    document.querySelectorAll('.content-panel').forEach(c=>c.style.display='none');
-    let target=document.getElementById(item.getAttribute('data-target'));
-    if(target) target.style.display='block';
-  });
-});
-
-// Collapsible sections
-document.querySelectorAll('.collapsible').forEach(btn=>{
-  btn.addEventListener('click', function(){
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if(content.style.display==="block"){content.style.display="none";}
-    else{content.style.display="block";}
-  });
-});
-
-// Calculator functions
-function calculateCrCl(){
-  var cr=document.getElementById('cr').value;
-  var wt=document.getElementById('wt').value;
-  if(!cr || !wt){document.getElementById('crcl-result').innerText="Enter both values"; return;}
-  var crcl=((140-wt)*wt)/(72*cr);
-  document.getElementById('crcl-result').innerText="Estimated CrCl: "+crcl.toFixed(1)+" mL/min";
+  var age = parseFloat(document.getElementById('age').value);
+  var cr = parseFloat(document.getElementById('cr').value);
+  var wt = parseFloat(document.getElementById('wt').value);
+  if(!age || !cr || !wt){document.getElementById('crcl-result').innerText="Enter all values"; return;}
+  var crcl = ((140 - age) * wt) / (72 * cr);
+  document.getElementById('crcl-result').innerText = "Estimated CrCl: " + crcl.toFixed(1) + " mL/min";
 }
 
 // Show homepage by default
@@ -636,7 +310,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if(homepage) homepage.style.display = 'block';
 });
 </script>
-
 
 </main>
 </body>
