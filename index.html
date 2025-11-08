@@ -1,345 +1,812 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Inpatient Antimicrobial Guide</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Inpatient Antimicrobial Guide — Complete</title>
 <style>
-body { font-family: Arial, sans-serif; margin:0; padding:0; display:flex; height:100vh; }
-#sidebar { width:260px; background:#f8f8f8; padding:10px; border-right:1px solid #ccc; overflow-y:auto; }
-#sidebar h2 { margin-top:0; }
-#sidebar ul { list-style:none; padding-left:0; }
-#sidebar li { margin:5px 0; cursor:pointer; color:#007BFF; }
-#content { flex:1; padding:20px; overflow-y:auto; }
-.expandable { background:#e2e2e2; padding:10px; margin:5px 0; cursor:pointer; border-radius:4px; }
-.hidden { display:none; }
-table { width:100%; border-collapse:collapse; margin:10px 0; }
-th, td { border:1px solid #ccc; padding:5px; text-align:left; }
-th { background:#f0f0f0; }
-a { color:#007BFF; text-decoration:none; }
-a:hover { text-decoration:underline; }
-
-/* Color-coded sections */
-#homepage { background-color:#ffffff; }
-#bacteria { background-color:#e0f0ff; }
-#fungi { background-color:#e0ffe0; }
-#viruses { background-color:#fff0d0; }
-#pathogen { background-color:#f0e0ff; }
-#overview { background-color:#e0ffff; }
-#classes { background-color:#f0f0f0; }
-#references { background-color:#ffffff; }
+  :root{
+    --blue:#e0f0ff;
+    --green:#e0ffe0;
+    --orange:#fff0d0;
+    --purple:#f0e0ff;
+    --teal:#e0ffff;
+    --grey:#f0f0f0;
+    --muted:#f8f8f8;
+    --link:#007BFF;
+  }
+  html,body{height:100%;margin:0;font-family:Arial,Helvetica,sans-serif}
+  body{display:flex;flex-direction:row;height:100vh;overflow:hidden}
+  #sidebar{
+    width:300px;background:var(--muted);border-right:1px solid #ccc;padding:14px;box-sizing:border-box;overflow-y:auto;
+  }
+  #sidebar h2{margin:0 0 12px 0;font-size:18px}
+  #sidebar ul{list-style:none;padding:0;margin:0}
+  #sidebar li{margin:8px 0;cursor:pointer;color:var(--link);font-weight:600}
+  #sidebar li.small{font-weight:400;color:#333;cursor:default;margin:6px 0}
+  #content{flex:1;overflow:auto;padding:18px;box-sizing:border-box}
+  .section{display:none;padding-bottom:40px;border-radius:6px}
+  .header{display:flex;align-items:center;gap:12px}
+  .header img{width:68px;height:68px;object-fit:contain}
+  .title{font-size:22px;margin:0}
+  .subtitle{margin:6px 0 14px 0;color:#444}
+  .card{background:#fff;padding:10px;border-radius:6px;margin:10px 0;border:1px solid #e6e6e6}
+  .expandable{background:#eee;padding:10px;border-radius:6px;margin:8px 0;cursor:pointer}
+  .hidden{display:none}
+  table{width:100%;border-collapse:collapse;margin:8px 0}
+  th,td{border:1px solid #ddd;padding:6px;text-align:left;vertical-align:top;font-size:13px}
+  th{background:#f6f6f6}
+  a{color:var(--link);text-decoration:none}
+  a:hover{text-decoration:underline}
+  /* color-coded backgrounds for main sections */
+  #bacteria{background:var(--blue);padding:12px;border-radius:6px}
+  #fungi{background:var(--green);padding:12px;border-radius:6px}
+  #viruses{background:var(--orange);padding:12px;border-radius:6px}
+  #pathogen{background:var(--purple);padding:12px;border-radius:6px}
+  #overview{background:var(--teal);padding:12px;border-radius:6px}
+  #classes{background:var(--grey);padding:12px;border-radius:6px}
+  #sites{background:#fff8e6;padding:12px;border-radius:6px} /* anatomical section */
+  /* responsive */
+  @media (max-width:900px){
+    #sidebar{width:240px}
+  }
+  @media (max-width:600px){
+    body{flex-direction:column}
+    #sidebar{width:100%;height:auto;border-right:none;border-bottom:1px solid #ccc}
+    #content{height:calc(100vh - 220px)}
+  }
+  .note{font-size:13px;color:#333}
+  .muted{color:#555;font-size:13px}
+  .badge{display:inline-block;padding:2px 6px;border-radius:4px;background:#fff;border:1px solid #ddd;font-size:12px;margin-right:6px}
 </style>
 <script>
-function showContent(id){
-    document.querySelectorAll('#content > div').forEach(s=>s.style.display='none');
-    var section = document.getElementById(id);
-    if(section) section.style.display='block';
-}
-function toggleVisibility(id){
-    var e = document.getElementById(id);
-    e.style.display = (e.style.display === 'block') ? 'none' : 'block';
-}
+  function showContent(id){
+    document.querySelectorAll('.section').forEach(s=>s.style.display='none');
+    const el = document.getElementById(id);
+    if(el) el.style.display = 'block';
+    // scroll top
+    document.getElementById('content').scrollTop = 0;
+  }
+  function toggle(id){
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+  }
+  // init
+  window.addEventListener('load', ()=> showContent('homepage'));
 </script>
 </head>
 <body>
 
-<div id="sidebar">
-<h2>Sections</h2>
-<ul>
-<li onclick="showContent('homepage')">Home</li>
-<li onclick="showContent('bacteria')">Bacterial Infections</li>
-<li onclick="showContent('fungi')">Fungal Infections</li>
-<li onclick="showContent('viruses')">Viral Infections</li>
-<li onclick="showContent('pathogen')">Pathogen-Based Guidance</li>
-<li onclick="showContent('overview')">Pathogen Overview</li>
-<li onclick="showContent('classes')">Antibiotic Classes / Escalation</li>
-<li onclick="showContent('references')">References</li>
-</ul>
-</div>
+  <div id="sidebar">
+    <h2>Antimicrobial Guide</h2>
+    <ul>
+      <li onclick="showContent('homepage')">Home</li>
 
-<div id="content">
+      <li onclick="showContent('sites')">Infections by Site (Anatomic)</li>
+      <li onclick="showContent('bacteria')">Bacterial Infections</li>
+      <li onclick="showContent('fungi')">Fungal Infections</li>
+      <li onclick="showContent('viruses')">Viral Infections</li>
+      <li onclick="showContent('pathogen')">Pathogen-Based Guidance</li>
+      <li onclick="showContent('overview')">Pathogen Overview</li>
+      <li onclick="showContent('classes')">Antibiotic Classes / Escalation</li>
+      <li onclick="showContent('references')">References</li>
+    </ul>
 
-<!-- Homepage -->
-<div id="homepage">
-<div style="text-align:center; margin-top:50px;">
-<img src="mutant-icon.png" alt="Mutant Icon" style="width:150px; height:150px; margin-bottom:20px;">
-<h1>Inpatient Antimicrobial Guide</h1>
-<p>Select a section from the sidebar to view empiric therapy, culture-directed therapy, Gram-stain/diagnostic guidance, pathogen-specific recommendations, dosing, duration, and references.</p>
-</div>
-</div>
+    <div style="margin-top:18px">
+      <div class="small muted">Tap a section. Use expanders inside for details.</div>
+    </div>
+  </div>
 
-<!-- Bacterial Infections -->
-<div id="bacteria" style="display:none">
-<h2>Bacterial Infections</h2>
+  <div id="content">
 
-<div class="expandable" onclick="toggleVisibility('GramPositiveCocci')">Gram-Positive Cocci</div>
-<div id="GramPositiveCocci" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Streptococcus spp.</td><td>Penicillin G</td><td>Penicillin per susceptibility</td><td>12–24 MU/day IV</td><td>10–14 days</td><td>Adjust per site</td></tr>
-<tr><td>Staphylococcus aureus (MSSA)</td><td>Nafcillin/Oxacillin</td><td>Same</td><td>2 g IV q4h</td><td>10–14 days</td><td>Monitor renal</td></tr>
-<tr><td>MRSA</td><td>Vancomycin</td><td>Same</td><td>15 mg/kg IV q12h</td><td>10–14 days</td><td>Monitor trough & renal</td></tr>
-<tr><td>Enterococcus spp.</td><td>Ampicillin ± Gentamicin</td><td>Per susceptibility</td><td>Ampicillin 2 g IV q4h; Gentamicin 3 mg/kg/day</td><td>4–6 weeks</td><td>Adjust renal</td></tr>
-</table>
-</div>
+    <!-- HOMEPAGE -->
+    <div id="homepage" class="section">
+      <div class="header">
+        <img src="mutant-icon.png" alt="icon" onerror="this.style.display='none'"/>
+        <div>
+          <h1 class="title">Inpatient Antimicrobial Guide</h1>
+          <div class="subtitle">Empiric & culture-directed therapy, dosing, durations, pathogen overviews, Gram/culture guidance, and anatomical (syndrome) pathways — all offline & iPad-ready.</div>
+        </div>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('GramPositiveRods')">Gram-Positive Rods</div>
-<div id="GramPositiveRods" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Clostridium spp.</td><td>Metronidazole / Vancomycin (oral for C. difficile)</td><td>Same</td><td>500 mg IV q8h / Vancomycin 125 mg PO q6h</td><td>10–14 days</td><td>Adjust for severity</td></tr>
-<tr><td>Corynebacterium spp.</td><td>Penicillin G</td><td>Same</td><td>2–4 MU IV q4–6h</td><td>7–14 days</td><td>Monitor for immunocompromised</td></tr>
-<tr><td>Mycobacterium spp.</td><td>RIPE therapy (for TB)</td><td>Per sensitivity</td><td>Rifampin 10 mg/kg/day, Isoniazid 5 mg/kg/day, Pyrazinamide 25 mg/kg/day, Ethambutol 15 mg/kg/day</td><td>6 months or more</td><td>Monitor LFTs</td></tr>
-<tr><td>Nocardia spp.</td><td>TMP-SMX</td><td>Per susceptibility</td><td>15 mg/kg/day IV divided q6–8h</td><td>6–12 weeks</td><td>Adjust for renal</td></tr>
-</table>
-</div>
+      <div class="card">
+        <strong>Quick tips</strong>
+        <ul>
+          <li>Start empiric therapy based on site, severity, Gram-stain and local resistance patterns.</li>
+          <li>De-escalate once cultures and susceptibilities are available.</li>
+          <li>Always document source control decisions (drainage, device removal).</li>
+          <li>Adjust dosing for renal/hepatic dysfunction; monitor levels where required.</li>
+        </ul>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('GramNegativeCocci')">Gram-Negative Cocci</div>
-<div id="GramNegativeCocci" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Neisseria meningitidis</td><td>Ceftriaxone</td><td>Same</td><td>2 g IV q12h</td><td>7 days</td><td>Monitor for allergic reaction</td></tr>
-<tr><td>Neisseria gonorrhoeae</td><td>Ceftriaxone ± Azithromycin</td><td>Same</td><td>500 mg IM single dose</td><td>Single dose</td><td>Check local resistance patterns</td></tr>
-</table>
-</div>
+      <div class="card">
+        <strong>Contents</strong>
+        <div class="muted">Anatomic (CAP/HAP/VAP, UTI, SSTI, IA, CNS, Endocarditis, Osteomyelitis, CRBSI, Febrile neutropenia, SSI), plus organism-based guidance, pathogen overviews and references.</div>
+      </div>
+    </div>
 
-<div class="expandable" onclick="toggleVisibility('GramNegativeRods')">Gram-Negative Rods</div>
-<div id="GramNegativeRods" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Escherichia coli</td><td>Ceftriaxone / Piperacillin-Tazobactam</td><td>Per susceptibility</td><td>Ceftriaxone 2 g IV q24h</td><td>7–14 days</td><td>Adjust for renal</td></tr>
-<tr><td>Burkholderia spp.</td><td>Meropenem</td><td>Per susceptibility</td><td>1 g IV q8h</td><td>10–14 days</td><td>Resistant strains common</td></tr>
-</table>
-</div>
+    <!-- INFECTIONS BY SITE -->
+    <div id="sites" class="section">
+      <h2>Infections by Site (Anatomic / Syndrome-based)</h2>
+      <div class="note">Tap any syndrome to expand empiric & culture-directed therapy, dosing, and durations.</div>
 
-<div class="expandable" onclick="toggleVisibility('Anaerobes')">Anaerobes</div>
-<div id="Anaerobes" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Bacteroides spp.</td><td>Metronidazole / Beta-lactam-beta-lactamase inhibitor</td><td>Per susceptibility</td><td>500 mg IV q8h</td><td>7–14 days</td><td>Adjust for site of infection</td></tr>
-<tr><td>Prevotella spp.</td><td>Metronidazole / Beta-lactam-beta-lactamase inhibitor</td><td>Same</td><td>500 mg IV q8h</td><td>7–14 days</td><td>Often oral flora</td></tr>
-<tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>Same</td><td>18–24 MU/day IV</td><td>6–12 months</td><td>Chronic infections common</td></tr>
-</table>
-</div>
+      <!-- CAP -->
+      <div class="expandable" onclick="toggle('siteCAP')">Community-Acquired Pneumonia (CAP)</div>
+      <div id="siteCAP" class="card hidden">
+        <table>
+          <tr><th>Severity/Setting</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose / Notes</th></tr>
+          <tr>
+            <td>Outpatient, no comorbidity</td>
+            <td>Amoxicillin OR Doxycycline OR Azithromycin (if macrolide-susceptibility high)</td>
+            <td>Tailor to isolate</td>
+            <td>Amoxicillin 1 g PO TID; Doxy 100 mg PO q12h; Azithro 500 mg day1 → 250 mg qd ×4</td>
+          </tr>
+          <tr>
+            <td>Inpatient, non-ICU</td>
+            <td>Beta-lactam (ceftriaxone 1–2 g IV q24h) + macrolide (azithro) OR respiratory fluoroquinolone monotherapy</td>
+            <td>De-escalate to S. pneumoniae / atypical therapy per culture</td>
+            <td>Ceftriaxone 1–2 g IV q24h + Azith 500 mg IV/PO daily</td>
+          </tr>
+          <tr>
+            <td>ICU or severe</td>
+            <td>Ceftriaxone + Azithromycin or Cefepime/anti-pseudomonal if risk for Pseudomonas</td>
+            <td>Adjust per cultures; cover MRSA if risk (add vancomycin)</td>
+            <td>Treatment duration 5–7 days if good clinical response; longer if complicated</td>
+          </tr>
+        </table>
+        <div class="muted">Notes: consider MRSA/pseudomonas risk (recent hospitalization, prior antibiotics). Use urinary antigen for S. pneumoniae, Legionella testing for severe cases.</div>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('Intracellular')">Intracellular Pathogens</div>
-<div id="Intracellular" class="hidden">
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Chlamydia spp.</td><td>Doxycycline</td><td>Same</td><td>100 mg PO q12h</td><td>7 days</td><td>Monitor adherence</td></tr>
-<tr><td>Rickettsia spp.</td><td>Doxycycline</td><td>Same</td><td>100 mg PO/IV q12h</td><td>7–14 days</td><td>Pregnancy caution</td></tr>
-<tr><td>Legionella spp.</td><td>Azithromycin / Levofloxacin</td><td>Same</td><td>Azithromycin 500 mg IV/PO daily</td><td>10–14 days</td><td>Monitor QTc</td></tr>
-</table>
-</div>
+      <!-- HAP / VAP -->
+      <div class="expandable" onclick="toggle('siteHAPVAP')">Hospital-Acquired Pneumonia (HAP) / Ventilator-Associated Pneumonia (VAP)</div>
+      <div id="siteHAPVAP" class="card hidden">
+        <table>
+          <tr><th>Setting</th><th>Empiric</th><th>Directed</th><th>Dose / Duration</th></tr>
+          <tr>
+            <td>HAP/VAP without MDR risk</td>
+            <td>Piperacillin-tazobactam OR Cefepime OR Levofloxacin</td>
+            <td>Adjust to culture & susceptibilities</td>
+            <td>Typically 7 days if good response (shorter with de-escalation)</td>
+          </tr>
+          <tr>
+            <td>HAP/VAP with MDR risk (prior abx, hospital >5 days, high local rates)</td>
+            <td>Anti-pseudomonal beta-lactam (piperacillin-tazobactam / cefepime / meropenem) ± vancomycin or linezolid if MRSA risk</td>
+            <td>De-escalate to narrowest regimen</td>
+            <td>Consider aspiration risk and source control</td>
+          </tr>
+        </table>
+        <div class="muted">Prefer respiratory cultures (BAL/ETA) before antibiotics when feasible. Tailor therapy using local antibiograms.</div>
+      </div>
 
-</div>
+      <!-- UTI / Pyelo -->
+      <div class="expandable" onclick="toggle('siteUTI')">Urinary Tract Infection / Pyelonephritis</div>
+      <div id="siteUTI" class="card hidden">
+        <table>
+          <tr><th>Presentation</th><th>Empiric</th><th>Directed</th><th>Dose / Duration</th></tr>
+          <tr>
+            <td>Uncomplicated cystitis</td>
+            <td>Nitrofurantoin, TMP-SMX (if local susceptibility), or fosfomycin</td>
+            <td>Culture-guided</td>
+            <td>Nitrofurantoin 100 mg PO BID ×5 days; TMP-SMX 160/800 PO BID ×3 days</td>
+          </tr>
+          <tr>
+            <td>Complicated UTI / Pyelonephritis (inpatient)</td>
+            <td>IV ceftriaxone or piperacillin-tazobactam or cefepime for suspected resistant GN</td>
+            <td>De-escalate to oral when culture allows</td>
+            <td>Pyelo: 7–14 days depending on response</td>
+          </tr>
+          <tr>
+            <td>Catheter-associated UTI</td>
+            <td>Remove/replace catheter; empiric therapy per severity</td>
+            <td>Tailor to culture</td>
+            <td>Duration 7 days for complicated cases</td>
+          </tr>
+        </table>
+      </div>
 
-<!-- Fungal Infections -->
-<div id="fungi" style="display:none">
-<h2>Fungal Infections</h2>
-<div class="expandable" onclick="toggleVisibility('Candida')">Candida spp.</div>
-<div id="Candida" class="hidden">
-<table>
-<tr><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Echinocandin (Caspofungin)</td><td>Fluconazole if susceptible</td><td>Caspofungin 70 mg IV load, 50 mg IV daily</td><td>14 days</td></tr>
-</table>
-</div>
+      <!-- Skin and Soft Tissue Infections -->
+      <div class="expandable" onclick="toggle('siteSSTI')">Skin & Soft Tissue Infections (SSTI)</div>
+      <div id="siteSSTI" class="card hidden">
+        <table>
+          <tr><th>Type</th><th>Empiric</th><th>Directed</th><th>Dose / Duration</th></tr>
+          <tr>
+            <td>Uncomplicated cellulitis (no purulence)</td>
+            <td>Beta-lactam (cephalexin) or amoxicillin-clavulanate</td>
+            <td>Switch to narrow agents once culture identifies streptococci</td>
+            <td>Cephalexin 500 mg PO q6h ×5–7 days</td>
+          </tr>
+          <tr>
+            <td>Purulent SSTI (abscess)</td>
+            <td>Incision & drainage; empiric MRSA coverage (trimethoprim-sulfamethoxazole or doxycycline)</td>
+            <td>Culture-directed</td>
+            <td>If systemic signs: therapy 5–10 days</td>
+          </tr>
+          <tr>
+            <td>Severe/necrotizing</td>
+            <td>Broad-spectrum including MRSA coverage (vancomycin) + gram-negative/anaerobe coverage (piperacillin-tazobactam)</td>
+            <td>Cx-directed, urgent surgical debridement</td>
+            <td>Individualized; source control essential</td>
+          </tr>
+        </table>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('Aspergillus')">Aspergillus spp.</div>
-<div id="Aspergillus" class="hidden">
-<table>
-<tr><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Voriconazole</td><td>Same</td><td>6 mg/kg IV q12h ×2, then 4 mg/kg IV q12h</td><td>6–12 weeks</td></tr>
-</table>
-</div>
+      <!-- Intra-abdominal infections -->
+      <div class="expandable" onclick="toggle('siteIA')">Intra-abdominal Infections (IAI)</div>
+      <div id="siteIA" class="card hidden">
+        <table>
+          <tr><th>Source</th><th>Empiric</th><th>Directed</th><th>Dose / Duration</th></tr>
+          <tr>
+            <td>Uncomplicated appendicitis / localized</td>
+            <td>Cefoxitin or ceftriaxone + metronidazole</td>
+            <td>Adjust per cultures</td>
+            <td>Typically 4–7 days after source control</td>
+          </tr>
+          <tr>
+            <td>Complicated IAI (abscess/peritonitis)</td>
+            <td>Piperacillin-tazobactam or carbapenem if high risk for ESBL</td>
+            <td>Drainage + culture-targeted therapy</td>
+            <td>7–14 days depending on control</td>
+          </tr>
+          <tr>
+            <td>Anaerobic coverage</td>
+            <td>Metronidazole in combination or beta-lactam/beta-lactamase inhibitor</td>
+            <td>Per culture</td>
+            <td>Source control critical</td>
+          </tr>
+        </table>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('Cryptococcus')">Cryptococcus spp.</div>
-<div id="Cryptococcus" class="hidden">
-<table>
-<tr><th>Empiric Therapy</th><th>Culture-Directed Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Amphotericin B + Flucytosine</td><td>Fluconazole step-down</td><td>Ampho 0.7–1 mg/kg IV daily, Flucytosine 25 mg/kg PO q6h</td><td>2 weeks induction + 8–10 weeks consolidation</td></tr>
-</table>
-</div>
+      <!-- CNS: Meningitis & Brain Abscess -->
+      <div class="expandable" onclick="toggle('siteCNS')">Central Nervous System (Meningitis / Brain Abscess)</div>
+      <div id="siteCNS" class="card hidden">
+        <table>
+          <tr><th>Condition</th><th>Empiric</th><th>Directed</th><th>Dose / Duration</th></tr>
+          <tr>
+            <td>Bacterial meningitis (adult empiric)</td>
+            <td>Ceftriaxone 2 g IV q12h + vancomycin ± ampicillin (if Listeria risk)</td>
+            <td>Adjust per CSF culture</td>
+            <td>Duration 7–21 days depending on organism</td>
+          </tr>
+          <tr>
+            <td>Brain abscess</td>
+            <td>Ceftriaxone + metronidazole ± vancomycin if MRSA risk</td>
+            <td>Drainage + culture-directed therapy</td>
+            <td>6–8 weeks typical</td>
+          </tr>
+        </table>
+      </div>
 
-</div>
+      <!-- Endocarditis -->
+      <div class="expandable" onclick="toggle('siteEndo')">Endocarditis</div>
+      <div id="siteEndo" class="card hidden">
+        <table>
+          <tr><th>Setting</th><th>Empiric</th><th>Directed</th><th>Dose / Duration</th></tr>
+          <tr>
+            <td>Native valve, severe</td>
+            <td>Vancomycin + cefepime (or ceftriaxone) until cultures</td>
+            <td>Tailor to organism (e.g., oxacillin for MSSA; nafcillin + gentamicin for enterococcal synergy)</td>
+            <td>Typically 4–6 weeks depending on pathogen and valve</td>
+          </tr>
+          <tr>
+            <td>Prosthetic valve</td>
+            <td>Vancomycin + gentamicin + rifampin (consult ID)</td>
+            <td>Per cultures & susceptibilities</td>
+            <td>Often prolonged (6 weeks+); surgery if indicated</td>
+          </tr>
+        </table>
+      </div>
 
-<!-- Viral Infections -->
-<div id="viruses" style="display:none">
-<h2>Viral Infections</h2>
-<div class="expandable" onclick="toggleVisibility('HSV')">Herpes Simplex Virus</div>
-<div id="HSV" class="hidden">
-<table>
-<tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Acyclovir IV</td><td>5–10 mg/kg IV q8h</td><td>7–14 days</td></tr>
-</table>
-</div>
+      <!-- Bone & Joint: Osteomyelitis, Septic Arthritis -->
+      <div class="expandable" onclick="toggle('siteBone')">Bone & Joint (Osteomyelitis / Septic Arthritis)</div>
+      <div id="siteBone" class="card hidden">
+        <table>
+          <tr><th>Condition</th><th>Empiric</th><th>Directed</th><th>Dose / Duration</th></tr>
+          <tr>
+            <td>Osteomyelitis (hematogenous)</td>
+            <td>Vancomycin ± ceftriaxone (for Gram-negative risk)</td>
+            <td>Culture-directed; consider long-term IV/PO switch</td>
+            <td>4–6 weeks IV; longer in chronic cases</td>
+          </tr>
+          <tr>
+            <td>Septic arthritis</td>
+            <td>Vancomycin + anti-Gram-negative agent if risk</td>
+            <td>Arthrocentesis + culture-guided therapy</td>
+            <td>2–4 weeks; joint drainage required</td>
+          </tr>
+        </table>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('Influenza')">Influenza</div>
-<div id="Influenza" class="hidden">
-<table>
-<tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Oseltamivir</td><td>75 mg PO q12h</td><td>5 days</td></tr>
-</table>
-</div>
+      <!-- Catheter-Related Bloodstream Infection (CRBSI) -->
+      <div class="expandable" onclick="toggle('siteCRBSI')">Catheter-Related Bloodstream Infection (CRBSI)</div>
+      <div id="siteCRBSI" class="card hidden">
+        <table>
+          <tr><th>Approach</th><th>Empiric</th><th>Directed</th><th>Duration / Notes</th></tr>
+          <tr>
+            <td>Initial</td>
+            <td>Remove catheter if severe; start vancomycin ± anti-Gram-negative agent</td>
+            <td>Tailor to cultures from catheter and peripheral</td>
+            <td>Duration 7–14 days for uncomplicated Staph aureus? Longer for complicated</td>
+          </tr>
+        </table>
+        <div class="muted">Obtain paired cultures (catheter + peripheral). Device removal reduces persistent bacteremia risk.</div>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('CMV')">Cytomegalovirus</div>
-<div id="CMV" class="hidden">
-<table>
-<tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
-<tr><td>Ganciclovir IV</td><td>5 mg/kg IV q12h</td><td>14–21 days</td></tr>
-</table>
-</div>
-</div>
+      <!-- Febrile neutropenia -->
+      <div class="expandable" onclick="toggle('siteFN')">Febrile Neutropenia</div>
+      <div id="siteFN" class="card hidden">
+        <table>
+          <tr><th>Risk</th><th>Empiric</th><th>Directed</th><th>Notes / Duration</th></tr>
+          <tr>
+            <td>High-risk neutropenia</td>
+            <td>Anti-pseudomonal broad-spectrum IV monotherapy (cefepime, meropenem, or piperacillin-tazobactam)</td>
+            <td>Adjust based on cultures/persistence</td>
+            <td>Continue until ANC recovery or documented alternative diagnosis</td>
+          </tr>
+        </table>
+      </div>
 
-<!-- Pathogen-Based Guidance -->
-<div id="pathogen" style="display:none">
-<h2>Pathogen-Based Guidance</h2>
-<table>
-<tr><th>Category</th><th>Empiric Therapy</th><th>Culture-Directed Therapy</th></tr>
-<tr><td>Gram-Positive Cocci</td><td>Vancomycin / Beta-lactam</td><td>Per culture</td></tr>
-<tr><td>Gram-Positive Rods</td><td>Penicillin / TMP-SMX</td><td>Per culture</td></tr>
-<tr><td>Gram-Negative Cocci</td><td>Ceftriaxone</td><td>Per culture</td></tr>
-<tr><td>Gram-Negative Rods</td><td>Cefepime / Piperacillin-Tazobactam</td><td>Per culture</td></tr>
-<tr><td>Anaerobes</td><td>Metronidazole</td><td>Per culture</td></tr>
-<tr><td>Intracellular</td><td>Doxycycline / Macrolide</td><td>Per culture</td></tr>
-<tr><td>Fungi</td><td>Voriconazole / Echinocandin</td><td>Per susceptibility</td></tr>
-<tr><td>Viruses</td><td>Acyclovir / Oseltamivir / Ganciclovir</td><td>Per pathogen</td></tr>
-</table>
-</div>
+      <!-- Surgical Site Infection (SSI) -->
+      <div class="expandable" onclick="toggle('siteSSI')">Surgical Site Infection (SSI)</div>
+      <div id="siteSSI" class="card hidden">
+        <table>
+          <tr><th>Type</th><th>Empiric</th><th>Directed</th><th>Duration</th></tr>
+          <tr>
+            <td>Superficial incisional</td>
+            <td>Cefazolin (if MSSA/strep likely) or coverage for MRSA if risk</td>
+            <td>Culture-directed</td>
+            <td>5–10 days depending on response</td>
+          </tr>
+          <tr>
+            <td>Deep organ-space</td>
+            <td>Broad-spectrum including anaerobic coverage (piperacillin-tazobactam)</td>
+            <td>Drainage & culture-directed therapy</td>
+            <td>7–14 days or more</td>
+          </tr>
+        </table>
+      </div>
 
-<!-- Pathogen Overview -->
-<div id="overview" style="display:none">
-<h2>Pathogen Overview</h2>
+    </div> <!-- end sites -->
 
-<div class="expandable" onclick="toggleVisibility('overviewStrep')">Streptococcus spp.</div>
-<div id="overviewStrep" class="hidden">
-<ul>
-<li>Worldwide prevalence</li>
-<li>Risk: Immunocompromised, post-viral</li>
-<li>Resistance: Macrolide resistance increasing</li>
-<li>Pathophysiology: Exotoxin, capsule</li>
-</ul>
-</div>
+    <!-- BACTERIAL INFECTIONS -->
+    <div id="bacteria" class="section">
+      <h2>Bacterial Infections — Gram-stain & Organism Groups</h2>
+      <div class="muted">Tap each group to expand organism-level guidance (empiric, directed, dosing, durations).</div>
 
-<div class="expandable" onclick="toggleVisibility('overviewStaph')">Staphylococcus aureus</div>
-<div id="overviewStaph" class="hidden">
-<ul>
-<li>Worldwide prevalence</li>
-<li>Risk: Catheter, hospitalization</li>
-<li>Resistance: MRSA</li>
-<li>Biofilm and toxin mediated</li>
-</ul>
-</div>
+      <!-- Gram-positive cocci -->
+      <div class="expandable" onclick="toggle('b_GP_cocci')">Gram-Positive Cocci</div>
+      <div id="b_GP_cocci" class="card hidden">
+        <table>
+          <tr><th>Organism</th><th>Empiric</th><th>Culture-directed</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Streptococcus spp.</td>
+            <td>Penicillin G</td>
+            <td>Penicillin / ceftriaxone per sensitivities</td>
+            <td>Pen G 12–24 MU/day IV (divided)</td>
+            <td>10–14 days (site-dependent)</td>
+          </tr>
+          <tr>
+            <td>Staphylococcus aureus (MSSA)</td>
+            <td>Nafcillin / Oxacillin</td>
+            <td>Same</td>
+            <td>Nafcillin 2 g IV q4h</td>
+            <td>10–14 days (bacteremia/endocarditis longer)</td>
+          </tr>
+          <tr>
+            <td>MRSA</td>
+            <td>Vancomycin</td>
+            <td>Vancomycin / Linezolid if indicated</td>
+            <td>Vancomycin 15 mg/kg IV q12h (monitor trough/area)</td>
+            <td>10–14 days (longer for deep-seated infections)</td>
+          </tr>
+          <tr>
+            <td>Enterococcus spp.</td>
+            <td>Ampicillin ± gentamicin (if severe)</td>
+            <td>Per susceptibilities (ampicillin, vancomycin if VRE consider linezolid or daptomycin)</td>
+            <td>Ampicillin 2 g IV q4h</td>
+            <td>4–6 weeks for endocarditis; shorter for UTIs</td>
+          </tr>
+        </table>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('overviewMyco')">Mycobacterium spp.</div>
-<div id="overviewMyco" class="hidden">
-<ul>
-<li>TB endemic regions</li>
-<li>Risk: HIV, crowded living</li>
-<li>MDR/XDR strains rising</li>
-<li>Slow-growing, intracellular</li>
-</ul>
-</div>
+      <!-- Gram-positive rods -->
+      <div class="expandable" onclick="toggle('b_GP_rods')">Gram-Positive Rods</div>
+      <div id="b_GP_rods" class="card hidden">
+        <table>
+          <tr><th>Organism</th><th>Empiric</th><th>Culture-directed</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Clostridium spp. (including difficile)</td>
+            <td>Metronidazole or Oral vancomycin for C. difficile</td>
+            <td>Oral vancomycin for C. difficile; others per susceptibility</td>
+            <td>Metronidazole 500 mg IV q8h; Vancomycin PO 125–500 mg q6h</td>
+            <td>10–14 days for C. difficile; organism/site dependent</td>
+          </tr>
+          <tr>
+            <td>Corynebacterium spp.</td>
+            <td>Penicillin or vancomycin (if severe)</td>
+            <td>Penicillin or targeted therapy</td>
+            <td>Pen G 2–4 MU IV q4–6h</td>
+            <td>7–14 days depending on source</td>
+          </tr>
+          <tr>
+            <td>Mycobacterium tuberculosis</td>
+            <td>RIPE (rifampin, isoniazid, pyrazinamide, ethambutol)</td>
+            <td>Per sensitivity, prolonged multi-drug therapy</td>
+            <td>Standard TB dosing; monitor LFTs</td>
+            <td>6 months (shorter/longer per site/resistance)</td>
+          </tr>
+          <tr>
+            <td>Nocardia spp.</td>
+            <td>TMP-SMX</td>
+            <td>Per susceptibility (linezolid, imipenem alternatives)</td>
+            <td>TMP-SMX 15 mg/kg/day TMP component (IV)</td>
+            <td>6–12 months (CNS involvement longer)</td>
+          </tr>
+        </table>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('overviewNocardia')">Nocardia spp.</div>
-<div id="overviewNocardia" class="hidden">
-<ul>
-<li>Soil-borne opportunist</li>
-<li>Risk: Immunocompromised</li>
-<li>TMP-SMX usually effective</li>
-<li>Aerobic filamentous rods</li>
-</ul>
-</div>
+      <!-- Gram-negative cocci -->
+      <div class="expandable" onclick="toggle('b_GN_cocci')">Gram-Negative Cocci</div>
+      <div id="b_GN_cocci" class="card hidden">
+        <table>
+          <tr><th>Organism</th><th>Empiric</th><th>Directed</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Neisseria meningitidis</td>
+            <td>Ceftriaxone</td>
+            <td>Ceftriaxone</td>
+            <td>2 g IV q12h</td>
+            <td>7 days</td>
+          </tr>
+          <tr>
+            <td>Neisseria gonorrhoeae</td>
+            <td>Ceftriaxone</td>
+            <td>Ceftriaxone ± azithro if coinfection</td>
+            <td>500 mg IM single dose</td>
+            <td>Single dose</td>
+          </tr>
+        </table>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('overviewCory')">Corynebacterium spp.</div>
-<div id="overviewCory" class="hidden">
-<ul>
-<li>Skin/mucosa colonizer</li>
-<li>Risk: Immunocompromised</li>
-<li>Variable resistance</li>
-<li>Rod-shaped</li>
-</ul>
-</div>
+      <!-- Gram-negative rods -->
+      <div class="expandable" onclick="toggle('b_GN_rods')">Gram-Negative Rods</div>
+      <div id="b_GN_rods" class="card hidden">
+        <table>
+          <tr><th>Organism</th><th>Empiric</th><th>Directed</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Enterobacteriaceae (E. coli, Klebsiella)</td>
+            <td>Ceftriaxone / Cefepime / Piperacillin-Tazobactam</td>
+            <td>Meropenem for ESBL; tailor to susceptibility</td>
+            <td>Ceftriaxone 1–2 g IV q24h; Meropenem 1 g IV q8h</td>
+            <td>7–14 days depending on site</td>
+          </tr>
+          <tr>
+            <td>Burkholderia spp.</td>
+            <td>Meropenem ± TMP-SMX</td>
+            <td>Per susceptibility</td>
+            <td>Meropenem 1 g IV q8h</td>
+            <td>10–14 days</td>
+          </tr>
+          <tr>
+            <td>Pseudomonas aeruginosa</td>
+            <td>Cefepime / Piperacillin-tazobactam / Meropenem (based on risk)</td>
+            <td>Escalate/de-escalate to susceptibility; consider combination initial therapy</td>
+            <td>Cefepime 2 g IV q8h; Piperacillin-tazo 4.5 g IV q6–8h</td>
+            <td>7–14 days (site dependent)</td>
+          </tr>
+        </table>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('overviewAnaerobes')">Bacteroides, Prevotella, Actinomyces, Clostridium</div>
-<div id="overviewAnaerobes" class="hidden">
-<ul>
-<li>Normal flora/opportunistic infections</li>
-<li>Risk: GI surgery, aspiration</li>
-<li>Resistance patterns variable</li>
-<li>Rod-shaped, anaerobic</li>
-</ul>
-</div>
+      <!-- Aerobes/Anaerobes combined -->
+      <div class="expandable" onclick="toggle('b_anaer')">Anaerobes / Mixed infections</div>
+      <div id="b_anaer" class="card hidden">
+        <table>
+          <tr><th>Group</th><th>Empiric</th><th>Directed</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Bacteroides / Prevotella</td>
+            <td>Metronidazole + β-lactam or β-lactam/β-lactamase inhibitor</td>
+            <td>Metronidazole or carbapenem depending on susceptibility</td>
+            <td>Metronidazole 500 mg IV q8h</td>
+            <td>7–14 days</td>
+          </tr>
+          <tr>
+            <td>Actinomyces</td>
+            <td>High-dose penicillin</td>
+            <td>Penicillin long-term</td>
+            <td>Pen G 18–24 MU/day IV (or high-dose oral)</td>
+            <td>6–12 months</td>
+          </tr>
+        </table>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('overviewBurkholderia')">Burkholderia spp.</div>
-<div id="overviewBurkholderia" class="hidden">
-<ul>
-<li>Soil, water exposure</li>
-<li>Risk: CF patients, immunocompromised</li>
-<li>Highly resistant</li>
-<li>Gram-negative rod</li>
-</ul>
-</div>
+    </div> <!-- end bacteria -->
 
-<div class="expandable" onclick="toggleVisibility('overviewIntracellular')">Intracellular Pathogens</div>
-<div id="overviewIntracellular" class="hidden">
-<ul>
-<li>Chlamydia, Rickettsia, Legionella</li>
-<li>Risk: Exposure to vectors, endemic regions</li>
-<li>Macrolide / Doxycycline sensitive</li>
-<li>Obligate intracellular</li>
-</ul>
-</div>
+    <!-- FUNGAL INFECTIONS -->
+    <div id="fungi" class="section">
+      <h2>Fungal Infections</h2>
+      <div class="muted">Common inpatient fungal pathogens and initial therapy.</div>
 
-<div class="expandable" onclick="toggleVisibility('overviewFungi')">Fungi</div>
-<div id="overviewFungi" class="hidden">
-<ul>
-<li>Candida, Aspergillus, Cryptococcus</li>
-<li>Risk: Immunocompromised</li>
-<li>Resistance emerging</li>
-<li>Yeast or mold</li>
-</ul>
-</div>
+      <div class="expandable" onclick="toggle('f_Candida')">Candida spp.</div>
+      <div id="f_Candida" class="card hidden">
+        <table>
+          <tr><th>Pathogen</th><th>Empiric</th><th>Directed</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Candida spp. (bloodstream)</td>
+            <td>Echinocandin (caspofungin, micafungin)</td>
+            <td>Step-down to fluconazole if susceptible</td>
+            <td>Caspofungin 70 mg IV day1 then 50 mg IV daily</td>
+            <td>14 days after first negative blood culture</td>
+          </tr>
+        </table>
+        <div class="muted">Remove central lines if source; consult Infectious Diseases for C. auris or multi-resistant isolates.</div>
+      </div>
 
-<div class="expandable" onclick="toggleVisibility('overviewViruses')">Viruses</div>
-<div id="overviewViruses" class="hidden">
-<ul>
-<li>HSV, VZV, Influenza, CMV</li>
-<li>Risk: Immunosuppressed, exposure</li>
-<li>Virus-specific antiviral therapy</li>
-<li>Replicate intracellularly</li>
-</ul>
-</div>
+      <div class="expandable" onclick="toggle('f_Aspergillus')">Aspergillus spp.</div>
+      <div id="f_Aspergillus" class="card hidden">
+        <table>
+          <tr><th>Pathogen</th><th>First-line</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Invasive aspergillosis</td>
+            <td>Voriconazole</td>
+            <td>6 mg/kg IV q12h ×2 then 4 mg/kg IV q12h</td>
+            <td>Typically at least 6–12 weeks; guided by response</td>
+          </tr>
+        </table>
+      </div>
 
-</div>
+      <div class="expandable" onclick="toggle('f_Crypto')">Cryptococcus</div>
+      <div id="f_Crypto" class="card hidden">
+        <table>
+          <tr><th>Stage</th><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Cryptococcal meningitis (induction)</td>
+            <td>Amphotericin B + flucytosine</td>
+            <td>AmB 0.7–1 mg/kg IV daily + flucytosine 25 mg/kg PO q6h</td>
+            <td>2 weeks induction then high-dose fluconazole consolidation</td>
+          </tr>
+        </table>
+      </div>
 
-<!-- Antibiotic Classes / Escalation -->
-<div id="classes" style="display:none">
-<h2>Antibiotic Classes / Escalation</h2>
-<table>
-<tr><th>Class</th><th>Example Drugs</th><th>Coverage</th><th>Notes</th></tr>
-<tr><td>Beta-lactams</td><td>Penicillins, Cephalosporins, Carbapenems</td><td>Gram-positive, Gram-negative, anaerobes</td><td>Adjust renal</td></tr>
-<tr><td>Glycopeptides</td><td>Vancomycin, Teicoplanin</td><td>Gram-positive</td><td>Monitor levels</td></tr>
-<tr><td>Macrolides</td><td>Azithromycin, Clarithromycin</td><td>Gram-positive, atypicals</td><td>QTc prolongation</td></tr>
-<tr><td>Fluoroquinolones</td><td>Levofloxacin, Ciprofloxacin</td><td>Gram-negative, atypicals</td><td>Tendon/neuropathy risk</td></tr>
-<tr><td>Tetracyclines</td><td>Doxycycline, Minocycline</td><td>Intracellular, atypicals</td><td>Photosensitivity</td></tr>
-<tr><td>Polyenes / Azoles</td><td>Amphotericin B, Voriconazole</td><td>Fungi</td><td>Monitor LFTs, renal</td></tr>
-<tr><td>Antivirals</td><td>Acyclovir, Oseltamivir, Ganciclovir</td><td>Virus-specific</td><td>Adjust renal</td></tr>
-</table>
-</div>
+      <div class="expandable" onclick="toggle('f_Mucor')">Mucorales (mucormycosis)</div>
+      <div id="f_Mucor" class="card hidden">
+        <table>
+          <tr><th>Therapy</th><th>Dose</th><th>Notes</th></tr>
+          <tr>
+            <td>Liposomal amphotericin B</td>
+            <td>5–10 mg/kg IV daily</td>
+            <td>Urgent surgical debridement + control of underlying risk factors</td>
+          </tr>
+        </table>
+      </div>
 
-<!-- References -->
-<div id="references" style="display:none">
-<h2>References</h2>
-<ul>
-<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy/">IDSA Guidelines - Antimicrobial Therapy</a></li>
-<li><a href="https://www.nejm.org/">New England Journal of Medicine</a></li>
-<li><a href="https://jamanetwork.com/">JAMA</a></li>
-<li><a href="https://accessmedicine.mhmedical.com/book.aspx?bookid=2129">Harrison's Principles of Internal Medicine</a></li>
-<li><a href="https://www.cdc.gov/">CDC Guidelines</a></li>
-</ul>
-</div>
+    </div> <!-- end fungi -->
 
-</div> <!-- End content -->
+    <!-- VIRAL INFECTIONS -->
+    <div id="viruses" class="section">
+      <h2>Viral Infections</h2>
+      <div class="muted">Common inpatient viral syndromes and antivirals.</div>
+
+      <div class="expandable" onclick="toggle('v_HSV')">HSV-1 / HSV-2</div>
+      <div id="v_HSV" class="card hidden">
+        <table>
+          <tr><th>Condition</th><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Severe mucocutaneous / encephalitis</td>
+            <td>Acyclovir IV</td>
+            <td>10 mg/kg IV q8h (5–10 mg/kg q8h for other severe cases)</td>
+            <td>7–14 days (encephalitis often 14–21 days)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="expandable" onclick="toggle('v_VZV')">Varicella-Zoster Virus</div>
+      <div id="v_VZV" class="card hidden">
+        <table>
+          <tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Acyclovir IV for severe disease</td>
+            <td>10 mg/kg IV q8h</td>
+            <td>7–10 days</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="expandable" onclick="toggle('v_Influenza')">Influenza A / B</div>
+      <div id="v_Influenza" class="card hidden">
+        <table>
+          <tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Oseltamivir</td>
+            <td>75 mg PO q12h</td>
+            <td>5 days (longer in severe illness)</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="expandable" onclick="toggle('v_CMV')">Cytomegalovirus (CMV)</div>
+      <div id="v_CMV" class="card hidden">
+        <table>
+          <tr><th>Therapy</th><th>Dose</th><th>Duration</th></tr>
+          <tr>
+            <td>Ganciclovir IV</td>
+            <td>5 mg/kg IV q12h (adjust renal)</td>
+            <td>14–21 days induction followed by maintenance as indicated</td>
+          </tr>
+        </table>
+      </div>
+
+    </div> <!-- end viruses -->
+
+    <!-- PATHOGEN-BASED GUIDANCE -->
+    <div id="pathogen" class="section">
+      <h2>Pathogen-Based Guidance</h2>
+      <div class="muted">Quick Gram-stain → recommended empiric classes; always de-escalate once susceptibilities available.</div>
+
+      <table>
+        <tr><th>Gram / Category</th><th>Recommended Empiric</th><th>Notes</th></tr>
+        <tr><td>Gram-positive cocci (clusters)</td><td>Vancomycin (MRSA coverage)</td><td>De-escalate to beta-lactam if MSSA and susceptible</td></tr>
+        <tr><td>Gram-positive cocci (chains)</td><td>Penicillin/ampicillin</td><td>Consider ceftriaxone for severe invasive disease</td></tr>
+        <tr><td>Gram-negative rods</td><td>Cefepime / Piperacillin-tazobactam / Meropenem (depending on risk)</td><td>Consider ESBL risk; escalate to carbapenem if needed</td></tr>
+        <tr><td>Gram-negative cocci</td><td>Ceftriaxone</td><td>Neisseria species, consider site-specific therapy</td></tr>
+        <tr><td>Anaerobes</td><td>Metronidazole ± beta-lactam</td><td>Intra-abdominal & dental sources</td></tr>
+        <tr><td>Intracellular organisms (atypicals)</td><td>Doxycycline / macrolide / fluoroquinolone</td><td>Legionella, Chlamydia, Mycoplasma</td></tr>
+        <tr><td>Fungal (yeast / mold)</td><td>Echinocandin / Voriconazole</td><td>Start empirically for candidemia/aspergillosis risk</td></tr>
+        <tr><td>Viral</td><td>Acyclovir / Oseltamivir / Ganciclovir</td><td>Based on syndrome & testing</td></tr>
+      </table>
+    </div>
+
+    <!-- PATHOGEN OVERVIEW -->
+    <div id="overview" class="section">
+      <h2>Pathogen Overview — Selected Genera & Key Species</h2>
+      <div class="muted">Prevalence, risk factors, vectors/transmission, resistance, pathophysiology, and quick clinical notes.</div>
+
+      <!-- Mycobacterium -->
+      <div class="expandable" onclick="toggle('ovMyco')">Mycobacterium (TB & non-TB mycobacteria)</div>
+      <div id="ovMyco" class="card hidden">
+        <strong>Prevalence:</strong> Global; TB endemic in many regions.<br/>
+        <strong>Risk factors:</strong> HIV/immunosuppression, close-contact exposure, crowded living.<br/>
+        <strong>Transmission:</strong> Airborne droplets.<br/>
+        <strong>Resistance:</strong> MDR/XDR TB increasing; check sensitivity to rifampin/INH/fluoroquinolones/aminoglycosides.<br/>
+        <strong>Pathophysiology:</strong> Intracellular survival in macrophages; granuloma formation; chronic disease course.<br/>
+        <strong>Clinical notes:</strong> RIPE therapy and DOT where indicated; prolonged therapy, monitor LFTs, and use specialist input for resistance.
+      </div>
+
+      <!-- Corynebacterium -->
+      <div class="expandable" onclick="toggle('ovCory')">Corynebacterium</div>
+      <div id="ovCory" class="card hidden">
+        <strong>Prevalence:</strong> Worldwide; many species are commensals.<br/>
+        <strong>Risk factors:</strong> Indwelling devices, immunocompromise.<br/>
+        <strong>Transmission:</strong> Contact/colonization.<br/>
+        <strong>Resistance:</strong> Species-dependent; some isolates penicillin-resistant.<br/>
+        <strong>Notes:</strong> C. diphtheriae causes toxin-mediated disease — antitoxin and antibiotics indicated. Non-diphtherial species can cause endocarditis and bloodstream infections in vulnerable hosts.
+      </div>
+
+      <!-- Nocardia -->
+      <div class="expandable" onclick="toggle('ovNocardia')">Nocardia</div>
+      <div id="ovNocardia" class="card hidden">
+        <strong>Prevalence:</strong> Environmental (soil), worldwide but opportunistic.<br/>
+        <strong>Risk factors:</strong> Steroids, transplant, chronic lung disease.<br/>
+        <strong>Transmission:</strong> Inhalation; direct inoculation for cutaneous disease.<br/>
+        <strong>Resistance:</strong> Variable; many isolates susceptible to TMP-SMX, but check susceptibility.<br/>
+        <strong>Pathophysiology:</strong> Weakly acid-fast, filamentous bacteria; disseminate to CNS.<br/>
+        <strong>Clinical notes:</strong> Long courses (6–12 months); higher doses for CNS involvement.
+      </div>
+
+      <!-- Streptococcus -->
+      <div class="expandable" onclick="toggle('ovStrep')">Streptococcus spp.</div>
+      <div id="ovStrep" class="card hidden">
+        <strong>Prevalence:</strong> Very common — pharyngitis, pneumonia, invasive disease.<br/>
+        <strong>Risk factors:</strong> Age extremes, comorbidities.<br/>
+        <strong>Resistance:</strong> Penicillin remains effective for many species; macrolide resistance variable.<br/>
+        <strong>Pathophysiology:</strong> Capsule & toxins mediate invasiveness.<br/>
+        <strong>Clinical notes:</strong> Treat based on site; high index for invasive disease (bacteremia/endocarditis).
+      </div>
+
+      <!-- Staphylococcus -->
+      <div class="expandable" onclick="toggle('ovStaph')">Staphylococcus aureus</div>
+      <div id="ovStaph" class="card hidden">
+        <strong>Prevalence:</strong> Common colonizer and pathogen (SSTI, bacteremia, endocarditis).<br/>
+        <strong>Risk factors:</strong> Diabetes, IV devices, recent hospitalization.<br/>
+        <strong>Resistance:</strong> MRSA (mecA), some VISA/hVISA described.<br/>
+        <strong>Notes:</strong> Remove infected devices; choose anti-staphylococcal beta-lactams for MSSA; vancomycin/linezolid/daptomycin for MRSA depending on syndrome.
+      </div>
+
+      <!-- Clostridium -->
+      <div class="expandable" onclick="toggle('ovClostridium')">Clostridium spp. (incl. C. difficile)</div>
+      <div id="ovClostridium" class="card hidden">
+        <strong>Prevalence:</strong> Environmental & gut flora; C. difficile common nosocomial pathogen.<br/>
+        <strong>Risk factors:</strong> Recent antibiotics, hospitalization, PPI use.<br/>
+        <strong>Transmission:</strong> Spore-mediated; fomites.<br/>
+        <strong>Notes:</strong> Oral vancomycin is first-line for severe C. difficile; fecal microbiota transplantation for recurrent disease (per guidelines).
+      </div>
+
+      <!-- Bacteroides -->
+      <div class="expandable" onclick="toggle('ovBacteroides')">Bacteroides</div>
+      <div id="ovBacteroides" class="card hidden">
+        <strong>Prevalence:</strong> Normal gut flora; common in intra-abdominal infections.<br/>
+        <strong>Resistance:</strong> Beta-lactamase production common — choose agents with anaerobic coverage.<br/>
+        <strong>Notes:</strong> Source control (drainage) plus metronidazole or beta-lactam/beta-lactamase inhibitor therapy.
+      </div>
+
+      <!-- Prevotella -->
+      <div class="expandable" onclick="toggle('ovPrevotella')">Prevotella</div>
+      <div id="ovPrevotella" class="card hidden">
+        <strong>Prevalence:</strong> Oral and upper-airway flora; associated with aspiration pneumonia and oral infections.<br/>
+        <strong>Therapy:</strong> Metronidazole or beta-lactam/beta-lactamase inhibitor; consider polymicrobial coverage.
+      </div>
+
+      <!-- Actinomyces -->
+      <div class="expandable" onclick="toggle('ovActinomyces')">Actinomyces</div>
+      <div id="ovActinomyces" class="card hidden">
+        <strong>Prevalence & Risk:</strong> Oral flora; dental disease, poor hygiene; cervicofacial infections common.<br/>
+        <strong>Therapy:</strong> High-dose penicillin, prolonged courses (months) often required.
+      </div>
+
+      <!-- Burkholderia -->
+      <div class="expandable" onclick="toggle('ovBurkholderia')">Burkholderia cepacia complex</div>
+      <div id="ovBurkholderia" class="card hidden">
+        <strong>Prevalence:</strong> Environmental; important for cystic fibrosis patients.<br/>
+        <strong>Resistance:</strong> Often multidrug-resistant; combination therapy frequently required.<br/>
+        <strong>Notes:</strong> Infection control critical in CF centers.
+      </div>
+
+      <!-- Intracellular overview -->
+      <div class="expandable" onclick="toggle('ovIntracell')">Intracellular Pathogens</div>
+      <div id="ovIntracell" class="card hidden">
+        <strong>Groups:</strong> Chlamydia, Mycoplasma, Legionella, Rickettsia, Coxiella.<br/>
+        <strong>Therapy:</strong> Doxycycline, macrolides, or fluoroquinolones depending on organism. Many are not amenable to standard beta-lactam therapy.
+      </div>
+
+      <!-- Fungi overview -->
+      <div class="expandable" onclick="toggle('ovFungi')">Fungi overview</div>
+      <div id="ovFungi" class="card hidden">
+        <strong>Important genera:</strong> Candida (yeast), Aspergillus (mold), Cryptococcus, Mucorales.<br/>
+        <strong>Risk:</strong> ICU, central lines, neutropenia, transplant, prolonged antibiotics.<br/>
+        <strong>Therapies:</strong> Echinocandins for candidemia; voriconazole for invasive aspergillosis; amphotericin for mucorales/cryptococcus induction.
+      </div>
+
+      <!-- Viruses overview -->
+      <div class="expandable" onclick="toggle('ovViruses')">Viruses overview</div>
+      <div id="ovViruses" class="card hidden">
+        <strong>Common inpatient viruses:</strong> HSV-1/2, VZV, Influenza, CMV, RSV.<br/>
+        <strong>Approach:</strong> Syndrome-directed testing (PCR, antigen); start antivirals in severe disease / high-risk patients.
+      </div>
+
+    </div> <!-- end overview -->
+
+    <!-- ANTIBIOTIC CLASSES / ESCALATION -->
+    <div id="classes" class="section">
+      <h2>Antibiotic Classes & Escalation</h2>
+      <table>
+        <tr><th>Class</th><th>Examples</th><th>Typical Use</th><th>Key Notes</th></tr>
+        <tr><td>Penicillins</td><td>Amoxicillin, Ampicillin, Piperacillin-tazobactam</td><td>Streptococci, enterococci (ampicillin), broad GN/anaerobe (pip-tazo)</td><td>Adjust renal; check allergy history</td></tr>
+        <tr><td>Cephalosporins</td><td>Cefazolin, Ceftriaxone, Cefepime</td><td>Spectrum varies by generation; cefepime for Pseudomonas</td><td>ESBL producers resistant</td></tr>
+        <tr><td>Carbapenems</td><td>Meropenem, Imipenem</td><td>Broad GN including ESBL; severe polymicrobial infections</td><td>Reserve for resistant infections</td></tr>
+        <tr><td>Glycopeptides</td><td>Vancomycin</td><td>MRSA, serious Gram-positive infections</td><td>Monitor renal & levels</td></tr>
+        <tr><td>Oxazolidinones</td><td>Linezolid</td><td>VRE, MRSA alternatives</td><td>Watch thrombocytopenia, serotonin interactions</td></tr>
+        <tr><td>Fluoroquinolones</td><td>Levofloxacin, Ciprofloxacin</td><td>GN & atypical coverage</td><td>Adverse effects: tendinopathy, neuropathy; use cautiously</td></tr>
+        <tr><td>Aminoglycosides</td><td>Gentamicin, Amikacin</td><td>Synergy for GN, severe infections</td><td>Nephro/ototoxicity; dose adjust</td></tr>
+        <tr><td>Tetracyclines</td><td>Doxycycline</td><td>Intracellular pathogens, some MRSA</td><td>Photosensitivity</td></tr>
+        <tr><td>Echinocandins</td><td>Caspofungin</td><td>Candidemia</td><td>IV only; minimal interactions</td></tr>
+        <tr><td>Azoles / Amphotericin</td><td>Fluconazole, Voriconazole, Amphotericin B</td><td>Fungal infections</td><td>Monitor LFTs; amphotericin nephrotoxic</td></tr>
+        <tr><td>Antivirals</td><td>Acyclovir, Oseltamivir, Ganciclovir</td><td>Virus-specific</td><td>Adjust renal</td></tr>
+      </table>
+    </div>
+
+    <!-- REFERENCES -->
+    <div id="references" class="section">
+      <h2>References & Guidelines</h2>
+      <ul>
+        <li><a href="https://www.idsociety.org/practice-guideline/" target="_blank">IDSA — Practice Guidelines</a></li>
+        <li><a href="https://www.nejm.org/" target="_blank">NEJM — Review Articles</a></li>
+        <li><a href="https://jamanetwork.com/" target="_blank">JAMA — Clinical Reviews</a></li>
+        <li><a href="https://accessmedicine.mhmedical.com/book.aspx?bookid=2129" target="_blank">Harrison's Principles of Internal Medicine</a></li>
+        <li><a href="https://www.cdc.gov/antibiotic-use/index.html" target="_blank">CDC — Antibiotic Use & Stewardship</a></li>
+        <li><a href="https://www.cdc.gov/antibiotic-use/community/for-hcp/index.html" target="_blank">CDC — Guidance for Clinicians</a></li>
+      </ul>
+      <div class="muted">These references are a starting point. For specific, high-stakes scenarios (complex endocarditis, MDR TB, severe fungal disease), consult the named guideline and Infectious Diseases.</div>
+    </div>
+
+  </div> <!-- end content -->
+
 </body>
 </html>
