@@ -110,72 +110,73 @@
 
 </head>
 <body>
-<div id="top-banner">
-  <h1>Antibiotic and Infection Guide</h1>
-</div>
+  <!-- Top banner -->
+  <div id="top-banner">
+    <h1>Antibiotic and Infection Guide</h1>
+  </div>
 
-<nav>
-<ul>
-<li class="nav-item" data-target="homepage">Home</li>
+  <!-- Main layout container -->
+  <div class="container">
+    <!-- Sidebar navigation -->
+    <nav>
+      <ul>
+        <li class="nav-item" data-target="homepage">Home</li>
+        <li class="expandable">Empiric Therapy
+          <ul class="sub-menu">
+            <li class="nav-item" data-target="empiric-grampos">Gram-Positive Cocci</li>
+            <li class="nav-item" data-target="empiric-gramneg">Gram-Negative Rods & Cocci</li>
+            <li class="nav-item" data-target="empiric-anaerobes">Anaerobes</li>
+            <li class="nav-item" data-target="empiric-intracellular">Intracellular / Fastidious</li>
+          </ul>
+        </li>
+        <li class="expandable">Infections by Anatomic Site
+          <ul class="sub-menu">
+            <li class="nav-item" data-target="head-neck">Head & Neck</li>
+            <li class="nav-item" data-target="respiratory">Respiratory Tract</li>
+            <li class="nav-item" data-target="urinary">Urinary Tract / Pyelonephritis</li>
+            <li class="nav-item" data-target="gastrointestinal">Gastrointestinal / Intra-abdominal</li>
+            <li class="nav-item" data-target="skin-softtissue">Skin & Soft Tissue</li>
+            <li class="nav-item" data-target="bone-joint">Bone & Joint</li>
+          </ul>
+        </li>
+        <li class="nav-item" data-target="sepsis">Sepsis</li>
+        <li class="expandable">Pathogen-Based Guidance
+          <ul class="sub-menu">
+            <li class="nav-item" data-target="pathogen-guidance">Therapy & Dosing</li>
+          </ul>
+        </li>
+        <li class="expandable">Pathogen Overview
+          <ul class="sub-menu">
+            <li class="nav-item" data-target="pathogen-overview">Detailed Organisms</li>
+          </ul>
+        </li>
+        <li class="nav-item" data-target="antibiotic-classes">Antibiotic Classes / Escalation</li>
+        <li class="nav-item" data-target="fungal-infections">Fungal Infections</li>
+        <li class="nav-item" data-target="viral-infections">Viral Infections</li>
+        <li class="nav-item" data-target="calculators">Calculators</li>
+        <li class="nav-item" data-target="references">References</li>
+      </ul>
+    </nav>
 
-<li class="expandable">Empiric Therapy
-  <ul class="sub-menu">
-    <li class="nav-item" data-target="empiric-grampos">Gram-Positive Cocci</li>
-    <li class="nav-item" data-target="empiric-gramneg">Gram-Negative Rods & Cocci</li>
-    <li class="nav-item" data-target="empiric-anaerobes">Anaerobes</li>
-    <li class="nav-item" data-target="empiric-intracellular">Intracellular / Fastidious</li>
-  </ul>
-</li>
-
-<li class="expandable">Infections by Anatomic Site
-  <ul class="sub-menu">
-    <li class="nav-item" data-target="head-neck">Head & Neck</li>
-    <li class="nav-item" data-target="respiratory">Respiratory Tract</li>
-    <li class="nav-item" data-target="urinary">Urinary Tract / Pyelonephritis</li>
-    <li class="nav-item" data-target="gastrointestinal">Gastrointestinal / Intra-abdominal</li>
-    <li class="nav-item" data-target="skin-softtissue">Skin & Soft Tissue</li>
-    <li class="nav-item" data-target="bone-joint">Bone & Joint</li>
-  </ul>
-</li>
-
-<li class="nav-item" data-target="sepsis">Sepsis</li>
-<li class="expandable">Pathogen-Based Guidance
-  <ul class="sub-menu">
-    <li class="nav-item" data-target="pathogen-guidance">Therapy & Dosing</li>
-  </ul>
-</li>
-<li class="expandable">Pathogen Overview
-  <ul class="sub-menu">
-    <li class="nav-item" data-target="pathogen-overview">Detailed Organisms</li>
-  </ul>
-</li>
-<li class="nav-item" data-target="antibiotic-classes">Antibiotic Classes / Escalation</li>
-<li class="nav-item" data-target="fungal-infections">Fungal Infections</li>
-<li class="nav-item" data-target="viral-infections">Viral Infections</li>
-<li class="nav-item" data-target="calculators">Calculators</li>
-<li class="nav-item" data-target="references">References</li>
-</ul>
-</nav>
-
-<main>
-
-<section id="homepage" class="content-panel">
-<header>
-<img src="mutant-icon.png" alt="Antibiotic Guide Icon" style="width:80px;height:80px;display:block;margin:0.5rem auto;">
-<h2>Antibiotic & Infection Guide</h2>
-<div class="quick-tips">
-<strong>Quick Tips:</strong>  
-<ul>
-<li>Start empiric therapy within 1 hour for sepsis.</li>
-<li>Adjust antibiotics based on culture & sensitivity.</li>
-<li>Consider organ function for dosing adjustments.</li>
-<li>Duration depends on site, severity, and clinical response.</li>
-<li>Review local resistance patterns before therapy.</li>
-<li>Document rationale for escalation/de-escalation.</li>
-</ul>
-</div>
-</header>
-</section>
+    <!-- Main content -->
+    <main>
+      <section id="homepage" class="content-panel">
+        <header>
+          <img src="mutant-icon.png" alt="Antibiotic Guide Icon" style="width:80px;height:80px;display:block;margin:0.5rem auto;">
+          <h2>Antibiotic & Infection Guide</h2>
+          <div class="quick-tips">
+            <strong>Quick Tips:</strong>
+            <ul>
+              <li>Start empiric therapy within 1 hour for sepsis.</li>
+              <li>Adjust antibiotics based on culture & sensitivity.</li>
+              <li>Consider organ function for dosing adjustments.</li>
+              <li>Duration depends on site, severity, and clinical response.</li>
+              <li>Review local resistance patterns before therapy.</li>
+              <li>Document rationale for escalation/de-escalation.</li>
+            </ul>
+          </div>
+        </header>
+      </section>
 
 <!-- Empiric Therapy -->
 <section id="empiric-grampos" class="content-panel">
