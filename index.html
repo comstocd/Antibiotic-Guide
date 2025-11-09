@@ -5,21 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Antibiotic & Infection Guide</title>
 <style>
-  /* Top banner */
-  #top-banner {
-    background-color: #004080; /* dark blue */
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 8px 0;             /* smaller height */
-    text-align: center;
-    font-size: 1.2em;           /* smaller font */
-    font-weight: bold;
-    z-index: 1000;
-  }
-/* ===== Banner and Search Bar ===== */
+/* Top banner */
 #top-banner {
   background-color: #004080;
   color: white;
@@ -28,140 +14,56 @@
   left: 0;
   width: 100%;
   padding: 8px 20px;
-  text-align: center;
-  font-size: 1.2em;
-  font-weight: bold;
-  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
+  font-size: 1.2em;
+  font-weight: bold;
+  z-index: 1000;
 }
 
-#top-banner h1 {
-  margin: 0;
-  font-size: 1.4em;
-}
+#top-banner h1 { margin:0; font-size:1.4em; }
 
-.search-container {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
+.search-container { display:flex; align-items:center; gap:6px; }
+#search-bar { padding:4px 6px; border:none; border-radius:4px; font-size:0.9em; width:180px; }
+#search-btn { background:#0066cc; color:white; border:none; border-radius:4px; cursor:pointer; padding:4px 8px; font-size:0.9em; }
+#search-btn:hover { background:#0050a0; }
 
-#search-bar {
-  padding: 4px 6px;
-  border: none;
-  border-radius: 4px;
-  font-size: 0.9em;
-  width: 180px;
-}
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+.container { display:flex; margin-top:40px; height:calc(100vh - 40px); }
+nav { width:260px; background:#e0e0e0; overflow-y:auto; padding:0.5rem; height:100%; position:sticky; top:0; }
+nav ul { list-style:none; padding:0; margin:0; }
+nav li { border-bottom:1px solid #ccc; cursor:pointer; padding:0.5rem; }
+nav li:hover { background:#cce0ff; }
+nav .sub-menu { display:none; padding-left:1rem; background:#d0d0d0; }
 
-#search-btn {
-  background-color: #0066cc;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 4px 8px;
-  font-size: 0.9em;
-}
+main { flex:1; overflow-y:auto; padding:1rem; background:#f5f5f5; }
 
-#search-btn:hover {
-  background-color: #0050a0;
-}
+h2 { color:#004080; margin-top:2rem; }
+table { border-collapse:collapse; width:100%; margin-bottom:1rem; }
+table, th, td { border:1px solid #999; }
+th, td { padding:0.5rem; text-align:left; }
+tr:nth-child(even){background-color:#f2f2f2;}
 
-  /* Body now flex container for nav + main */
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
+.collapsible { background:#ddd; cursor:pointer; padding:0.5rem; width:100%; border:none; text-align:left; outline:none; font-size:1rem; margin-top:0.5rem; }
+.active, .collapsible:hover { background:#ccc; }
+.content, .content-panel { padding:0 1rem; display:none; overflow:hidden; background:#f9f9f9; margin-bottom:1rem; }
 
-  /* Container wraps nav + main and offsets for banner */
-  .container {
-    display: flex;
-    margin-top: 40px; /* matches banner height */
-    height: calc(100vh - 40px); /* fill viewport below banner */
-  }
+.quick-tips { background:#ffffcc; border:1px solid #cccc99; padding:0.5rem; margin:0.5rem 0; color:#333; text-align:left; }
+.quick-tips ul { margin-left:1rem; padding-left:0; list-style-type:disc; }
 
-  /* Sidebar nav */
-  nav {
-    width: 260px;
-    background: #e0e0e0;
-    overflow-y: auto;
-    padding: 0.5rem;
-    height: 100%;           /* fill container height */
-    position: sticky;
-    top: 0;                 /* keeps nav in view when scrolling */
-  }
+.calculator { background:#eef; border:1px solid #99c; padding:0.5rem; margin-bottom:1rem; }
+input[type=number] { width:80px; }
 
-  nav ul { list-style: none; padding-left: 0; margin: 0; }
-  nav li { border-bottom: 1px solid #ccc; cursor: pointer; padding: 0.5rem; }
-  nav li:hover { background: #cce0ff; }
-  nav .sub-menu { display: none; padding-left: 1rem; background: #d0d0d0; }
-
-  /* Main content */
-  main {
-    flex: 1;
-    overflow-y: auto;
-    padding: 1rem;
-    background: #f5f5f5;
-  }
-
-  h2 { color: #004080; margin-top: 2rem; }
-  table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
-  table, th, td { border: 1px solid #999; }
-  th, td { padding: 0.5rem; text-align: left; }
-  tr:nth-child(even){ background-color: #f2f2f2; }
-
-  .collapsible {
-    background-color: #ddd;
-    cursor: pointer;
-    padding: 0.5rem;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 1rem;
-    margin-top: 0.5rem;
-  }
-  .active, .collapsible:hover { background-color: #ccc; }
-  .content, .content-panel {
-    padding: 0 1rem;
-    display: none;
-    overflow: hidden;
-    background-color: #f9f9f9;
-    margin-bottom: 1rem;
-  }
-
-  .quick-tips {
-    background: #ffffcc;
-    border: 1px solid #cccc99;
-    padding: 0.5rem;
-    margin: 0.5rem 0;
-    color: #333;
-    text-align: left;
-  }
-  .quick-tips ul { margin-left: 1rem; padding-left: 0; list-style-type: disc; }
-
-  .calculator {
-    background: #eef;
-    border: 1px solid #99c;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  input[type=number] { width: 80px; }
-
-  .color-grampos { background-color: #c6efce; }
-  .color-gramneg { background-color: #ffeb9c; }
-  .color-anaerobe { background-color: #ffc7ce; }
-  .color-intracellular { background-color: #d9d2e9; }
+.color-grampos { background-color:#c6efce; }
+.color-gramneg { background-color:#ffeb9c; }
+.color-anaerobe { background-color:#ffc7ce; }
+.color-intracellular { background-color:#d9d2e9; }
 </style>
-
 </head>
 <body>
-  <!-- Top banner -->
+
 <div id="top-banner">
   <h1>Antibiotic and Infection Guide</h1>
   <div class="search-container">
@@ -170,397 +72,229 @@
   </div>
 </div>
 
-  <!-- Main layout container -->
-  <div class="container">
-    <!-- Sidebar navigation -->
-    <nav>
-      <ul>
-        <li class="nav-item" data-target="homepage">Home</li>
-        <li class="expandable">Empiric Therapy
-          <ul class="sub-menu">
-            <li class="nav-item" data-target="empiric-grampos">Gram-Positive Cocci</li>
-            <li class="nav-item" data-target="empiric-gramneg">Gram-Negative Rods & Cocci</li>
-            <li class="nav-item" data-target="empiric-anaerobes">Anaerobes</li>
-            <li class="nav-item" data-target="empiric-intracellular">Intracellular / Fastidious</li>
-          </ul>
-        </li>
-        <li class="expandable">Infections by Anatomic Site
-          <ul class="sub-menu">
-            <li class="nav-item" data-target="head-neck">Head & Neck</li>
-            <li class="nav-item" data-target="respiratory">Respiratory Tract</li>
-            <li class="nav-item" data-target="urinary">Urinary Tract / Pyelonephritis</li>
-            <li class="nav-item" data-target="gastrointestinal">Gastrointestinal / Intra-abdominal</li>
-            <li class="nav-item" data-target="skin-softtissue">Skin & Soft Tissue</li>
-            <li class="nav-item" data-target="bone-joint">Bone & Joint</li>
-          </ul>
-        </li>
-        <li class="nav-item" data-target="sepsis">Sepsis</li>
-        <li class="expandable">Pathogen-Based Guidance
-          <ul class="sub-menu">
-            <li class="nav-item" data-target="pathogen-guidance">Therapy & Dosing</li>
-          </ul>
-        </li>
-        <li class="expandable">Pathogen Overview
-          <ul class="sub-menu">
-            <li class="nav-item" data-target="pathogen-overview">Detailed Organisms</li>
-          </ul>
-        </li>
-        <li class="nav-item" data-target="antibiotic-classes">Antibiotic Classes / Escalation</li>
-        <li class="nav-item" data-target="fungal-infections">Fungal Infections</li>
-        <li class="nav-item" data-target="viral-infections">Viral Infections</li>
-        <li class="nav-item" data-target="calculators">Calculators</li>
-        <li class="nav-item" data-target="references">References</li>
+<div class="container">
+<nav>
+  <ul>
+    <li class="nav-item" data-target="homepage">Home</li>
+    <li class="expandable">Empiric Therapy
+      <ul class="sub-menu">
+        <li class="nav-item" data-target="empiric-therapy">General Empiric Therapy</li>
+        <li class="nav-item" data-target="empiric-grampos">Gram-Positive Cocci</li>
+        <li class="nav-item" data-target="empiric-gramneg">Gram-Negative Rods & Cocci</li>
+        <li class="nav-item" data-target="empiric-anaerobes">Anaerobes</li>
+        <li class="nav-item" data-target="empiric-intracellular">Intracellular / Fastidious</li>
       </ul>
-    </nav>
+    </li>
+    <li class="expandable">Infections by Anatomic Site
+      <ul class="sub-menu">
+        <li class="nav-item" data-target="head-neck">Head & Neck</li>
+        <li class="nav-item" data-target="respiratory">Respiratory Tract</li>
+        <li class="nav-item" data-target="urinary">Urinary Tract / Pyelonephritis</li>
+        <li class="nav-item" data-target="gastrointestinal">Gastrointestinal / Intra-abdominal</li>
+        <li class="nav-item" data-target="skin-softtissue">Skin & Soft Tissue</li>
+        <li class="nav-item" data-target="bone-joint">Bone & Joint</li>
+      </ul>
+    </li>
+    <li class="nav-item" data-target="sepsis">Sepsis</li>
+    <li class="expandable">Pathogen-Based Guidance
+      <ul class="sub-menu">
+        <li class="nav-item" data-target="pathogen-guidance">Therapy & Dosing</li>
+      </ul>
+    </li>
+    <li class="nav-item" data-target="antibiotic-classes">Antibiotic Classes / Escalation</li>
+    <li class="nav-item" data-target="fungal-infections">Fungal Infections</li>
+    <li class="nav-item" data-target="viral-infections">Viral Infections</li>
+    <li class="nav-item" data-target="calculators">Calculators</li>
+    <li class="nav-item" data-target="references">References</li>
+  </ul>
+</nav>
 
-    <!-- Main content -->
-    <main>
-      <section id="homepage" class="content-panel">
-        <header>
-          <img src="mutant-icon.png" alt="Antibiotic Guide Icon" style="width:80px;height:80px;display:block;margin:0.5rem auto;">
-          <h2>Antibiotic & Infection Guide</h2>
-          <div class="quick-tips">
-            <strong>Quick Tips:</strong>
-            <ul>
-              <li>Start empiric therapy within 1 hour for sepsis.</li>
-              <li>Adjust antibiotics based on culture & sensitivity.</li>
-              <li>Consider organ function for dosing adjustments.</li>
-              <li>Duration depends on site, severity, and clinical response.</li>
-              <li>Review local resistance patterns before therapy.</li>
-              <li>Document rationale for escalation/de-escalation.</li>
-            </ul>
-          </div>
-        </header>
-      </section>
-
-<!-- Empiric Therapy -->
-<section id="empiric-therapy">
-  <h2>Empiric Therapy & Sepsis Assessment</h2>
-
-  <!-- Patient Data Input -->
-  <div class="calculator">
-    <h3>Patient Data</h3>
-    <label>Age: <input type="number" id="et-age" min="0"></label>
-    <label>Sex: 
-      <select id="et-sex">
-        <option value="M">Male</option>
-        <option value="F">Female</option>
-      </select>
-    </label>
-    <label>Weight: <input type="number" id="et-weight" min="0">
-      <select id="et-weight-unit">
-        <option value="kg">kg</option>
-        <option value="lb">lb</option>
-      </select>
-    </label>
-    <label>Serum Creatinine (mg/dL): <input type="number" id="et-cr" step="0.1"></label>
-    <label>Temperature (°C): <input type="number" id="et-temp" step="0.1"></label>
-    <label>Heart Rate (bpm): <input type="number" id="et-hr"></label>
-    <label>Respiratory Rate (breaths/min): <input type="number" id="et-rr"></label>
-    <label>Blood Pressure (mmHg, MAP): <input type="number" id="et-map"></label>
-    <label>Mental Status: 
-      <select id="et-mental">
-        <option value="alert">Alert</option>
-        <option value="confused">Confused</option>
-        <option value="unresponsive">Unresponsive</option>
-      </select>
-    </label>
+<main>
+<section id="homepage" class="content-panel">
+<header>
+  <img src="mutant-icon.png" alt="Antibiotic Guide Icon" style="width:80px;height:80px;display:block;margin:0.5rem auto;">
+  <h2>Antibiotic & Infection Guide</h2>
+  <div class="quick-tips">
+    <strong>Quick Tips:</strong>
+    <ul>
+      <li>Start empiric therapy within 1 hour for sepsis.</li>
+      <li>Adjust antibiotics based on culture & sensitivity.</li>
+      <li>Consider organ function for dosing adjustments.</li>
+      <li>Duration depends on site, severity, and clinical response.</li>
+      <li>Review local resistance patterns before therapy.</li>
+      <li>Document rationale for escalation/de-escalation.</li>
+    </ul>
   </div>
-
-  <!-- Calculators -->
-  <div class="calculator">
-    <h3>Calculators</h3>
-    <button onclick="calculateSIRS()">Calculate SIRS</button> 
-    <button onclick="calculateqSOFA()">Calculate qSOFA</button>
-    <button onclick="calculateCrCl()">Calculate CrCl</button>
-    <div id="et-results" style="margin-top:1rem;"></div>
-  </div>
-
-  <!-- Empiric Therapy Recommendations -->
-  <div class="content-panel" id="et-therapy">
-    <h3>Empiric Therapy Recommendations</h3>
-    <p>Recommendations update dynamically as patient data is entered and lab results are provided.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Suspected Source</th>
-          <th>Empiric Therapy</th>
-          <th>Notes / Dose Adjustments</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Sepsis of Unknown Source</td>
-          <td>Meropenem 1g IV q8h + Vancomycin (dose per CrCl)</td>
-          <td>Adjust doses for renal function; consider allergy status</td>
-        </tr>
-        <tr>
-          <td>Community-Acquired Pneumonia, Severe</td>
-          <td>Ceftriaxone 2g IV q24h + Azithromycin 500mg IV q24h</td>
-          <td>Adjust for renal impairment; monitor liver function</td>
-        </tr>
-        <tr>
-          <td>Urinary Tract / Pyelonephritis, Severe</td>
-          <td>Piperacillin-Tazobactam 4.5g IV q6-8h</td>
-          <td>Renal dosing required; adjust based on culture</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+</header>
 </section>
 
-<script>
-// ---- Calculators ----
-function calculateSIRS() {
-  const temp = parseFloat(document.getElementById('et-temp').value);
-  const hr = parseInt(document.getElementById('et-hr').value);
-  const rr = parseInt(document.getElementById('et-rr').value);
-  const wbc = 0; // placeholder, could add WBC input later
+<!-- General Empiric Therapy -->
+<section id="empiric-therapy" class="content-panel">
+<h2>Empiric Therapy & Sepsis Assessment</h2>
 
-  let criteria = 0;
-  if (temp < 36 || temp > 38) criteria++;
-  if (hr > 90) criteria++;
-  if (rr > 20) criteria++;
-  // WBC evaluation can be added
-  document.getElementById('et-results').innerHTML = `SIRS Criteria Met: ${criteria} ${criteria>=2 ? '(Suggests SIRS)' : ''}`;
-}
-
-function calculateqSOFA() {
-  const rr = parseInt(document.getElementById('et-rr').value);
-  const map = parseInt(document.getElementById('et-map').value);
-  const mental = document.getElementById('et-mental').value;
-
-  let score = 0;
-  if (rr >= 22) score++;
-  if (map <= 65) score++;
-  if (mental !== 'alert') score++;
-
-  document.getElementById('et-results').innerHTML += `<br>qSOFA Score: ${score} ${score>=2 ? '(High risk for poor outcome)' : ''}`;
-}
-
-function calculateCrCl() {
-  let age = parseFloat(document.getElementById('et-age').value);
-  let cr = parseFloat(document.getElementById('et-cr').value);
-  let weight = parseFloat(document.getElementById('et-weight').value);
-  const sex = document.getElementById('et-sex').value;
-  const unit = document.getElementById('et-weight-unit').value;
-
-  if (unit === 'lb') weight = weight / 2.20462; // convert lb to kg
-
-  if (!age || !cr || !weight) {
-    document.getElementById('et-results').innerHTML += `<br>Enter age, weight, and serum creatinine to calculate CrCl.`;
-    return;
-  }
-
-  let crcl = ((140 - age) * weight) / (72 * cr);
-  if (sex === 'F') crcl *= 0.85;
-
-  document.getElementById('et-results').innerHTML += `<br>Estimated CrCl: ${crcl.toFixed(1)} mL/min`;
-}
-</script>
-
-
-
-
-<section id="empiric-anaerobes" class="content-panel">
-<h2>Anaerobes</h2>
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Notes / Dosing</th></tr>
-<tr class="color-anaerobe"><td>Bacteroides fragilis</td><td>Metronidazole or Beta-lactam/Beta-lactamase inhibitor</td><td>500 mg IV q8h</td></tr>
-<tr class="color-anaerobe"><td>Clostridium difficile</td><td>Oral Vancomycin 125 mg q6h</td><td>14 days standard course</td></tr>
-<tr class="color-anaerobe"><td>Actinomyces spp.</td><td>Penicillin G IV, then oral</td><td>4–6 weeks IV then 6–12 months oral</td></tr>
-</table>
-</section>
-
-<section id="empiric-intracellular" class="content-panel">
-<h2>Intracellular / Fastidious Pathogens</h2>
-<table>
-<tr><th>Pathogen</th><th>Empiric Therapy</th><th>Notes / Dosing</th></tr>
-<tr class="color-intracellular"><td>Legionella pneumophila</td><td>Azithromycin 500 mg IV/PO q24h or Levofloxacin 750 mg IV/PO daily</td><td>14 days typical</td></tr>
-<tr class="color-intracellular"><td>Chlamydophila pneumoniae</td><td>Doxycycline 100 mg PO/IV q12h</td><td>10–14 days</td></tr>
-<tr class="color-intracellular"><td>Mycoplasma pneumoniae</td><td>Azithromycin or Doxycycline</td><td>10–14 days</td></tr>
-</table>
-</section>
-
-<!-- Infections by Anatomic Site -->
-<section id="head-neck" class="content-panel">
-<h2>Head & Neck Infections</h2>
-<ul>
-<li>Sinusitis: Amoxicillin-clavulanate 875/125 mg PO BID x5–7d</li>
-<li>Otitis media: Amoxicillin 80–90 mg/kg/day PO divided q12h</li>
-<li>Dental abscess: Clindamycin 300 mg PO q6–8h or Amoxicillin-clavulanate</li>
-</ul>
-</section>
-
-<section id="respiratory" class="content-panel">
-<h2>Respiratory Tract Infections</h2>
-<ul>
-<li>CAP: Ceftriaxone 1–2 g IV q24h + Azithromycin 500 mg IV/PO daily</li>
-<li>HAP/VAP: Piperacillin-tazobactam 4.5 g IV q6–8h, Cefepime 2 g IV q8h ± Vancomycin</li>
-</ul>
-</section>
-
-<section id="urinary" class="content-panel">
-<h2>Urinary Tract / Pyelonephritis</h2>
-<ul>
-<li>Uncomplicated: Nitrofurantoin 100 mg PO BID x5 days</li>
-<li>Complicated / Pyelonephritis: Ceftriaxone 1 g IV q24h or Ciprofloxacin 500 mg PO BID</li>
-</ul>
-</section>
-
-<section id="gastrointestinal" class="content-panel">
-<h2>Gastrointestinal / Intra-abdominal</h2>
-<ul>
-<li>Diverticulitis mild: Ciprofloxacin 500 mg PO BID + Metronidazole 500 mg PO TID x7–10d</li>
-<li>Diverticulitis severe/hospitalized: Piperacillin-tazobactam 4.5 g IV q6–8h</li>
-<li>Peritonitis: Broad-spectrum with anaerobic and Gram-negative coverage</li>
-</ul>
-</section>
-
-<section id="skin-softtissue" class="content-panel">
-<h2>Skin & Soft Tissue</h2>
-<ul>
-<li>Cellulitis: Cefazolin 1–2 g IV q8h or Vancomycin if MRSA risk</li>
-<li>Necrotizing fasciitis: Broad-spectrum IV therapy including Vancomycin + Piperacillin-tazobactam</li>
-</ul>
-</section>
-
-<section id="bone-joint" class="content-panel">
-<h2>Bone & Joint Infections</h2>
-<ul>
-<li>Osteomyelitis: Nafcillin 2 g IV q4h (MSSA) / Vancomycin 15 mg/kg IV q12h (MRSA) ± Gram-negative coverage if post-trauma</li>
-<li>Septic arthritis: Ceftriaxone 1–2 g IV q24h ± Vancomycin 15 mg/kg IV q12h</li>
-</ul>
-</section>
-
-<!-- Sepsis -->
-<section id="sepsis" class="content-panel">
-<h2>Sepsis</h2>
-<button class="collapsible">Quick Reference: Immediate Actions</button>
-<div class="content">
-<ul>
-<li>Obtain blood cultures before antibiotics if not delaying therapy.</li>
-<li>Start broad-spectrum empiric antibiotics within 1 hour.</li>
-<li>Fluid resuscitation: 30 mL/kg crystalloid for hypotension or lactate ≥4 mmol/L.</li>
-<li>Monitor vitals, urine output, lactate.</li>
-<li>Escalate to ICU for vasopressors if persistent hypotension.</li>
-</ul>
-</div>
-<button class="collapsible">Detailed Overview</button>
-<div class="content">
-<ul>
-<li>Pathophysiology: dysregulated host response, cytokine storm, organ dysfunction.</li>
-<li>Complications: ARDS, AKI, DIC, shock.</li>
-<li>Approach: identify source, source control, pathogen-targeted therapy, supportive care.</li>
-</ul>
-</div>
-</section>
-
-<!-- Calculators -->
-<section id="calculators" class="content-panel">
-<h2>Calculators</h2>
 <div class="calculator">
-<label for="age">Age (years): </label><input type="number" id="age" step="1">
-<label for="cr">Creatinine (mg/dL): </label><input type="number" id="cr" step="0.01">
-<label for="wt">Weight (kg): </label><input type="number" id="wt" step="0.1">
-<button onclick="calculateCrCl()">Calculate CrCl (Cockcroft-Gault)</button>
-<p id="crcl-result"></p>
+<h3>Patient Data</h3>
+<label>Age: <input type="number" id="et-age" min="0"></label>
+<label>Sex: 
+  <select id="et-sex">
+    <option value="M">Male</option>
+    <option value="F">Female</option>
+  </select>
+</label>
+<label>Weight: <input type="number" id="et-weight" min="0">
+  <select id="et-weight-unit">
+    <option value="kg">kg</option>
+    <option value="lb">lb</option>
+  </select>
+</label>
+<label>Serum Creatinine (mg/dL): <input type="number" id="et-cr" step="0.1"></label>
+<label>Temperature (°C): <input type="number" id="et-temp" step="0.1"></label>
+<label>Heart Rate (bpm): <input type="number" id="et-hr"></label>
+<label>Respiratory Rate (breaths/min): <input type="number" id="et-rr"></label>
+<label>Blood Pressure (mmHg, MAP): <input type="number" id="et-map"></label>
+<label>Mental Status: 
+  <select id="et-mental">
+    <option value="alert">Alert</option>
+    <option value="confused">Confused</option>
+    <option value="unresponsive">Unresponsive</option>
+  </select>
+</label>
 </div>
-</section>
 
-<!-- References -->
-<section id="references" class="content-panel">
-<h2>References</h2>
-<ul>
-<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy-guidelines/" target="_blank" rel="noopener noreferrer">IDSA Guidelines</a></li>
-<li><a href="https://www.nejm.org" target="_blank" rel="noopener noreferrer">New England Journal of Medicine</a></li>
-<li><a href="https://jamanetwork.com" target="_blank" rel="noopener noreferrer">JAMA</a></li>
-<li><a href="https://accessmedicine.mhmedical.com" target="_blank" rel="noopener noreferrer">Harrison's Principles of Internal Medicine</a></li>
-<li><a href="https://www.cdc.gov/antibiotic-use" target="_blank" rel="noopener noreferrer">CDC Antibiotic Use</a></li>
-</ul>
+<div class="calculator">
+<h3>Calculators</h3>
+<button onclick="calculateSIRS()">Calculate SIRS</button> 
+<button onclick="calculateqSOFA()">Calculate qSOFA</button>
+<button onclick="calculateCrCl()">Calculate CrCl</button>
+<div id="et-results" style="margin-top:1rem;"></div>
+</div>
+
+<div>
+<h3>Empiric Therapy Recommendations</h3>
+<p>Recommendations update dynamically as patient data is entered and lab results are provided.</p>
+<table>
+<thead>
+<tr>
+<th>Suspected Source</th><th>Empiric Therapy</th><th>Notes / Dose Adjustments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sepsis of Unknown Source</td>
+<td>Meropenem 1g IV q8h + Vancomycin (dose per CrCl)</td>
+<td>Adjust doses for renal function; consider allergy status</td>
+</tr>
+<tr>
+<td>Community-Acquired Pneumonia, Severe</td>
+<td>Ceftriaxone 2g IV q24h + Azithromycin 500mg IV q24h</td>
+<td>Adjust for renal impairment; monitor liver function</td>
+</tr>
+<tr>
+<td>Urinary Tract / Pyelonephritis, Severe</td>
+<td>Piperacillin-Tazobactam 4.5g IV q6-8h</td>
+<td>Renal dosing required; adjust based on culture</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 
 <script>
 // ----------------------------
-// Navigation: expand/collapse
+// Navigation logic
 // ----------------------------
-document.querySelectorAll('.expandable').forEach(item => {
-  item.addEventListener('click', () => {
-    const sub = item.querySelector('.sub-menu');
-    sub.style.display = (sub.style.display === 'block') ? 'none' : 'block';
+document.querySelectorAll('.expandable').forEach(item=>{
+  item.addEventListener('click',()=>{ 
+    const sub=item.querySelector('.sub-menu');
+    if(sub) sub.style.display=(sub.style.display==='block')?'none':'block';
+  });
+});
+
+document.querySelectorAll('.nav-item').forEach(item=>{
+  item.addEventListener('click',e=>{
+    e.stopPropagation();
+    document.querySelectorAll('.content-panel').forEach(c=>c.style.display='none');
+    const target=document.getElementById(item.getAttribute('data-target'));
+    if(target) target.style.display='block';
   });
 });
 
 // ----------------------------
-// Navigation: show content panel
+// Collapsibles
 // ----------------------------
-document.querySelectorAll('.nav-item').forEach(item => {
-  item.addEventListener('click', e => {
-    e.stopPropagation(); // prevent parent expandable from toggling
-    // Hide all content panels
-    document.querySelectorAll('.content-panel').forEach(c => c.style.display = 'none');
-    // Show target panel
-    const target = document.getElementById(item.getAttribute('data-target'));
-    if (target) target.style.display = 'block';
-  });
-});
-
-// ----------------------------
-// Collapsible sections
-// ----------------------------
-document.querySelectorAll('.collapsible').forEach(btn => {
-  btn.addEventListener('click', function() {
+document.querySelectorAll('.collapsible').forEach(btn=>{
+  btn.addEventListener('click',function(){
     this.classList.toggle('active');
-    const content = this.nextElementSibling;
-    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+    const content=this.nextElementSibling;
+    content.style.display=(content.style.display==='block')?'none':'block';
   });
 });
 
 // ----------------------------
-// Calculator functions
+// Calculators
 // ----------------------------
-function calculateCrCl() {
-  const age = parseFloat(document.getElementById('age').value);
-  const cr = parseFloat(document.getElementById('cr').value);
-  const wt = parseFloat(document.getElementById('wt').value);
-  if (!age || !cr || !wt) {
-    document.getElementById('crcl-result').innerText = "Enter all values";
+function calculateSIRS(){
+  const temp=parseFloat(document.getElementById('et-temp').value);
+  const hr=parseInt(document.getElementById('et-hr').value);
+  const rr=parseInt(document.getElementById('et-rr').value);
+  let criteria=0;
+  if(temp<36||temp>38) criteria++;
+  if(hr>90) criteria++;
+  if(rr>20) criteria++;
+  document.getElementById('et-results').innerHTML=`SIRS Criteria Met: ${criteria} ${criteria>=2?'(Suggests SIRS)':''}`;
+}
+
+function calculateqSOFA(){
+  const rr=parseInt(document.getElementById('et-rr').value);
+  const map=parseInt(document.getElementById('et-map').value);
+  const mental=document.getElementById('et-mental').value;
+  let score=0;
+  if(rr>=22) score++;
+  if(map<=65) score++;
+  if(mental!=='alert') score++;
+  document.getElementById('et-results').innerHTML+=`<br>qSOFA Score: ${score} ${score>=2?'(High risk for poor outcome)':''}`;
+}
+
+function calculateCrCl(){
+  let age=parseFloat(document.getElementById('et-age').value);
+  let cr=parseFloat(document.getElementById('et-cr').value);
+  let weight=parseFloat(document.getElementById('et-weight').value);
+  const sex=document.getElementById('et-sex').value;
+  const unit=document.getElementById('et-weight-unit').value;
+  if(unit==='lb') weight/=2.20462;
+  if(!age||!cr||!weight){
+    document.getElementById('et-results').innerHTML+='<br>Enter age, weight, and serum creatinine to calculate CrCl.';
     return;
   }
-  const crcl = ((140 - age) * wt) / (72 * cr);
-  document.getElementById('crcl-result').innerText = `Estimated CrCl: ${crcl.toFixed(1)} mL/min`;
+  let crcl=((140-age)*weight)/(72*cr);
+  if(sex==='F') crcl*=0.85;
+  document.getElementById('et-results').innerHTML+=`<br>Estimated CrCl: ${crcl.toFixed(1)} mL/min`;
 }
 
 // ----------------------------
-// Search functionality
+// Search
 // ----------------------------
-document.getElementById('search-btn').addEventListener('click', () => {
-  const query = document.getElementById('search-bar').value.toLowerCase();
-  const sections = document.querySelectorAll('main section');
-  let found = false;
-
-  sections.forEach(sec => {
-    if (sec.textContent.toLowerCase().includes(query)) {
-      sec.scrollIntoView({ behavior: 'smooth' });
-      sec.style.border = '2px solid #004080';
-      setTimeout(() => sec.style.border = '', 2000);
-      found = true;
+document.getElementById('search-btn').addEventListener('click',()=>{
+  const query=document.getElementById('search-bar').value.toLowerCase();
+  let found=false;
+  document.querySelectorAll('main section').forEach(sec=>{
+    if(sec.textContent.toLowerCase().includes(query)){
+      sec.scrollIntoView({behavior:'smooth'});
+      sec.style.border='2px solid #004080';
+      setTimeout(()=>sec.style.border='',2000);
+      found=true;
     }
   });
-
-  if (!found && query.trim() !== '') {
-    alert('No matches found.');
-  }
+  if(!found && query.trim()!=='') alert('No matches found.');
 });
 
 // ----------------------------
 // Show homepage by default
 // ----------------------------
-document.addEventListener('DOMContentLoaded', () => {
-  const homepage = document.getElementById('homepage');
-  if (homepage) homepage.style.display = 'block';
+document.addEventListener('DOMContentLoaded',()=>{ 
+  const homepage=document.getElementById('homepage');
+  if(homepage) homepage.style.display='block';
 });
 </script>
-
-
 </body>
+</html>
