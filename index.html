@@ -5,142 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Antibiotic & Infection Guide</title>
 <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background-color: #004080;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    z-index: 1000;
-  }
-  header img {
-    height: 40px;
-    margin-right: 10px;
-  }
-  header h1 {
-    font-size: 1.5em;
-    margin: 0;
-    flex-grow: 1;
-  }
-  header input[type="text"] {
-    padding: 5px;
-    font-size: 1em;
-  }
-  #container {
-    display: flex;
-    margin-top: 70px; /* header height */
-  }
-  #sidebar {
-    width: 250px;
-    background: #f2f2f2;
-    padding: 20px;
-    position: sticky;
-    top: 70px;
-    height: calc(100vh - 70px);
-    overflow-y: auto;
-  }
-  #sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  #sidebar li {
-    margin-bottom: 10px;
-  }
-  #sidebar a {
-    text-decoration: none;
-    color: #004080;
-  }
-  main {
-    flex-grow: 1;
-    padding: 20px;
-  }
-  .collapsible {
-    background-color: #eee;
-    color: #004080;
-    cursor: pointer;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    font-size: 1em;
-    margin-bottom: 5px;
-  }
-  .collapsible:after {
-    content: '+';
-    float: right;
-  }
-  .collapsible.active:after {
-    content: '-';
-  }
-  .content {
-    display: none;
-    padding: 10px 15px;
-    border-left: 2px solid #004080;
-    margin-bottom: 10px;
-  }
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  table, th, td {
-    border: 1px solid #ccc;
-  }
-  th, td {
-    padding: 5px;
-    text-align: left;
-  }
-  .calculator {
-    margin-bottom: 15px;
-  }
+  body { font-family: Arial, sans-serif; margin:0; padding:0; }
+  header { position: fixed; top:0; left:0; right:0; background:#004080; color:white; height:60px; display:flex; align-items:center; padding:0 20px; z-index:1000; }
+  header img { height:40px; margin-right:10px; }
+  header h1 { flex-grow:1; font-size:1.5em; margin:0; }
+  header input[type=text] { padding:5px; width:200px; border-radius:4px; border:none; }
+  nav { position:fixed; top:60px; left:0; width:250px; bottom:0; background:#f0f0f0; overflow-y:auto; padding:10px; }
+  main { margin-left:260px; padding:70px 20px 20px 20px; }
+  .collapsible { background:#e0e0e0; cursor:pointer; padding:10px; width:100%; border:none; text-align:left; outline:none; font-size:16px; margin-top:5px; }
+  .active, .collapsible:hover { background:#ccc; }
+  .content { padding:0 10px; display:none; overflow:hidden; }
+  table { border-collapse: collapse; width:100%; margin-top:5px; margin-bottom:15px; }
+  th, td { border:1px solid #ccc; padding:5px; text-align:left; }
+  th { background:#eee; }
 </style>
 </head>
 <body>
+
 <header>
-  <img src="mutant-icon.png" alt="Icon">
+  <img src="mutant-icon.png" alt="Logo">
   <h1>Antibiotic & Infection Guide</h1>
-  <input type="text" id="searchBar" placeholder="Search pathogens...">
+  <input type="text" id="searchInput" placeholder="Search pathogens...">
 </header>
 
-<div id="container">
-  <nav id="sidebar">
-    <ul>
-      <li><a href="#homepage" class="scroll-link">Home</a></li>
-      <li><a href="#empiric-therapy" class="scroll-link">Empiric Therapy</a></li>
-      <li><a href="#anatomic-infections" class="scroll-link">By Anatomic Site</a></li>
-      <li><a href="#sepsis" class="scroll-link">Sepsis</a></li>
-      <li><a href="#pathogen-guidance" class="scroll-link">Pathogen-Based Guidance</a></li>
-      <li><a href="#pathogen-overview" class="scroll-link">Pathogen Overview</a></li>
-      <li><a href="#antibiotic-classes" class="scroll-link">Antibiotic Classes</a></li>
-      <li><a href="#fungal-infections" class="scroll-link">Fungal Infections</a></li>
-      <li><a href="#viral-infections" class="scroll-link">Viral Infections</a></li>
-      <li><a href="#tickborne-illnesses" class="scroll-link">Tickborne Illnesses</a></li>
-      <li><a href="#calculators" class="scroll-link">Calculators</a></li>
-      <li><a href="#references" class="scroll-link">References</a></li>
-    </ul>
-  </nav>
+<nav id="sidebar">
+  <ul>
+    <li><a href="#homepage">Home</a></li>
+    <li><a href="#empiric-therapy">Empiric Therapy</a></li>
+    <li><a href="#anatomic-infections">By Anatomic Site</a></li>
+    <li><a href="#sepsis">Sepsis</a></li>
+    <li><a href="#pathogen-guidance">Pathogen Guidance</a></li>
+    <li><a href="#pathogen-overview">Pathogen Overview</a></li>
+    <li><a href="#antibiotic-classes">Antibiotic Classes</a></li>
+    <li><a href="#fungal-infections">Fungal Infections</a></li>
+    <li><a href="#viral-infections">Viral Infections</a></li>
+    <li><a href="#tickborne-illnesses">Tickborne Illnesses</a></li>
+    <li><a href="#calculators">Calculators</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav>
 
-  <main>
-    <!-- Homepage -->
-    <section id="homepage">
-      <h2>Antibiotic & Infection Guide</h2>
-      <p>Use the sidebar to navigate. Expand each section for detailed dosing, duration, organism-specific notes, and references.</p>
-      <h3>Basic ID Approach Tips</h3>
-      <ul>
-        <li>Obtain thorough history including travel, exposures, and immunization status.</li>
-        <li>Perform targeted physical exam and evaluate for source of infection.</li>
-        <li>Obtain cultures before antibiotics whenever feasible.</li>
-        <li>Start empiric therapy based on site and severity; adjust when cultures return.</li>
-        <li>Consider patient comorbidities, immune status, and local resistance patterns.</li>
-      </ul>
-    </section>
+<main>
+      <!-- Homepage -->
+<section id="homepage">
+  <h2>Home</h2>
+  <p>Basic ID Approach Tips:</p>
+  <ul>
+    <li>Obtain detailed history (travel, exposure, immunization).</li>
+    <li>Perform thorough physical examination for source clues.</li>
+    <li>Collect appropriate cultures before antibiotics when possible.</li>
+    <li>Start empiric therapy based on likely pathogens and severity.</li>
+    <li>Adjust antibiotics based on culture results and patient response.</li>
+    <li>Consider host factors: age, comorbidities, immunosuppression.</li>
+  </ul>
+</section>
+
 
     <!-- Empiric Therapy -->
     <section id="empiric-therapy">
