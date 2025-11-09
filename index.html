@@ -5,66 +5,144 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Antibiotic & Infection Guide</title>
 <style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; }
-  header { position: fixed; top:0; left:0; right:0; background:#004080; color:white; height:60px; display:flex; align-items:center; padding:0 20px; z-index:1000; }
-  header img { height:40px; margin-right:10px; }
-  header h1 { flex-grow:1; font-size:1.5em; margin:0; }
-  header input[type=text] { padding:5px; width:200px; border-radius:4px; border:none; }
-  nav { position:fixed; top:60px; left:0; width:250px; bottom:0; background:#f0f0f0; overflow-y:auto; padding:10px; }
-  main { margin-left:260px; padding:70px 20px 20px 20px; }
-  .collapsible { background:#e0e0e0; cursor:pointer; padding:10px; width:100%; border:none; text-align:left; outline:none; font-size:16px; margin-top:5px; }
-  .active, .collapsible:hover { background:#ccc; }
-  .content { padding:0 10px; display:none; overflow:hidden; }
-  table { border-collapse: collapse; width:100%; margin-top:5px; margin-bottom:15px; }
-  th, td { border:1px solid #ccc; padding:5px; text-align:left; }
-  th { background:#eee; }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #004080;
+  color: white;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  padding: 0.5em;
+}
+header img {
+  height: 40px;
+  margin-right: 10px;
+}
+header h1 {
+  margin: 0;
+  font-size: 1.5em;
+}
+header input[type="text"] {
+  margin-left: auto;
+  padding: 0.25em;
+  font-size: 1em;
+}
+#sidebar {
+  width: 250px;
+  background-color: #f0f0f0;
+  padding-top: 70px;
+  height: 100vh;
+  position: fixed;
+  overflow-y: auto;
+}
+#sidebar a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #004080;
+}
+#sidebar a:hover {
+  background-color: #ddd;
+}
+main {
+  margin-left: 260px;
+  padding: 70px 20px 20px 20px;
+}
+.collapsible {
+  background-color: #eee;
+  color: #004080;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  margin-top: 5px;
+}
+.collapsible:after {
+  content: '+';
+  float: right;
+}
+.collapsible.active:after {
+  content: "-";
+}
+.content {
+  display: none;
+  padding: 0 15px;
+  overflow: hidden;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1em;
+}
+th, td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #004080;
+  color: white;
+}
+ul {
+  padding-left: 20px;
+}
+.calculator {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+}
 </style>
 </head>
 <body>
-
 <header>
   <img src="mutant-icon.png" alt="Logo">
   <h1>Antibiotic & Infection Guide</h1>
-  <input type="text" id="searchInput" placeholder="Search pathogens...">
+  <input type="text" id="searchBar" placeholder="Search pathogens...">
 </header>
 
-<nav id="sidebar">
-<ul id="sidebar">
-  <li><a href="#homepage">Home</a></li>
-  <li><a href="#empiric-therapy">Empiric Therapy</a></li>
-  <li><a href="#anatomic-infections">Anatomic Infections</a></li>
-  <li><a href="#sepsis">Sepsis</a></li>
-  <li><a href="#pathogen-guidance">Pathogen-Based Guidance</a></li>
-  <li><a href="#pathogen-guidance-tickborne">Tickborne Illnesses</a></li>
-  <li><a href="#pathogen-guidance-viral-encephalopathies">Viral Encephalopathies</a></li>
-  <li><a href="#antibiotic-classes">Antibiotic Classes / Escalation</a></li>
-  <li><a href="#fungal-infections">Fungal Infections</a></li>
-  <li><a href="#viral-infections">Viral Infections</a></li>
-  <li><a href="#calculators">Calculators</a></li>
-  <li><a href="#references">References</a></li>
-</ul>
-
-</nav>
+<div id="sidebar">
+  <a href="#homepage">Home</a>
+  <a href="#empiric-therapy">Empiric Therapy</a>
+  <a href="#anatomic-infections">Infections by Anatomic Site</a>
+  <a href="#sepsis">Sepsis</a>
+  <a href="#pathogen-guidance">Pathogen-Based Guidance</a>
+  <a href="#pathogen-overview">Pathogen Overview</a>
+  <a href="#antibiotic-classes">Antibiotic Classes / Escalation</a>
+  <a href="#fungal-infections">Fungal Infections</a>
+  <a href="#viral-infections">Viral Infections</a>
+  <a href="#tickborne-illnesses">Tickborne Illnesses</a>
+  <a href="#viral-encephalopathies">Viral Encephalopathies</a>
+  <a href="#calculators">Calculators</a>
+  <a href="#references">References</a>
+</div>
 
 <main>
-      <!-- Homepage -->
 <section id="homepage">
-  <h2>Home</h2>
-  <p>Basic ID Approach Tips:</p>
-  <ul>
-    <li>Obtain detailed history (travel, exposure, immunization).</li>
-    <li>Perform thorough physical examination for source clues.</li>
-    <li>Collect appropriate cultures before antibiotics when possible.</li>
-    <li>Start empiric therapy based on likely pathogens and severity.</li>
-    <li>Adjust antibiotics based on culture results and patient response.</li>
-    <li>Consider host factors: age, comorbidities, immunosuppression.</li>
-  </ul>
+<h2>Antibiotic & Infection Guide</h2>
+<p>Use the sidebar to navigate. Expand each section for detailed dosing, duration, organism-specific notes, and references.</p>
+<p><strong>Basic ID Approach Tips:</strong></p>
+<ul>
+  <li>Assess severity, comorbidities, and immunocompetence.</li>
+  <li>Obtain cultures prior to starting antibiotics if possible.</li>
+  <li>Start empiric therapy based on likely pathogens and infection site.</li>
+  <li>Adjust antibiotics according to culture results and susceptibilities.</li>
+  <li>Consider source control: drain abscesses, remove infected devices.</li>
+</ul>
 </section>
-
 
 <section id="empiric-therapy">
 <h2>Empiric Therapy</h2>
-
+<!-- Gram-Positive Cocci -->
 <button class="collapsible">Gram-Positive Cocci</button>
 <div class="content">
 <table>
@@ -75,7 +153,7 @@
 <tr><td>Enterococcus spp.</td><td>Ampicillin / Vancomycin</td><td>2 g IV q4h / 15 mg/kg IV q12h</td><td>14–21 days</td></tr>
 </table>
 </div>
-
+<!-- Gram-Negative Rods -->
 <button class="collapsible">Gram-Negative Rods</button>
 <div class="content">
 <table>
@@ -86,7 +164,7 @@
 <tr><td>Burkholderia spp.</td><td>Ceftazidime / Meropenem</td><td>2 g IV q8h / 1 g IV q8h</td><td>10–14 days</td></tr>
 </table>
 </div>
-
+<!-- Anaerobes -->
 <button class="collapsible">Anaerobes</button>
 <div class="content">
 <table>
@@ -96,7 +174,7 @@
 <tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>4 MU IV q4h</td><td>6–12 months</td></tr>
 </table>
 </div>
-
+<!-- Intracellular / Fastidious -->
 <button class="collapsible">Intracellular / Fastidious Pathogens</button>
 <div class="content">
 <table>
@@ -109,41 +187,125 @@
 </div>
 </section>
 
+<section id="anatomic-infections">
+<h2>Infections by Anatomic Site</h2>
+<!-- Head & Neck -->
+<button class="collapsible">Head & Neck</button>
+<div class="content">
+<ul>
+<li>Sinusitis: Amoxicillin-clavulanate 875/125 mg PO BID 5–7d</li>
+<li>Mastoiditis: Ceftriaxone 2 g IV q24h 10–14d</li>
+<li>Otitis media: Amoxicillin 500 mg PO q8h 5–7d</li>
+</ul>
+</div>
+<!-- Respiratory -->
+<button class="collapsible">Respiratory Tract</button>
+<div class="content">
+<ul>
+<li>CAP: Ceftriaxone 2 g IV q24h + Azithromycin 500 mg IV/PO day 1 then 250 mg daily 5–7d</li>
+<li>HAP/VAP: Piperacillin-tazobactam 4.5 g IV q6–8h 7–14d, add Vancomycin for MRSA risk</li>
+</ul>
+</div>
+<!-- Urinary -->
+<button class="collapsible">Urinary Tract / Pyelonephritis</button>
+<div class="content">
+<ul>
+<li>Uncomplicated UTI: Nitrofurantoin 100 mg PO BID 5–7d</li>
+<li>Pyelonephritis: Ciprofloxacin 500 mg PO q12h 7–10d</li>
+</ul>
+</div>
+<!-- Gastrointestinal -->
+<button class="collapsible">Gastrointestinal / Intra-abdominal</button>
+<div class="content">
+<ul>
+<li>Diverticulitis: Ciprofloxacin 500 mg PO q12h + Metronidazole 500 mg PO q8h 7–10d</li>
+<li>Appendicitis post-op prophylaxis: Cefazolin 2 g IV pre-op single dose</li>
+</ul>
+</div>
+<!-- Skin & Soft Tissue -->
+<button class="collapsible">Skin & Soft Tissue</button>
+<div class="content">
+<ul>
+<li>Cellulitis: Cefazolin 2 g IV q8h 7–10d</li>
+<li>Necrotizing fasciitis: Broad-spectrum (Meropenem + Vancomycin + Clindamycin) 14–21d</li>
+</ul>
+</div>
+<!-- Bone & Joint -->
+<button class="collapsible">Bone & Joint</button>
+<div class="content">
+<ul>
+<li>Osteomyelitis: Ceftriaxone 2 g IV q24h 6 weeks</li>
+<li>Septic arthritis: Vancomycin + Ceftriaxone 2–4 weeks</li>
+</ul>
+</div>
+</section>
+
+<section id="sepsis">
+<h2>Sepsis</h2>
+<button class="collapsible">Quick Reference (Immediate Actions)</button>
+<div class="content">
+<ul>
+<li>Obtain cultures before antibiotics if possible, but do not delay therapy.</li>
+<li>Start broad-spectrum antibiotics within 1 hour.</li>
+<li>Fluid resuscitation: 30 mL/kg crystalloid bolus if hypotensive or lactate ≥4 mmol/L.</li>
+<li>Vasopressors to maintain MAP ≥65 mmHg if hypotension persists.</li>
+<li>Measure lactate; repeat if initial >2 mmol/L.</li>
+</ul>
+</div>
+<button class="collapsible">Detailed Approach / Mechanisms</button>
+<div class="content">
+<ul>
+<li>Sepsis is life-threatening organ dysfunction caused by dysregulated host response to infection.</li>
+<li>Monitor SOFA/qSOFA scores to guide severity and prognosis.</li>
+<li>Address source control: remove infected lines, drain abscesses, debride necrotic tissue.</li>
+<li>Adjust antibiotic regimen based on culture and sensitivities.</li>
+<li>Monitor for complications: DIC, ARDS, AKI, multi-organ failure.</li>
+</ul>
+</div>
+</section>
+
+<section id="pathogen-guidance">
+<h2>Pathogen-Based Guidance</h2>
+<button class="collapsible">Gram-Positive Cocci</button>
+<div class="content">
+<ul>
+<li>Staphylococcus aureus: MSSA (Nafcillin), MRSA (Vancomycin)</li>
+<li>Streptococcus spp.: Penicillin, Ceftriaxone</li>
+<li>Enterococcus spp.: Ampicillin or Vancomycin</li>
+</ul>
+</div>
+
+<button class="collapsible">Gram-Negative Rods</button>
+<div class="content">
+<ul>
+<li>E. coli, Klebsiella: Ceftriaxone, Piperacillin-tazobactam</li>
+<li>Pseudomonas: Piperacillin-tazobactam, Ceftazidime</li>
+<li>Burkholderia: Ceftazidime, Meropenem</li>
+</ul>
+</div>
+
+<button class="collapsible">Anaerobes</button>
+<div class="content">
+<ul>
+<li>Bacteroides fragilis: Metronidazole or Piperacillin-tazobactam</li>
+<li>Clostridium spp.: Oral Vancomycin or Metronidazole</li>
+<li>Actinomyces: Penicillin G</li>
+</ul>
+</div>
+
+<button class="collapsible">Intracellular / Fastidious</button>
+<div class="content">
+<ul>
+<li>Chlamydia, Legionella, Mycoplasma: Macrolides or Tetracyclines</li>
+<li>Nocardia: TMP-SMX</li>
+</ul>
+</div>
+</section>
+
 <section id="pathogen-overview">
 <h2>Pathogen Overview</h2>
-
-<!-- Gram-positive -->
-<button class="collapsible">Staphylococcus aureus</button>
-<div class="content">
-<ul>
-<li>Gram-positive cocci, clusters</li>
-<li>MSSA: treat with Nafcillin/Oxacillin</li>
-<li>MRSA: treat with Vancomycin</li>
-<li>Causes: skin/soft tissue infection, bacteremia, endocarditis</li>
-<li>Resistance: beta-lactamase, MRSA mechanisms</li>
-</ul>
-</div>
-
-<button class="collapsible">Streptococcus spp.</button>
-<div class="content">
-<ul>
-<li>Gram-positive cocci, chains</li>
-<li>Causes: pharyngitis, pneumonia, bacteremia</li>
-<li>Penicillin-sensitive; some species show macrolide resistance</li>
-</ul>
-</div>
-
-<button class="collapsible">Enterococcus spp.</button>
-<div class="content">
-<ul>
-<li>Gram-positive cocci, pairs/chains</li>
-<li>Causes: UTI, endocarditis, intra-abdominal infection</li>
-<li>Resistant strains: VRE (vancomycin-resistant)</li>
-</ul>
-</div>
-
-<!-- Gram-negative -->
-<button class="collapsible">E. coli</button>
+<!-- E. coli -->
+<button class="collapsible pathogen">E. coli</button>
 <div class="content">
 <ul>
 <li>Gram-negative rod, facultative anaerobe</li>
@@ -153,8 +315,8 @@
 <li>Risk factors: catheterization, hospitalization, immunosuppression</li>
 </ul>
 </div>
-
-<button class="collapsible">Klebsiella spp.</button>
+<!-- Klebsiella spp. -->
+<button class="collapsible pathogen">Klebsiella spp.</button>
 <div class="content">
 <ul>
 <li>Gram-negative rod</li>
@@ -164,8 +326,8 @@
 <li>Risk factors: diabetes, chronic lung disease</li>
 </ul>
 </div>
-
-<button class="collapsible">Pseudomonas aeruginosa</button>
+<!-- Pseudomonas -->
+<button class="collapsible pathogen">Pseudomonas aeruginosa</button>
 <div class="content">
 <ul>
 <li>Gram-negative rod, non-fermenter</li>
@@ -174,200 +336,250 @@
 <li>Biofilm formation contributes to chronic infections</li>
 </ul>
 </div>
-
-<button class="collapsible">Burkholderia spp.</button>
+<!-- Burkholderia -->
+<button class="collapsible pathogen">Burkholderia spp.</button>
 <div class="content">
 <ul>
 <li>Gram-negative rod, non-fermenter</li>
-<li>Causes: pneumonia in cystic fibrosis, opportunistic infections</li>
-<li>Resistant to many antibiotics</li>
-<li>Treatment: Ceftazidime or Meropenem</li>
+<li>Opportunistic infections in immunocompromised hosts</li>
+<li>Resistant to many beta-lactams and aminoglycosides</li>
+<li>Treatment: Ceftazidime, Meropenem</li>
 </ul>
 </div>
-
-<!-- Anaerobes -->
-<button class="collapsible">Bacteroides fragilis</button>
+<!-- Bacteroides -->
+<button class="collapsible pathogen">Bacteroides fragilis</button>
 <div class="content">
 <ul>
-<li>Gram-negative anaerobe, part of gut flora</li>
-<li>Causes intra-abdominal infections, abscesses</li>
-<li>Resistance increasing; treat with Metronidazole or Piperacillin-tazobactam</li>
+<li>Anaerobic Gram-negative rod</li>
+<li>Common in intra-abdominal infections, abscesses</li>
+<li>Treatment: Metronidazole, Piperacillin-tazobactam</li>
 </ul>
 </div>
-
-<button class="collapsible">Clostridium spp.</button>
+<!-- Clostridium -->
+<button class="collapsible pathogen">Clostridium spp.</button>
 <div class="content">
 <ul>
-<li>Gram-positive anaerobe, spore-forming</li>
+<li>Gram-positive anaerobe</li>
 <li>Includes C. difficile, C. perfringens</li>
-<li>Treat with Vancomycin or Metronidazole depending on species</li>
+<li>Treatment: Oral Vancomycin, Metronidazole</li>
 </ul>
 </div>
-
-<button class="collapsible">Actinomyces spp.</button>
+<!-- Actinomyces -->
+<button class="collapsible pathogen">Actinomyces spp.</button>
 <div class="content">
 <ul>
-<li>Gram-positive anaerobe, filamentous</li>
-<li>Causes cervicofacial, thoracic, and abdominal actinomycosis</li>
-<li>Treatment: prolonged Penicillin G</li>
+<li>Gram-positive anaerobic rod</li>
+<li>Causes chronic abscesses, often cervicofacial</li>
+<li>Treatment: Penicillin G, long-term therapy</li>
 </ul>
 </div>
-
-<!-- Intracellular / fastidious -->
-<button class="collapsible">Chlamydia trachomatis</button>
+<!-- Mycobacterium -->
+<button class="collapsible pathogen">Mycobacterium spp. (non-TB)</button>
 <div class="content">
 <ul>
-<li>Obligate intracellular bacterium</li>
-<li>Causes: STI, lymphogranuloma venereum</li>
-<li>Treatment: Doxycycline</li>
+<li>Slow-growing, intracellular</li>
+<li>Causes opportunistic infections, pulmonary disease</li>
+<li>Treatment: Macrolide-based combination therapy</li>
 </ul>
 </div>
-
-<button class="collapsible">Legionella pneumophila</button>
+<!-- Nocardia -->
+<button class="collapsible pathogen">Nocardia spp.</button>
 <div class="content">
 <ul>
-<li>Gram-negative intracellular pathogen</li>
-<li>Causes Legionnaires’ disease, Pontiac fever</li>
-<li>Treatment: Azithromycin or Levofloxacin</li>
+<li>Gram-positive, weakly acid-fast branching filamentous bacteria</li>
+<li>Causes pulmonary, CNS, cutaneous infections</li>
+<li>Treatment: TMP-SMX for 6–12 months</li>
 </ul>
 </div>
-
-<button class="collapsible">Nocardia spp.</button>
+<!-- Intracellular Pathogens -->
+<button class="collapsible pathogen">Intracellular / Fastidious Pathogens</button>
 <div class="content">
 <ul>
-<li>Gram-positive, weakly acid-fast, filamentous</li>
-<li>Causes pulmonary, CNS, skin infections in immunocompromised</li>
-<li>Treatment: TMP-SMX</li>
+<li>Chlamydia spp.: Doxycycline or Macrolides</li>
+<li>Legionella pneumophila: Levofloxacin or Azithromycin</li>
+<li>Mycoplasma pneumoniae: Macrolides or Tetracyclines</li>
 </ul>
 </div>
-
-<!-- Viral infections (basic, encephalopathies next increment) -->
-<button class="collapsible">Viral Infections (General)</button>
+<!-- Fungi -->
+<button class="collapsible pathogen">Fungi</button>
 <div class="content">
 <ul>
-<li>Influenza A/B: Oseltamivir 75 mg PO BID ×5d</li>
-<li>HSV 1/2: Acyclovir 400 mg PO TID or 5 mg/kg IV q8h</li>
-<li>CMV: Ganciclovir 5 mg/kg IV q12h ×14–21d</li>
+<li>Candida spp.: Fluconazole</li>
+<li>Aspergillus spp.: Voriconazole</li>
+<li>Cryptococcus spp.: Amphotericin B + Flucytosine</li>
+</ul>
+</div>
+<!-- Viruses -->
+<button class="collapsible pathogen">Viruses</button>
+<div class="content">
+<ul>
+<li>Influenza A/B: Oseltamivir</li>
+<li>HSV 1/2: Acyclovir</li>
+<li>CMV: Ganciclovir</li>
 </ul>
 </div>
 
-  <!-- Viral Encephalopathies -->
-<section id="pathogen-guidance-viral-encephalopathies">
-<h2>Viral Encephalopathies</h2>
-
-<button class="collapsible">West Nile Virus (WNV)</button>
+<!-- Tickborne Illnesses -->
+<section id="tickborne-illnesses">
+<h2>Tickborne Illnesses</h2>
+<button class="collapsible pathogen">Borrelia burgdorferi (Lyme disease)</button>
 <div class="content">
-<table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>West Nile Virus</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>Neurologic complications include meningitis, encephalitis, acute flaccid paralysis; no antiviral therapy available</td></tr>
-</table>
+<ul>
+<li>Gram-negative spirochete</li>
+<li>Early: erythema migrans, fever, arthralgia</li>
+<li>Treatment: Doxycycline 100 mg PO BID 10–21 days</li>
+</ul>
 </div>
-
-<button class="collapsible">Eastern Equine Encephalitis Virus (EEE)</button>
+<button class="collapsible pathogen">Anaplasma phagocytophilum (Anaplasmosis)</button>
 <div class="content">
-<table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>EEE Virus</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>High mortality (~30%); survivors often have neurologic sequelae; prevention via mosquito control and vaccination in horses</td></tr>
-</table>
+<ul>
+<li>Intracellular Gram-negative bacterium</li>
+<li>Symptoms: fever, malaise, cytopenias</li>
+<li>Treatment: Doxycycline 100 mg PO/IV BID 10–14 days</li>
+</ul>
 </div>
-
-<button class="collapsible">Western Equine Encephalitis Virus (WEE)</button>
+<button class="collapsible pathogen">Babesia microti (Babesiosis)</button>
 <div class="content">
-<table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>WEE Virus</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>Less severe than EEE; mortality <5%; monitor neurologic status</td></tr>
-</table>
+<ul>
+<li>Intraerythrocytic protozoa</li>
+<li>Symptoms: hemolysis, fever, fatigue</li>
+<li>Treatment: Atovaquone + Azithromycin for 7–10 days</li>
+</ul>
 </div>
-
-<button class="collapsible">St. Louis Encephalitis Virus (SLEV)</button>
+<button class="collapsible pathogen">Rickettsia rickettsii (Rocky Mountain spotted fever)</button>
 <div class="content">
-<table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>SLEV</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>Occurs in North America; most cases mild, severe cases can have encephalitis or meningitis</td></tr>
-</table>
+<ul>
+<li>Obligate intracellular Gram-negative bacterium</li>
+<li>Symptoms: fever, rash, headache</li>
+<li>Treatment: Doxycycline 100 mg PO/IV BID 7–14 days</li>
+</ul>
 </div>
-
-<button class="collapsible">Japanese Encephalitis Virus (JEV)</button>
-<div class="content">
-<table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>JEV</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>Endemic in Asia; vaccination recommended for travelers; severe neurologic disease in children and adults</td></tr>
-</table>
-</div>
-
-<button class="collapsible">Rabies Virus</button>
-<div class="content">
-<table>
-<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
-<tr><td>Rabies Virus</td><td>Post-exposure prophylaxis</td><td>Rabies immune globulin + vaccine series (IM)</td><td>Days 0, 3, 7, 14, 28</td><td>Once symptomatic, nearly universally fatal; PEP critical immediately after exposure</td></tr>
-</table>
-</div>
-
 </section>
 
-
-
-<!-- Tickborne illnesses (skeleton, details expanded in next increment) -->
-<button class="collapsible">Tickborne Illnesses</button>
+<!-- Viral Encephalopathies -->
+<section id="viral-encephalopathies">
+<h2>Viral Encephalopathies</h2>
+<button class="collapsible pathogen">West Nile Virus</button>
 <div class="content">
 <ul>
-<li>Lyme disease (Borrelia burgdorferi)</li>
-<li>Rocky Mountain Spotted Fever (Rickettsia rickettsii)</li>
-<li>Anaplasmosis / Ehrlichiosis</li>
-<li>Babesiosis</li>
-<li>Tick-borne encephalitis (viral)</li>
+<li>Flavivirus transmitted by mosquitoes</li>
+<li>Symptoms: fever, headache, neuroinvasive disease in some</li>
+<li>Treatment: Supportive care, no antiviral approved</li>
 </ul>
 </div>
+<button class="collapsible pathogen">Eastern Equine Encephalitis</button>
+<div class="content">
+<ul>
+<li>Alphavirus transmitted by mosquitoes</li>
+<li>Symptoms: high fever, severe neurological disease</li>
+<li>Treatment: Supportive care, ICU-level management</li>
+</ul>
+</div>
+<button class="collapsible pathogen">Japanese Encephalitis Virus</button>
+<div class="content">
+<ul>
+<li>Flavivirus transmitted by Culex mosquitoes</li>
+<li>Symptoms: fever, meningitis/encephalitis</li>
+<li>Treatment: Supportive care, vaccination preventive</li>
+</ul>
+</div>
+</section>
 
+<section id="antibiotic-classes">
+<h2>Antibiotic Classes / Escalation</h2>
+<table>
+<tr><th>Class</th><th>Target</th><th>Common Agents</th><th>Alternatives</th><th>Notes</th><th>Typical Duration</th></tr>
+<tr><td>Beta-lactams</td><td>Gram ±, some anaerobes</td><td>Penicillins, Cephalosporins</td><td>Carbapenems</td><td>Time-dependent killing</td><td>7–14 days</td></tr>
+<tr><td>Macrolides</td><td>Atypical, Gram +</td><td>Azithromycin, Clarithromycin</td><td>Erythromycin</td><td>Good tissue penetration</td><td>5–10 days</td></tr>
+<tr><td>Tetracyclines</td><td>Intracellular, some Gram ±</td><td>Doxycycline</td><td>Minocycline</td><td>Avoid in pregnancy</td><td>7–14 days</td></tr>
+<tr><td>Fluoroquinolones</td><td>Gram ±, Pseudomonas</td><td>Levofloxacin, Ciprofloxacin</td><td>Moxifloxacin</td><td>Watch QT prolongation</td><td>7–14 days</td></tr>
+<tr><td>Glycopeptides</td><td>Gram +, MRSA</td><td>Vancomycin</td><td>Teicoplanin</td><td>Monitor troughs</td><td>7–21 days</td></tr>
+</table>
+</section>
 
-    <!-- References -->
-    <section id="references">
-      <h2>References</h2>
-      <ul>
-        <li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy-guidelines/" target="_blank" rel="noopener noreferrer">IDSA Guidelines</a></li>
-        <li><a href="https://www.nejm.org/browse/specialty/infectious-disease/" target="_blank" rel="noopener noreferrer">NEJM</a></li>
-        <li><a href="https://jamanetwork.com/" target="_blank" rel="noopener noreferrer">JAMA</a></li>
-        <li>Harrison’s Principles of Internal Medicine, 21st Edition</li>
-      </ul>
-    </section>
-  </main>
+<section id="fungal-infections">
+<h2>Fungal Infections</h2>
+<table>
+<tr><th>Organism</th><th>Drug</th><th>Dose / Route</th><th>Duration</th></tr>
+<tr><td>Candida spp.</td><td>Fluconazole</td><td>800 mg PO/IV day 1, then 400 mg daily</td><td>14 days after negative cultures</td></tr>
+<tr><td>Aspergillus spp.</td><td>Voriconazole</td><td>6 mg/kg IV q12h ×2 doses, then 4 mg/kg IV q12h</td><td>6–12 weeks</td></tr>
+<tr><td>Cryptococcus spp.</td><td>Amphotericin B + Flucytosine</td><td>Varies by regimen</td><td>2–6 weeks</td></tr>
+</table>
+</section>
+
+<section id="viral-infections">
+<h2>Viral Infections</h2>
+<table>
+<tr><th>Organism</th><th>Drug</th><th>Dose / Route</th><th>Duration</th></tr>
+<tr><td>Influenza A/B</td><td>Oseltamivir</td><td>75 mg PO BID</td><td>5 days</td></tr>
+<tr><td>HSV 1/2</td><td>Acyclovir</td><td>400 mg PO TID or 5 mg/kg IV q8h</td><td>7–14 days</td></tr>
+<tr><td>CMV</td><td>Ganciclovir</td><td>5 mg/kg IV q12h</td><td>14–21 days</td></tr>
+</table>
+</section>
+
+<section id="tickborne-illnesses"></section>
+<section id="viral-encephalopathies"></section>
+
+<section id="calculators">
+<h2>Calculators</h2>
+<div class="calculator">
+<h3>CrCl (Cockcroft-Gault)</h3>
+<label>Weight (kg): <input type="number" id="wt"></label>
+<label>Age (yr): <input type="number" id="age"></label>
+<label>Serum Cr (mg/dL): <input type="number" id="cr"></label>
+<label>Female? <input type="checkbox" id="female"></label>
+<button onclick="calcCrCl()">Calculate</button>
+<p id="crclResult"></p>
 </div>
 
+<div class="calculator">
+<h3>SOFA Score</h3>
+<p>Input organ-specific values to calculate score (simplified placeholder for interactive use)</p>
+</div>
+</section>
+
+<section id="references">
+<h2>References</h2>
+<ul>
+<li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy-guidelines/" target="_blank" rel="noopener noreferrer">IDSA Guidelines</a></li>
+<li><a href="https://www.nejm.org/browse/specialty/infectious-disease/" target="_blank" rel="noopener noreferrer">NEJM</a></li>
+<li><a href="https://jamanetwork.com/" target="_blank" rel="noopener noreferrer">JAMA</a></li>
+<li>Harrison’s Principles of Internal Medicine, 21st Edition</li>
+</ul>
+</section>
+
 <script>
-  // Collapsible sections
-  const coll = document.getElementsByClassName("collapsible");
-  for (let i = 0; i < coll.length; i++) {
-    coll[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      const content = this.nextElementSibling;
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    });
+document.querySelectorAll('.collapsible').forEach(button => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('active');
+    const content = button.nextElementSibling;
+    content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+  });
+});
+
+function calcCrCl() {
+  const wt = parseFloat(document.getElementById('wt').value);
+  const age = parseFloat(document.getElementById('age').value);
+  const cr = parseFloat(document.getElementById('cr').value);
+  const female = document.getElementById('female').checked;
+  if (!wt || !age || !cr) {
+    document.getElementById('crclResult').textContent = 'Enter all values.';
+    return;
   }
+  let crcl = ((140 - age) * wt) / (72 * cr);
+  if (female) crcl *= 0.85;
+  document.getElementById('crclResult').textContent = `CrCl: ${crcl.toFixed(1)} mL/min`;
+}
 
-  // Smooth scrolling with offset
-  const headerHeight = document.querySelector('header').offsetHeight;
-  document.querySelectorAll('.scroll-link').forEach(link => {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
-      const targetSection = document.getElementById(targetId);
-      const targetPosition = targetSection.offsetTop - headerHeight - 10;
-      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-    });
+// Pathogen search/filter
+document.getElementById('searchBar').addEventListener('input', function() {
+  const query = this.value.toLowerCase();
+  document.querySelectorAll('.collapsible.pathogen').forEach(btn => {
+    const text = btn.textContent.toLowerCase();
+    btn.style.display = text.includes(query) ? 'block' : 'none';
+    if (btn.nextElementSibling) btn.nextElementSibling.style.display = 'none';
   });
-
-  // Search/filter functionality
-  const searchBar = document.getElementById('searchBar');
-  searchBar.addEventListener('input', function() {
-    const term = this.value.toLowerCase();
-    document.querySelectorAll('section .content, section ul').forEach(el => {
-      if (el.innerText.toLowerCase().includes(term)) {
-        el.style.display = 'block';
-      } else {
-        el.style.display = 'none';
-      }
-    });
-  });
+});
 </script>
 </body>
 </html>
