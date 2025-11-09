@@ -29,20 +29,21 @@
 </header>
 
 <nav id="sidebar">
-  <ul>
-    <li><a href="#homepage">Home</a></li>
-    <li><a href="#empiric-therapy">Empiric Therapy</a></li>
-    <li><a href="#anatomic-infections">By Anatomic Site</a></li>
-    <li><a href="#sepsis">Sepsis</a></li>
-    <li><a href="#pathogen-guidance">Pathogen Guidance</a></li>
-    <li><a href="#pathogen-overview">Pathogen Overview</a></li>
-    <li><a href="#antibiotic-classes">Antibiotic Classes</a></li>
-    <li><a href="#fungal-infections">Fungal Infections</a></li>
-    <li><a href="#viral-infections">Viral Infections</a></li>
-    <li><a href="#tickborne-illnesses">Tickborne Illnesses</a></li>
-    <li><a href="#calculators">Calculators</a></li>
-    <li><a href="#references">References</a></li>
-  </ul>
+<ul id="sidebar">
+  <li><a href="#homepage">Home</a></li>
+  <li><a href="#empiric-therapy">Empiric Therapy</a></li>
+  <li><a href="#anatomic-infections">Anatomic Infections</a></li>
+  <li><a href="#sepsis">Sepsis</a></li>
+  <li><a href="#pathogen-guidance">Pathogen-Based Guidance</a></li>
+  <li><a href="#pathogen-guidance-tickborne">Tickborne Illnesses</a></li>
+  <li><a href="#pathogen-guidance-viral-encephalopathies">Viral Encephalopathies</a></li>
+  <li><a href="#antibiotic-classes">Antibiotic Classes / Escalation</a></li>
+  <li><a href="#fungal-infections">Fungal Infections</a></li>
+  <li><a href="#viral-infections">Viral Infections</a></li>
+  <li><a href="#calculators">Calculators</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+
 </nav>
 
 <main>
@@ -251,54 +252,59 @@
 </div>
 
   <!-- Viral Encephalopathies -->
-<button class="collapsible">West Nile Virus</button>
+<section id="pathogen-guidance-viral-encephalopathies">
+<h2>Viral Encephalopathies</h2>
+
+<button class="collapsible">West Nile Virus (WNV)</button>
 <div class="content">
-<ul>
-<li>Flavivirus transmitted by Culex mosquitoes</li>
-<li>Geography: North America, Africa, Europe, Middle East</li>
-<li>Clinical: asymptomatic in ~80%, febrile illness, meningitis, encephalitis, flaccid paralysis</li>
-<li>Risk factors for severe disease: age >50, immunosuppression</li>
-<li>Diagnosis: serum/CSF IgM, PCR in blood/CSF</li>
-<li>Treatment: supportive care; no specific antiviral therapy</li>
-<li>Prevention: mosquito control, personal protection</li>
-</ul>
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>West Nile Virus</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>Neurologic complications include meningitis, encephalitis, acute flaccid paralysis; no antiviral therapy available</td></tr>
+</table>
 </div>
 
-<button class="collapsible">Eastern Equine Encephalitis (EEE)</button>
+<button class="collapsible">Eastern Equine Encephalitis Virus (EEE)</button>
 <div class="content">
-<ul>
-<li>Alphavirus transmitted by Culiseta melanura mosquitoes (bird-mosquito cycle)</li>
-<li>Geography: Eastern U.S., rare globally</li>
-<li>Clinical: abrupt onset fever, headache, vomiting, seizures, coma; high mortality (~30%)</li>
-<li>Diagnosis: serum/CSF IgM, PCR, neuroimaging supportive</li>
-<li>Treatment: supportive care; ICU management for severe cases</li>
-<li>Prevention: mosquito control, personal protection</li>
-</ul>
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>EEE Virus</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>High mortality (~30%); survivors often have neurologic sequelae; prevention via mosquito control and vaccination in horses</td></tr>
+</table>
+</div>
+
+<button class="collapsible">Western Equine Encephalitis Virus (WEE)</button>
+<div class="content">
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>WEE Virus</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>Less severe than EEE; mortality <5%; monitor neurologic status</td></tr>
+</table>
 </div>
 
 <button class="collapsible">St. Louis Encephalitis Virus (SLEV)</button>
 <div class="content">
-<ul>
-<li>Flavivirus transmitted by Culex mosquitoes</li>
-<li>Geography: North and South America</li>
-<li>Clinical: mild febrile illness, aseptic meningitis, encephalitis in elderly</li>
-<li>Diagnosis: serum/CSF IgM, PCR</li>
-<li>Treatment: supportive care</li>
-<li>Prevention: mosquito control, avoid bites</li>
-</ul>
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>SLEV</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>Occurs in North America; most cases mild, severe cases can have encephalitis or meningitis</td></tr>
+</table>
 </div>
 
 <button class="collapsible">Japanese Encephalitis Virus (JEV)</button>
 <div class="content">
-<ul>
-<li>Flavivirus transmitted by Culex mosquitoes</li>
-<li>Geography: Asia-Pacific region</li>
-<li>Clinical: febrile illness, headache, seizures, altered consciousness; high mortality and neurologic sequelae</li>
-<li>Diagnosis: serum/CSF IgM, PCR</li>
-<li>Treatment: supportive care; ICU for severe cases</li>
-<li>Prevention: vaccination, mosquito control, avoid bites</li>
-</ul>
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>JEV</td><td>Supportive care</td><td>N/A</td><td>Symptomatic until recovery</td><td>Endemic in Asia; vaccination recommended for travelers; severe neurologic disease in children and adults</td></tr>
+</table>
 </div>
+
+<button class="collapsible">Rabies Virus</button>
+<div class="content">
+<table>
+<tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th><th>Notes</th></tr>
+<tr><td>Rabies Virus</td><td>Post-exposure prophylaxis</td><td>Rabies immune globulin + vaccine series (IM)</td><td>Days 0, 3, 7, 14, 28</td><td>Once symptomatic, nearly universally fatal; PEP critical immediately after exposure</td></tr>
+</table>
+</div>
+
+</section>
+
 
 
 <!-- Tickborne illnesses (skeleton, details expanded in next increment) -->
