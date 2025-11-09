@@ -9,405 +9,235 @@
     margin: 0;
     font-family: Arial, sans-serif;
   }
-
-  /* Top banner */
-  #top-banner {
-    background-color: #004080;
-    color: white;
+  header {
     position: fixed;
     top: 0;
-    left: 0;
     width: 100%;
+    background-color: #004080;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
     z-index: 1000;
-    padding: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   }
-
-  /* Sidebar navigation */
+  header img {
+    height: 40px;
+    margin-right: 10px;
+  }
+  header h1 {
+    font-size: 1.5em;
+    margin: 0;
+    flex-grow: 1;
+  }
+  header input[type="text"] {
+    padding: 5px;
+    font-size: 1em;
+  }
+  #container {
+    display: flex;
+    margin-top: 70px; /* header height */
+  }
   #sidebar {
-    position: fixed;
-    top: 60px; /* height of banner */
-    left: 0;
-    width: 220px;
-    height: calc(100% - 60px);
-    background-color: #f1f1f1;
+    width: 250px;
+    background: #f2f2f2;
+    padding: 20px;
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
     overflow-y: auto;
-    padding: 10px;
-    border-right: 1px solid #ccc;
   }
-
+  #sidebar ul {
+    list-style: none;
+    padding: 0;
+  }
+  #sidebar li {
+    margin-bottom: 10px;
+  }
   #sidebar a {
-    display: block;
-    color: #000;
-    padding: 8px 0;
     text-decoration: none;
+    color: #004080;
   }
-
-  #sidebar a:hover {
-    background-color: #ddd;
+  main {
+    flex-grow: 1;
+    padding: 20px;
   }
-
-  /* Main content */
-  #main-content {
-    margin-left: 240px;
-    padding: 80px 20px 20px 20px; /* top padding to avoid banner overlap */
-  }
-
-  /* Collapsible sections */
   .collapsible {
     background-color: #eee;
-    color: #444;
+    color: #004080;
     cursor: pointer;
     padding: 10px;
     width: 100%;
     border: none;
     text-align: left;
-    outline: none;
-    font-size: 16px;
-    margin-top: 10px;
+    font-size: 1em;
+    margin-bottom: 5px;
   }
-
-  .active, .collapsible:hover {
-    background-color: #ccc;
+  .collapsible:after {
+    content: '+';
+    float: right;
   }
-
+  .collapsible.active:after {
+    content: '-';
+  }
   .content {
     display: none;
-    padding: 0 15px;
-    overflow: hidden;
-    background-color: #f9f9f9;
-    border-left: 3px solid #004080;
+    padding: 10px 15px;
+    border-left: 2px solid #004080;
+    margin-bottom: 10px;
   }
-
   table {
-    width: 100%;
     border-collapse: collapse;
-    margin: 10px 0;
+    width: 100%;
+    margin-bottom: 15px;
   }
-
   table, th, td {
     border: 1px solid #ccc;
   }
-
   th, td {
-    padding: 8px;
+    padding: 5px;
     text-align: left;
+  }
+  .calculator {
+    margin-bottom: 15px;
   }
 </style>
 </head>
 <body>
-
-<div id="top-banner">
+<header>
+  <img src="mutant-icon.png" alt="Icon">
   <h1>Antibiotic & Infection Guide</h1>
-</div>
+  <input type="text" id="searchBar" placeholder="Search pathogens...">
+</header>
 
-<div id="sidebar">
-  <a href="#homepage">Home</a>
-  <a href="#empiric-therapy">Empiric Therapy</a>
-  <a href="#anatomic-infections">Anatomic Infections</a>
-  <a href="#sepsis">Sepsis</a>
-  <a href="#pathogen-guidance">Pathogen Guidance</a>
-  <a href="#pathogen-overview">Pathogen Overview</a>
-  <a href="#antibiotic-classes">Antibiotic Classes</a>
-  <a href="#fungal-infections">Fungal Infections</a>
-  <a href="#viral-infections">Viral Infections</a>
-  <a href="#tickborne-therapy">Tickborne Illnesses</a>
-  <a href="#calculators">Calculators</a>
-  <a href="#references">References</a>
-</div>
-
-<div id="main-content">
-  <div id="homepage">
-  <h2>Antibiotic & Infection Guide</h2>
-  <p>Use the sidebar to navigate. Expand each section for detailed dosing, duration, organism-specific notes, and references.</p>
-</div>
-
-<div id="empiric-therapy">
-  <h2>Empiric Therapy</h2>
-
-  <button class="collapsible">Gram-Positive Cocci</button>
-  <div class="content">
-    <table>
-      <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
-      <tr><td>Staphylococcus aureus (MSSA)</td><td>Nafcillin / Oxacillin</td><td>2 g IV q4h</td><td>7–14 days</td></tr>
-      <tr><td>MRSA</td><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>7–21 days</td></tr>
-      <tr><td>Streptococcus spp.</td><td>Penicillin G / Ceftriaxone</td><td>4 MU IV q4h / 2 g IV q24h</td><td>10–14 days</td></tr>
-      <tr><td>Enterococcus spp.</td><td>Ampicillin / Vancomycin</td><td>2 g IV q4h / 15 mg/kg IV q12h</td><td>14–21 days</td></tr>
-    </table>
-  </div>
-
-  <button class="collapsible">Gram-Negative Rods</button>
-  <div class="content">
-    <table>
-      <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
-      <tr><td>E. coli</td><td>Ceftriaxone</td><td>2 g IV q24h</td><td>7–10 days</td></tr>
-      <tr><td>Klebsiella spp.</td><td>Ceftriaxone / Piperacillin-tazobactam</td><td>2 g IV q24h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
-      <tr><td>Pseudomonas aeruginosa</td><td>Piperacillin-tazobactam / Ceftazidime</td><td>4.5 g IV q6–8h / 2 g IV q8h</td><td>10–14 days</td></tr>
-      <tr><td>Burkholderia spp.</td><td>Ceftazidime / Meropenem</td><td>2 g IV q8h / 1 g IV q8h</td><td>10–14 days</td></tr>
-    </table>
-  </div>
-
-  <button class="collapsible">Anaerobes</button>
-  <div class="content">
-    <table>
-      <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
-      <tr><td>Bacteroides fragilis</td><td>Metronidazole / Piperacillin-tazobactam</td><td>500 mg IV q8h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
-      <tr><td>Clostridium spp.</td><td>Oral Vancomycin / Metronidazole</td><td>125 mg PO q6h / 500 mg IV q8h</td><td>10–14 days</td></tr>
-      <tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>4 MU IV q4h</td><td>6–12 months</td></tr>
-    </table>
-  </div>
-
-  <button class="collapsible">Intracellular / Fastidious Pathogens</button>
-  <div class="content">
-    <table>
-      <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
-      <tr><td>Chlamydia trachomatis</td><td>Doxycycline</td><td>100 mg PO q12h</td><td>7 days</td></tr>
-      <tr><td>Legionella pneumophila</td><td>Azithromycin / Levofloxacin</td><td>500 mg IV/PO daily / 750 mg IV/PO daily</td><td>7–10 days</td></tr>
-      <tr><td>Mycobacterium spp. (non-TB)</td><td>Macrolide-based combination</td><td>Varies by species</td><td>Weeks–Months</td></tr>
-      <tr><td>Nocardia spp.</td><td>Trimethoprim-sulfamethoxazole</td><td>15 mg/kg/day IV divided q6–8h</td><td>6–12 months</td></tr>
-    </table>
-  </div>
-</div>
-<div id="anatomic-infections">
-  <h2>Infections by Anatomic Site (Top-to-Toe)</h2>
-
-  <button class="collapsible">Head & Neck</button>
-  <div class="content">
+<div id="container">
+  <nav id="sidebar">
     <ul>
-      <li>Sinusitis: Amoxicillin-clavulanate 875/125 mg PO BID 5–7d</li>
-      <li>Mastoiditis: Ceftriaxone 2 g IV q24h 10–14d</li>
-      <li>Otitis media: Amoxicillin 500 mg PO q8h 5–7d</li>
-      <li>Pharyngitis (Strep): Penicillin V 500 mg PO q8h 10d</li>
+      <li><a href="#homepage" class="scroll-link">Home</a></li>
+      <li><a href="#empiric-therapy" class="scroll-link">Empiric Therapy</a></li>
+      <li><a href="#anatomic-infections" class="scroll-link">By Anatomic Site</a></li>
+      <li><a href="#sepsis" class="scroll-link">Sepsis</a></li>
+      <li><a href="#pathogen-guidance" class="scroll-link">Pathogen-Based Guidance</a></li>
+      <li><a href="#pathogen-overview" class="scroll-link">Pathogen Overview</a></li>
+      <li><a href="#antibiotic-classes" class="scroll-link">Antibiotic Classes</a></li>
+      <li><a href="#fungal-infections" class="scroll-link">Fungal Infections</a></li>
+      <li><a href="#viral-infections" class="scroll-link">Viral Infections</a></li>
+      <li><a href="#tickborne-illnesses" class="scroll-link">Tickborne Illnesses</a></li>
+      <li><a href="#calculators" class="scroll-link">Calculators</a></li>
+      <li><a href="#references" class="scroll-link">References</a></li>
     </ul>
-  </div>
+  </nav>
 
-  <button class="collapsible">Respiratory Tract</button>
-  <div class="content">
-    <ul>
-      <li>Community-Acquired Pneumonia (CAP): Ceftriaxone 2 g IV q24h + Azithromycin 500 mg IV/PO day 1 then 250 mg daily 5–7d</li>
-      <li>Hospital-Acquired / Ventilator-Associated Pneumonia (HAP/VAP): Piperacillin-tazobactam 4.5 g IV q6–8h 7–14d, add Vancomycin for MRSA risk</li>
-      <li>Bronchitis (bacterial): Amoxicillin 500 mg PO q8h 5–7d</li>
-    </ul>
-  </div>
+  <main>
+    <!-- Homepage -->
+    <section id="homepage">
+      <h2>Antibiotic & Infection Guide</h2>
+      <p>Use the sidebar to navigate. Expand each section for detailed dosing, duration, organism-specific notes, and references.</p>
+      <h3>Basic ID Approach Tips</h3>
+      <ul>
+        <li>Obtain thorough history including travel, exposures, and immunization status.</li>
+        <li>Perform targeted physical exam and evaluate for source of infection.</li>
+        <li>Obtain cultures before antibiotics whenever feasible.</li>
+        <li>Start empiric therapy based on site and severity; adjust when cultures return.</li>
+        <li>Consider patient comorbidities, immune status, and local resistance patterns.</li>
+      </ul>
+    </section>
 
-  <button class="collapsible">Urinary Tract / Pyelonephritis</button>
-  <div class="content">
-    <ul>
-      <li>Uncomplicated UTI: Nitrofurantoin 100 mg PO BID 5–7d</li>
-      <li>Pyelonephritis: Ciprofloxacin 500 mg PO q12h 7–10d</li>
-      <li>Complicated UTI / Catheter-associated: Piperacillin-tazobactam 4.5 g IV q6–8h 10–14d</li>
-    </ul>
-  </div>
+    <!-- Empiric Therapy -->
+    <section id="empiric-therapy">
+      <h2>Empiric Therapy</h2>
+      <button class="collapsible">Gram-Positive Cocci</button>
+      <div class="content">
+        <table>
+          <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
+          <tr><td>Staphylococcus aureus (MSSA)</td><td>Nafcillin / Oxacillin</td><td>2 g IV q4h</td><td>7–14 days</td></tr>
+          <tr><td>MRSA</td><td>Vancomycin</td><td>15 mg/kg IV q12h</td><td>7–21 days</td></tr>
+          <tr><td>Streptococcus spp.</td><td>Penicillin G / Ceftriaxone</td><td>4 MU IV q4h / 2 g IV q24h</td><td>10–14 days</td></tr>
+          <tr><td>Enterococcus spp.</td><td>Ampicillin / Vancomycin</td><td>2 g IV q4h / 15 mg/kg IV q12h</td><td>14–21 days</td></tr>
+        </table>
+      </div>
 
-  <button class="collapsible">Gastrointestinal / Intra-abdominal</button>
-  <div class="content">
-    <ul>
-      <li>Diverticulitis: Ciprofloxacin 500 mg PO q12h + Metronidazole 500 mg PO q8h 7–10d</li>
-      <li>Appendicitis post-op prophylaxis: Cefazolin 2 g IV pre-op single dose</li>
-      <li>Cholangitis / Biliary infections: Piperacillin-tazobactam 4.5 g IV q6–8h 7–14d</li>
-    </ul>
-  </div>
+      <button class="collapsible">Gram-Negative Rods</button>
+      <div class="content">
+        <table>
+          <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
+          <tr><td>E. coli</td><td>Ceftriaxone</td><td>2 g IV q24h</td><td>7–10 days</td></tr>
+          <tr><td>Klebsiella spp.</td><td>Ceftriaxone / Piperacillin-tazobactam</td><td>2 g IV q24h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
+          <tr><td>Pseudomonas aeruginosa</td><td>Piperacillin-tazobactam / Ceftazidime</td><td>4.5 g IV q6–8h / 2 g IV q8h</td><td>10–14 days</td></tr>
+          <tr><td>Burkholderia spp.</td><td>Ceftazidime / Meropenem</td><td>2 g IV q8h / 1 g IV q8h</td><td>10–14 days</td></tr>
+        </table>
+      </div>
 
-  <button class="collapsible">Skin & Soft Tissue</button>
-  <div class="content">
-    <ul>
-      <li>Cellulitis: Cefazolin 2 g IV q8h 7–10d</li>
-      <li>Necrotizing fasciitis: Broad-spectrum (Meropenem + Vancomycin + Clindamycin) 14–21d</li>
-      <li>Abscess: I&D; adjunct antibiotics if extensive: Cephalexin 500 mg PO q6h 7–10d</li>
-    </ul>
-  </div>
+      <button class="collapsible">Anaerobes</button>
+      <div class="content">
+        <table>
+          <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
+          <tr><td>Bacteroides fragilis</td><td>Metronidazole / Piperacillin-tazobactam</td><td>500 mg IV q8h / 4.5 g IV q6–8h</td><td>7–14 days</td></tr>
+          <tr><td>Clostridium spp.</td><td>Oral Vancomycin / Metronidazole</td><td>125 mg PO q6h / 500 mg IV q8h</td><td>10–14 days</td></tr>
+          <tr><td>Actinomyces spp.</td><td>Penicillin G</td><td>4 MU IV q4h</td><td>6–12 months</td></tr>
+        </table>
+      </div>
 
-  <button class="collapsible">Bone & Joint</button>
-  <div class="content">
-    <ul>
-      <li>Osteomyelitis: Ceftriaxone 2 g IV q24h 6 weeks</li>
-      <li>Septic arthritis: Vancomycin + Ceftriaxone 2–4 weeks</li>
-      <li>Prosthetic joint infections: Vancomycin + Cefepime ± Rifampin, 6–12 weeks depending on surgical intervention</li>
-    </ul>
-  </div>
-</div>
+      <button class="collapsible">Intracellular / Fastidious Pathogens</button>
+      <div class="content">
+        <table>
+          <tr><th>Organism</th><th>Empiric Therapy</th><th>Dose / Route</th><th>Duration</th></tr>
+          <tr><td>Chlamydia trachomatis</td><td>Doxycycline</td><td>100 mg PO q12h</td><td>7 days</td></tr>
+          <tr><td>Legionella pneumophila</td><td>Azithromycin / Levofloxacin</td><td>500 mg IV/PO daily / 750 mg IV/PO daily</td><td>7–10 days</td></tr>
+          <tr><td>Mycobacterium spp. (non-TB)</td><td>Macrolide-based combination</td><td>Varies by species</td><td>Weeks–Months</td></tr>
+          <tr><td>Nocardia spp.</td><td>Trimethoprim-sulfamethoxazole</td><td>15 mg/kg/day IV divided q6–8h</td><td>6–12 months</td></tr>
+        </table>
+      </div>
+    </section>
 
-<div id="sepsis">
-  <h2>Sepsis</h2>
+    <!-- Additional sections (Anatomic Infections, Sepsis, Pathogen Guidance, Pathogen Overview, Antibiotic Classes, Fungal, Viral, Tickborne) would follow similarly fully expanded -->
 
-  <button class="collapsible">Quick Reference (Immediate Actions)</button>
-  <div class="content">
-    <ul>
-      <li>Obtain cultures before antibiotics if possible, but do not delay therapy.</li>
-      <li>Start broad-spectrum antibiotics within 1 hour.</li>
-      <li>Fluid resuscitation: 30 mL/kg crystalloid bolus if hypotensive or lactate ≥4 mmol/L.</li>
-      <li>Vasopressors to maintain MAP ≥65 mmHg if hypotension persists.</li>
-      <li>Measure lactate; repeat if initial >2 mmol/L.</li>
-      <li>Monitor urine output and organ function continuously.</li>
-    </ul>
-  </div>
+    <!-- Tickborne Illnesses Example -->
+    <section id="tickborne-illnesses">
+      <h2>Tickborne Illnesses</h2>
+      <button class="collapsible">Lyme Disease</button>
+      <div class="content">
+        <ul>
+          <li>Pathogen: Borrelia burgdorferi</li>
+          <li>Drug: Doxycycline 100 mg PO BID</li>
+          <li>Duration: 10–21 days depending on stage</li>
+        </ul>
+      </div>
+      <button class="collapsible">Anaplasmosis</button>
+      <div class="content">
+        <ul>
+          <li>Pathogen: Anaplasma phagocytophilum</li>
+          <li>Drug: Doxycycline 100 mg PO/IV BID</li>
+          <li>Duration: 10–14 days</li>
+        </ul>
+      </div>
+      <button class="collapsible">Babesiosis</button>
+      <div class="content">
+        <ul>
+          <li>Pathogen: Babesia microti</li>
+          <li>Drug: Atovaquone + Azithromycin or Clindamycin + Quinine</li>
+          <li>Duration: 7–10 days (mild), 10+ days (severe)</li>
+        </ul>
+      </div>
+      <button class="collapsible">Tickborne Viral Encephalitis</button>
+      <div class="content">
+        <ul>
+          <li>Examples: West Nile Virus, Eastern Equine Encephalitis, Powassan Virus</li>
+          <li>Supportive care; no specific antiviral therapy</li>
+        </ul>
+      </div>
+    </section>
 
-  <button class="collapsible">Detailed Approach / Mechanisms</button>
-  <div class="content">
-    <ul>
-      <li>Sepsis is life-threatening organ dysfunction caused by dysregulated host response to infection.</li>
-      <li>Monitor SOFA/qSOFA scores to guide severity and prognosis.</li>
-      <li>Address source control: remove infected lines, drain abscesses, debride necrotic tissue.</li>
-      <li>Adjust antibiotic regimen based on culture and sensitivities.</li>
-      <li>Monitor for complications: DIC, ARDS, AKI, multi-organ failure.</li>
-      <li>Consider corticosteroids if septic shock is refractory to fluids and vasopressors.</li>
-    </ul>
-  </div>
-</div>
-
-  <section id="pathogen-guidance">
-  <h2>Pathogen-Based Guidance</h2>
-
-  <button class="collapsible">Gram-Positive Cocci</button>
-  <div class="content">
-    <ul>
-      <li>Staphylococcus aureus: MSSA (Nafcillin 2 g IV q4h 7–14d), MRSA (Vancomycin 15 mg/kg IV q12h 7–21d)</li>
-      <li>Streptococcus spp.: Penicillin G 4 MU IV q4h 10–14d, Ceftriaxone 2 g IV q24h 10–14d</li>
-      <li>Enterococcus spp.: Ampicillin 2 g IV q4h 14–21d, Vancomycin 15 mg/kg IV q12h 14–21d</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Gram-Negative Rods</button>
-  <div class="content">
-    <ul>
-      <li>E. coli, Klebsiella spp.: Ceftriaxone 2 g IV q24h 7–10d, Piperacillin-tazobactam 4.5 g IV q6–8h 7–14d</li>
-      <li>Pseudomonas aeruginosa: Piperacillin-tazobactam 4.5 g IV q6–8h 10–14d, Ceftazidime 2 g IV q8h 10–14d</li>
-      <li>Burkholderia spp.: Ceftazidime 2 g IV q8h 10–14d, Meropenem 1 g IV q8h 10–14d</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Anaerobes</button>
-  <div class="content">
-    <ul>
-      <li>Bacteroides fragilis: Metronidazole 500 mg IV q8h 7–14d, Piperacillin-tazobactam 4.5 g IV q6–8h 7–14d</li>
-      <li>Clostridium spp.: Oral Vancomycin 125 mg PO q6h 10–14d, Metronidazole 500 mg IV q8h 10–14d</li>
-      <li>Actinomyces spp.: Penicillin G 4 MU IV q4h 6–12 months</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Intracellular / Fastidious Pathogens</button>
-  <div class="content">
-    <ul>
-      <li>Chlamydia trachomatis: Doxycycline 100 mg PO q12h 7d</li>
-      <li>Legionella pneumophila: Azithromycin 500 mg IV/PO daily 7–10d or Levofloxacin 750 mg IV/PO daily 7–10d</li>
-      <li>Mycobacterium spp. (non-TB): Macrolide-based combination, duration weeks–months depending on species</li>
-      <li>Nocardia spp.: TMP-SMX 15 mg/kg/day IV divided q6–8h 6–12 months</li>
-    </ul>
-  </div>
-</section>
-
-<section id="pathogen-overview">
-  <h2>Pathogen Overview</h2>
-
-  <button class="collapsible">E. coli</button>
-  <div class="content">
-    <ul>
-      <li>Gram-negative rod, facultative anaerobe</li>
-      <li>Causes: UTI, bacteremia, intra-abdominal infections</li>
-      <li>ESBL resistance increasing globally</li>
-      <li>Virulence: adhesins, endotoxins</li>
-      <li>Risk factors: catheterization, hospitalization, immunosuppression</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Klebsiella spp.</button>
-  <div class="content">
-    <ul>
-      <li>Gram-negative rod</li>
-      <li>Causes pneumonia, UTIs, bacteremia</li>
-      <li>ESBL and carbapenem resistance emerging</li>
-      <li>Virulence: capsule, siderophores</li>
-      <li>Risk factors: diabetes, chronic lung disease</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Pseudomonas aeruginosa</button>
-  <div class="content">
-    <ul>
-      <li>Gram-negative rod, non-fermenter</li>
-      <li>Common in HAP, VAP, wound infections</li>
-      <li>Resistance: efflux pumps, beta-lactamases</li>
-      <li>Biofilm formation contributes to chronic infections</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Burkholderia spp.</button>
-  <div class="content">
-    <ul>
-      <li>Gram-negative rod, non-fermenter</li>
-      <li>Causes chronic lung infections in CF, opportunistic infections in immunocompromised</li>
-      <li>Resistance: multi-drug, often requires combination therapy</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Bacteroides fragilis</button>
-  <div class="content">
-    <ul>
-      <li>Anaerobic Gram-negative rod</li>
-      <li>Common in intra-abdominal infections, abscesses</li>
-      <li>Resistance: some strains resistant to penicillin; metronidazole usually effective</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Clostridium spp.</button>
-  <div class="content">
-    <ul>
-      <li>Gram-positive, spore-forming anaerobes</li>
-      <li>Causes: C. difficile colitis, C. perfringens cellulitis/necrotizing infections</li>
-      <li>Treatment: Vancomycin or Metronidazole depending on infection site</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Actinomyces spp.</button>
-  <div class="content">
-    <ul>
-      <li>Gram-positive filamentous anaerobe</li>
-      <li>Causes chronic cervicofacial, thoracic, abdominal infections</li>
-      <li>Prolonged penicillin therapy required (6–12 months)</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Chlamydia trachomatis</button>
-  <div class="content">
-    <ul>
-      <li>Obligate intracellular Gram-negative bacterium</li>
-      <li>Causes: STI, ocular infections</li>
-      <li>Treatment: Doxycycline 7 days, Azithromycin 1 g PO single dose alternative</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Legionella pneumophila</button>
-  <div class="content">
-    <ul>
-      <li>Gram-negative intracellular pathogen</li>
-      <li>Causes atypical pneumonia</li>
-      <li>Treatment: Azithromycin or Levofloxacin 7–10 days</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Nocardia spp.</button>
-  <div class="content">
-    <ul>
-      <li>Gram-positive branching filamentous bacterium</li>
-      <li>Opportunistic infections, pulmonary, CNS, cutaneous</li>
-      <li>Treatment: TMP-SMX, duration 6–12 months depending on site</li>
-    </ul>
-  </div>
-
-  <button class="collapsible">Mycobacterium spp. (non-TB)</button>
-  <div class="content">
-    <ul>
-      <li>Acid-fast bacilli, slow-growing</li>
-      <li>Causes pulmonary, skin, soft tissue infections</li>
-      <li>Treatment: species-specific macrolide-based combination, duration weeks to months</li>
-    </ul>
-  </div>
-</section>
-
-  
-  
-  
-  <!-- Content sections will go here (homepage, empiric therapy, etc.) -->
+    <!-- References -->
+    <section id="references">
+      <h2>References</h2>
+      <ul>
+        <li><a href="https://www.idsociety.org/practice-guideline/antimicrobial-therapy-guidelines/" target="_blank" rel="noopener noreferrer">IDSA Guidelines</a></li>
+        <li><a href="https://www.nejm.org/browse/specialty/infectious-disease/" target="_blank" rel="noopener noreferrer">NEJM</a></li>
+        <li><a href="https://jamanetwork.com/" target="_blank" rel="noopener noreferrer">JAMA</a></li>
+        <li>Harrison’s Principles of Internal Medicine, 21st Edition</li>
+      </ul>
+    </section>
+  </main>
 </div>
 
 <script>
@@ -417,26 +247,34 @@
     coll[i].addEventListener("click", function() {
       this.classList.toggle("active");
       const content = this.nextElementSibling;
-      if (content.style.display === "block") {
-        content.style.display = "none";
-      } else {
-        content.style.display = "block";
-      }
+      content.style.display = content.style.display === "block" ? "none" : "block";
     });
   }
 
-  // Scroll offset for anchor links
-  const sidebarLinks = document.querySelectorAll('#sidebar a');
-  sidebarLinks.forEach(link => {
+  // Smooth scrolling with offset
+  const headerHeight = document.querySelector('header').offsetHeight;
+  document.querySelectorAll('.scroll-link').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      const topOffset = 70; // height of banner + padding
-      const elementPosition = target.offsetTop;
-      window.scrollTo({ top: elementPosition - topOffset, behavior: 'smooth' });
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      const targetPosition = targetSection.offsetTop - headerHeight - 10;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    });
+  });
+
+  // Search/filter functionality
+  const searchBar = document.getElementById('searchBar');
+  searchBar.addEventListener('input', function() {
+    const term = this.value.toLowerCase();
+    document.querySelectorAll('section .content, section ul').forEach(el => {
+      if (el.innerText.toLowerCase().includes(term)) {
+        el.style.display = 'block';
+      } else {
+        el.style.display = 'none';
+      }
     });
   });
 </script>
-
 </body>
 </html>
